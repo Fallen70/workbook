@@ -3,8 +3,9 @@
 <head>
         <meta charset="utf-8" />
         <meta name="generator" content="Pelican" />
-        <title>WorkBook - curl</title>
+        <title>Actions nexus avec curl</title>
         <link rel="stylesheet" href="https://fallen70.github.io/workbook/theme/css/main.css" />
+        <meta name="description" content="Upload curl -v --user 'user:pass' --upload-file /path/to/file http://nexus/nexus/repository/component/subfolder/file Delete curl -X DELETE -v..." />
 </head>
 
 <body id="index" class="home">
@@ -15,10 +16,15 @@
                     <li><a href="https://fallen70.github.io/workbook/category/find.html">find</a></li>
                 </ul></nav>
         </header><!-- /#banner -->
+<section id="content" class="body">
+  <article>
+    <header>
+      <h1 class="entry-title">
+        <a href="https://fallen70.github.io/workbook/actions-nexus-avec-curl.html" rel="bookmark"
+           title="Permalink to Actions nexus avec curl">Actions nexus avec curl</a></h1>
+    </header>
 
-            <aside id="featured" class="body">
-                <article>
-                    <h1 class="entry-title"><a href="https://fallen70.github.io/workbook/actions-nexus-avec-curl.html">Actions nexus avec curl</a></h1>
+    <div class="entry-content">
 <footer class="post-info">
         <abbr class="published" title="2021-08-02T17:00:00+02:00">
                 Published: Mon 02 August 2021
@@ -29,46 +35,17 @@
         </address>
 <p>In <a href="https://fallen70.github.io/workbook/category/curl.html">curl</a>.</p>
 <p>tags: <a href="https://fallen70.github.io/workbook/tag/curl.html">curl</a> <a href="https://fallen70.github.io/workbook/tag/nexus.html">nexus</a> </p>
-</footer><!-- /.post-info --><h1>Upload</h1>
+</footer><!-- /.post-info -->      <h1>Upload</h1>
 <div class="highlight"><pre><span></span><code><span class="n">curl</span> <span class="o">-</span><span class="n">v</span> <span class="o">--</span><span class="n">user</span> <span class="s1">&#39;user:pass&#39;</span> <span class="o">--</span><span class="n">upload</span><span class="o">-</span><span class="n">file</span> <span class="o">/</span><span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">file</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">nexus</span><span class="o">/</span><span class="n">nexus</span><span class="o">/</span><span class="n">repository</span><span class="o">/</span><span class="n">component</span><span class="o">/</span><span class="n">subfolder</span><span class="o">/</span><span class="n">file</span>
 </code></pre></div>
 
 <h1>Delete</h1>
 <div class="highlight"><pre><span></span><code>curl -X DELETE -v --user  &#39;user:pass&#39;  http://nexus/nexus/repository/component/subfolder/file
-</code></pre></div>                </article>
-            </aside><!-- /#featured -->
-                <section id="content" class="body">
-                    <h1>Other articles</h1>
-                    <hr />
-                    <ol id="posts-list" class="hfeed">
+</code></pre></div>
+    </div><!-- /.entry-content -->
 
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="https://fallen70.github.io/workbook/test-stickysession-avec-curl.html" rel="bookmark"
-                           title="Permalink to Test StickySession avec curl">Test StickySession avec curl</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2021-08-02T13:15:00+02:00">
-                Published: Mon 02 August 2021
-        </abbr>
-
-        <address class="vcard author">
-                By                         <a class="url fn" href="https://fallen70.github.io/workbook/author/fallen70.html">Fallen70</a>
-        </address>
-<p>In <a href="https://fallen70.github.io/workbook/category/curl.html">curl</a>.</p>
-<p>tags: <a href="https://fallen70.github.io/workbook/tag/curl.html">curl</a> <a href="https://fallen70.github.io/workbook/tag/load-balancer.html">load-balancer</a> </p>
-</footer><!-- /.post-info -->                <p>Méthode pour tester la session sur plusieurs loadbalancers avec curl.</p>
-<p>En parallèle vérifier que la route est bien respectée en surveillant les logs des machine ciblées par les routes</p>
-<p>Explication sur certaines options de curl</p>
-<p>-H 'host:ServerName' pour cibler un vhost par son ServerName</p>
-<p>--cookie-jar /tmp/cookie Sauver le …</p>
-                <a class="readmore" href="https://fallen70.github.io/workbook/test-stickysession-avec-curl.html">read more</a>
-                </div><!-- /.entry-content -->
-            </article></li>
-                </ol><!-- /#posts-list -->
-                </section><!-- /#content -->
+  </article>
+</section>
         <section id="extras" class="body">
                 <div class="blogroll">
                         <h2>links</h2>
