@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+        <meta charset="utf-8" />
+        <meta name="generator" content="Pelican" />
+        <title>WorkBook - Fallen70</title>
+        <link rel="stylesheet" href="/theme/css/main.css" />
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="/">WorkBook</a></h1>
+                <nav><ul>
+                    <li><a href="/category/misc.html">misc</a></li>
+                </ul></nav>
+        </header><!-- /#banner -->
+
+            <aside id="featured" class="body">
+                <article>
+                    <h1 class="entry-title"><a href="/test-stickysession-avec-curl.html">Test StickySession avec curl</a></h1>
+<footer class="post-info">
+        <abbr class="published" title="2021-08-02T13:15:00+02:00">
+                Published: Mon 02 August 2021
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/fallen70.html">Fallen70</a>
+        </address>
+<p>In <a href="/category/misc.html">misc</a>.</p>
+
+</footer><!-- /.post-info --><p>Méthode pour tester une conf de loadbalancer avec curl avec du sticky session</p>
+<p>En parallèle vérifier que la route est bien respectée en surveillant les logs des machine ciblées par les routes</p>
+<p>Explication sur certaines options de curl</p>
+<p>-H 'host:ServerName' pour cibler un vhost par son ServerName</p>
+<p>--cookie-jar /tmp/cookie Sauver le cookie</p>
+<ul>
+<li>Récupérer le cookie </li>
+</ul>
+<div class="highlight"><pre><span></span><code>curl --cookie-jar /tmp/cookie   -v -I -H &#39;host:ServerName&#39; monserveur.cible-01
+</code></pre></div>
+
+<p>Dans la sortie console on aura l'ionformation de création du  </p>
+<div class="highlight"><pre><span></span><code><span class="o">*</span> <span class="nt">Added</span> <span class="nt">cookie</span> <span class="nt">ROUTEID</span><span class="o">=</span><span class="s2">&quot;.1&quot;</span> <span class="nt">for</span> <span class="nt">domain</span> <span class="nt">ServerName</span><span class="o">,</span> <span class="nt">path</span> <span class="o">/,</span> <span class="nt">expire</span> <span class="nt">0</span>
+<span class="o">&lt;</span> <span class="nt">Set-Cookie</span><span class="o">:</span> <span class="nt">ROUTEID</span><span class="o">=</span><span class="p">.</span><span class="nc">1</span><span class="o">;</span> <span class="nt">path</span><span class="o">=/</span>
+<span class="nt">Set-Cookie</span><span class="o">:</span> <span class="nt">ROUTEID</span><span class="o">=</span><span class="p">.</span><span class="nc">1</span><span class="o">;</span> <span class="nt">path</span><span class="o">=/</span>
+</code></pre></div>
+
+<ul>
+<li>Utiliser le cookie sur une autre adresse partageant un Servername</li>
+</ul>
+<p>--cookie /tmp/cookie Utilise le cookie créé</p>
+<div class="highlight"><pre><span></span><code>curl --cookie /tmp/cookie   -v -I -H &#39;host:ServerName&#39; monserveur.cible-02
+</code></pre></div>
+
+<p>Le cookie est bien exploité</p>
+<div class="highlight"><pre><span></span><code>&gt; HEAD / HTTP/1.1
+&gt; User-Agent: curl/7.29.0
+&gt; Accept: */*
+&gt; Cookie: ROUTEID=.1
+&gt; host:ServerName
+</code></pre></div>                </article>
+            </aside><!-- /#featured -->
+        <section id="extras" class="body">
+                <div class="blogroll">
+                        <h2>links</h2>
+                        <ul>
+                            <li><a href="https://getpelican.com/">Pelican</a></li>
+                            <li><a href="https://www.python.org/">Python.org</a></li>
+                            <li><a href="https://palletsprojects.com/p/jinja/">Jinja2</a></li>
+                            <li><a href="#">You can modify those links in your config file</a></li>
+                        </ul>
+                </div><!-- /.blogroll -->
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+
+                            <li><a href="#">You can add links in your config file</a></li>
+                            <li><a href="#">Another social link</a></li>
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="https://getpelican.com/">Pelican</a>, which takes great advantage of <a href="https://www.python.org/">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="https://www.smashingmagazine.com/2009/08/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>
