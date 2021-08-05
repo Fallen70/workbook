@@ -6,11 +6,11 @@ Category: curl
 
 # Upload
 
-```
+```bash
 curl -v --user 'user:pass' --upload-file /path/to/file http://nexus/nexus/repository/component/subfolder/file
 ```
 # Delete 
 
-```
+```bash
 curl -X DELETE -v --user  'user:pass'  http://nexus/nexus/repository/component/subfolder/file
 ```

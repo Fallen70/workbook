@@ -3,7 +3,6 @@
 
 AUTHOR = 'Fallen70'
 SITENAME = 'WorkBook'
-SITEURL = 'https://fallen70.github.io/workbook/'
 
 PATH = 'content'
 
@@ -28,5 +27,7 @@ SOCIAL = ()
 
 DEFAULT_PAGINATION = 10
 
+STATIC_PATHS = ['images']
+
 # Uncomment following line if you want document-relative URLs when developing
-#RELATIVE_URLS = True
+RELATIVE_URLS = True
