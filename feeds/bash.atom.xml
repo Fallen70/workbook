@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>WorkBook - bash</title><link href="https://fallen70.github.io/workbook/" rel="alternate"></link><link href="https://fallen70.github.io/workbook/feeds/bash.atom.xml" rel="self"></link><id>https://fallen70.github.io/workbook/</id><updated>2021-08-05T13:40:00+02:00</updated><entry><title>Création d'utilisateur</title><link href="https://fallen70.github.io/workbook/creation-dutilisateur.html" rel="alternate"></link><published>2021-08-05T13:40:00+02:00</published><updated>2021-08-05T13:40:00+02:00</updated><author><name>Fallen70</name></author><id>tag:fallen70.github.io,2021-08-05:/workbook/creation-dutilisateur.html</id><summary type="html">&lt;p&gt;Sources :&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://www.starmate.fr/creer-un-utilisateur-et-son-passwd-en-une-commande/"&gt;https://www.starmate.fr/creer-un-utilisateur-et-son-passwd-en-une-commande/&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://stackoverflow.com/questions/14810684/check-whether-a-user-exists"&gt;https://stackoverflow.com/questions/14810684/check-whether-a-user-exists&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="c1"&gt;# Check if user exists&lt;/span&gt;
+&lt;span class="k"&gt;if&lt;/span&gt; ! id -u &lt;span class="nv"&gt;$FS_USER&lt;/span&gt; &amp;gt; /dev/null &lt;span class="m"&gt;2&lt;/span&gt;&amp;gt;&lt;span class="p"&gt;&amp;amp;&lt;/span&gt;&lt;span class="m"&gt;1&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="k"&gt;then&lt;/span&gt;
+    &lt;span class="nb"&gt;echo&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;The user does not exist; execute below commands to create and try again:&amp;quot;&lt;/span&gt;
+    &lt;span class="nb"&gt;echo&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;  root@sh1:~# adduser --home /usr/local/freeswitch/ --shell /bin/false …&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</summary><content type="html">&lt;p&gt;Sources :&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://www.starmate.fr/creer-un-utilisateur-et-son-passwd-en-une-commande/"&gt;https://www.starmate.fr/creer-un-utilisateur-et-son-passwd-en-une-commande/&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://stackoverflow.com/questions/14810684/check-whether-a-user-exists"&gt;https://stackoverflow.com/questions/14810684/check-whether-a-user-exists&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="c1"&gt;# Check if user exists&lt;/span&gt;
+&lt;span class="k"&gt;if&lt;/span&gt; ! id -u &lt;span class="nv"&gt;$FS_USER&lt;/span&gt; &amp;gt; /dev/null &lt;span class="m"&gt;2&lt;/span&gt;&amp;gt;&lt;span class="p"&gt;&amp;amp;&lt;/span&gt;&lt;span class="m"&gt;1&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="k"&gt;then&lt;/span&gt;
+    &lt;span class="nb"&gt;echo&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;The user does not exist; execute below commands to create and try again:&amp;quot;&lt;/span&gt;
+    &lt;span class="nb"&gt;echo&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;  root@sh1:~# adduser --home /usr/local/freeswitch/ --shell /bin/false --no-create-home --ingroup daemon --disabled-password --disabled-login &lt;/span&gt;&lt;span class="nv"&gt;$FS_USER&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;
+    &lt;span class="nb"&gt;echo&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;  ...&amp;quot;&lt;/span&gt;
+    &lt;span class="nb"&gt;echo&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;  root@sh1:~# chown freeswitch:daemon /usr/local/freeswitch/ -R&amp;quot;&lt;/span&gt;
+    &lt;span class="nb"&gt;exit&lt;/span&gt; &lt;span class="m"&gt;1&lt;/span&gt;
+&lt;span class="k"&gt;fi&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content><category term="bash"></category><category term="bash"></category></entry><entry><title>Nettoyage Jenkins</title><link href="https://fallen70.github.io/workbook/nettoyage-jenkins.html" rel="alternate"></link><published>2021-08-05T13:30:00+02:00</published><updated>2021-08-05T13:30:00+02:00</updated><author><name>Fallen70</name></author><id>tag:fallen70.github.io,2021-08-05:/workbook/nettoyage-jenkins.html</id><summary type="html">&lt;p&gt;Actions en s'appuyant sur les fichiers .pom:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Nettoyage des logs catalina&lt;/li&gt;
+&lt;li&gt;Suppression du cache Jenkins&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="ch"&gt;#!/bin/bash&lt;/span&gt;
+
+&lt;span class="nb"&gt;export&lt;/span&gt; &lt;span class="nv"&gt;TOMCAT_DIR&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;/path/to/jenkins/tomcat&amp;#39;&lt;/span&gt;
+&lt;span class="nb"&gt;export&lt;/span&gt; &lt;span class="nv"&gt;CACHES_DIR&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;/path/to/jenkins/jenkins_data/caches&amp;#39;&lt;/span&gt;
+
+&lt;span class="c1"&gt;# Clean catalina.out without restart&lt;/span&gt;
+&lt;span class="nb"&gt;echo&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;Cleaning catalina.out&amp;#39;&lt;/span&gt;
+&lt;span class="nb"&gt;echo&lt;/span&gt; &lt;span class="k"&gt;$(&lt;/span&gt;date&lt;span class="k"&gt;)&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39; Cleaned by XXXXX&amp;#39;&lt;/span&gt; &amp;gt; &lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;TOMCAT_DIR&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;/logs/catalina.out
+
+&lt;span class="c1"&gt;# Cleaning caches …&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</summary><content type="html">&lt;p&gt;Actions en s'appuyant sur les fichiers .pom:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Nettoyage des logs catalina&lt;/li&gt;
+&lt;li&gt;Suppression du cache Jenkins&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="ch"&gt;#!/bin/bash&lt;/span&gt;
+
+&lt;span class="nb"&gt;export&lt;/span&gt; &lt;span class="nv"&gt;TOMCAT_DIR&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;/path/to/jenkins/tomcat&amp;#39;&lt;/span&gt;
+&lt;span class="nb"&gt;export&lt;/span&gt; &lt;span class="nv"&gt;CACHES_DIR&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;/path/to/jenkins/jenkins_data/caches&amp;#39;&lt;/span&gt;
+
+&lt;span class="c1"&gt;# Clean catalina.out without restart&lt;/span&gt;
+&lt;span class="nb"&gt;echo&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;Cleaning catalina.out&amp;#39;&lt;/span&gt;
+&lt;span class="nb"&gt;echo&lt;/span&gt; &lt;span class="k"&gt;$(&lt;/span&gt;date&lt;span class="k"&gt;)&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39; Cleaned by XXXXX&amp;#39;&lt;/span&gt; &amp;gt; &lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;TOMCAT_DIR&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;/logs/catalina.out
+
+&lt;span class="c1"&gt;# Cleaning caches dir&lt;/span&gt;
+&lt;span class="nb"&gt;echo&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;Cleaning caches dir&amp;#39;&lt;/span&gt;
+rm -rvf &lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;CACHES_DIR&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;/*
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content><category term="bash"></category><category term="find"></category><category term="awk"></category><category term="bash"></category><category term="jenkins"></category></entry><entry><title>Nettoyage d'un repository M2</title><link href="https://fallen70.github.io/workbook/nettoyage-dun-repository-m2.html" rel="alternate"></link><published>2021-08-05T13:20:00+02:00</published><updated>2021-08-05T13:20:00+02:00</updated><author><name>Fallen70</name></author><id>tag:fallen70.github.io,2021-08-05:/workbook/nettoyage-dun-repository-m2.html</id><summary type="html">&lt;p&gt;Actions en s'appuyant sur les fichiers .pom:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Suppression des snapshots avec un ctime &amp;gt;14j&lt;/li&gt;
+&lt;li&gt;Suppression des autres avec un atime &amp;gt; 60j&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;ctime -&amp;gt; date de création&lt;/p&gt;
+&lt;p&gt;atime -&amp;gt; date de derniner accés&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="ch"&gt;#!/bin/bash&lt;/span&gt;
+
+&lt;span class="nb"&gt;export&lt;/span&gt; &lt;span class="nv"&gt;MVN_REPO_DIR&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;/path/to/m2&amp;#39;&lt;/span&gt;
+
+&lt;span class="c1"&gt;# Cleaning mvn SNAPSHOT repository&lt;/span&gt;
+&lt;span class="nb"&gt;echo&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;Cleaning SNAPSHOT repository&amp;#39;&lt;/span&gt;
+&lt;span class="k"&gt;for&lt;/span&gt; snapshot_dir &lt;span class="k"&gt;in&lt;/span&gt; &lt;span class="k"&gt;$(&lt;/span&gt;find &lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;MVN_REPO_DIR …&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</summary><content type="html">&lt;p&gt;Actions en s'appuyant sur les fichiers .pom:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Suppression des snapshots avec un ctime &amp;gt;14j&lt;/li&gt;
+&lt;li&gt;Suppression des autres avec un atime &amp;gt; 60j&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;ctime -&amp;gt; date de création&lt;/p&gt;
+&lt;p&gt;atime -&amp;gt; date de derniner accés&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="ch"&gt;#!/bin/bash&lt;/span&gt;
+
+&lt;span class="nb"&gt;export&lt;/span&gt; &lt;span class="nv"&gt;MVN_REPO_DIR&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;/path/to/m2&amp;#39;&lt;/span&gt;
+
+&lt;span class="c1"&gt;# Cleaning mvn SNAPSHOT repository&lt;/span&gt;
+&lt;span class="nb"&gt;echo&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;Cleaning SNAPSHOT repository&amp;#39;&lt;/span&gt;
+&lt;span class="k"&gt;for&lt;/span&gt; snapshot_dir &lt;span class="k"&gt;in&lt;/span&gt; &lt;span class="k"&gt;$(&lt;/span&gt;find &lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;MVN_REPO_DIR&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt; -ctime +14 -type d -name &lt;span class="s1"&gt;&amp;#39;*-SNAPSHOT&amp;#39;&lt;/span&gt; &lt;span class="k"&gt;)&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+  &lt;span class="k"&gt;do&lt;/span&gt; rm -rvf &lt;span class="nv"&gt;$snapshot_dir&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="k"&gt;done&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+
+&lt;span class="c1"&gt;# Cleaning all mvn repository&lt;/span&gt;
+&lt;span class="nb"&gt;echo&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;Cleaning all with atime &amp;gt; 60 days&amp;#39;&lt;/span&gt;
+&lt;span class="k"&gt;for&lt;/span&gt; file &lt;span class="k"&gt;in&lt;/span&gt; &lt;span class="k"&gt;$(&lt;/span&gt;find &lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;MVN_REPO_DIR&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt; -atime +60 -type f -name &lt;span class="s1"&gt;&amp;#39;*.pom&amp;#39;&lt;/span&gt;&lt;span class="k"&gt;)&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; 
+  &lt;span class="k"&gt;do&lt;/span&gt; rm -rvf &lt;span class="k"&gt;$(&lt;/span&gt; dirname &lt;span class="nv"&gt;$file&lt;/span&gt; &lt;span class="k"&gt;)&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; 
+&lt;span class="k"&gt;done&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content><category term="bash"></category><category term="find"></category><category term="maven"></category><category term="awk"></category><category term="bash"></category><category term="du"></category></entry><entry><title>Nettoyage de fichier/dossier en fonction de la taille</title><link href="https://fallen70.github.io/workbook/nettoyage-de-fichierdossier-en-fonction-de-la-taille.html" rel="alternate"></link><published>2021-08-05T12:50:00+02:00</published><updated>2021-08-05T12:50:00+02:00</updated><author><name>Fallen70</name></author><id>tag:fallen70.github.io,2021-08-05:/workbook/nettoyage-de-fichierdossier-en-fonction-de-la-taille.html</id><content type="html">&lt;h1&gt;Liste de fichier qui dépassent une taille en byte&lt;/h1&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;du -s * &lt;span class="p"&gt;|&lt;/span&gt; sort -n &lt;span class="p"&gt;|&lt;/span&gt; awk  &lt;span class="s1"&gt;&amp;#39;{  if ( $1 &amp;gt; 400000 ) print $2; }&amp;#39;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h2&gt;Suppression du contenu trop volumineux&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="k"&gt;for&lt;/span&gt; dir &lt;span class="k"&gt;in&lt;/span&gt; &lt;span class="k"&gt;$(&lt;/span&gt; du -s * &lt;span class="p"&gt;|&lt;/span&gt; sort -n &lt;span class="p"&gt;|&lt;/span&gt; awk  &lt;span class="s1"&gt;&amp;#39;{  if ( $1 &amp;gt; 400000 ) print $2; }&amp;#39;&lt;/span&gt; &lt;span class="k"&gt;)&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+  &lt;span class="k"&gt;do&lt;/span&gt; rm -rvf &lt;span class="nv"&gt;$dir&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="k"&gt;done&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content><category term="bash"></category><category term="awk"></category><category term="bash"></category><category term="du"></category></entry></feed>

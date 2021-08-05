@@ -5,14 +5,19 @@
         <meta name="generator" content="Pelican" />
         <title>WorkBook - curl</title>
         <link rel="stylesheet" href="https://fallen70.github.io/workbook/theme/css/main.css" />
+        <link href="https://fallen70.github.io/workbook/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="WorkBook Atom Feed" />
 </head>
 
 <body id="index" class="home">
         <header id="banner" class="body">
                 <h1><a href="https://fallen70.github.io/workbook/">WorkBook</a></h1>
                 <nav><ul>
+                    <li><a href="https://fallen70.github.io/workbook/category/bash.html">bash</a></li>
                     <li><a href="https://fallen70.github.io/workbook/category/curl.html">curl</a></li>
                     <li><a href="https://fallen70.github.io/workbook/category/find.html">find</a></li>
+                    <li><a href="https://fallen70.github.io/workbook/category/linux.html">linux</a></li>
+                    <li><a href="https://fallen70.github.io/workbook/category/vim.html">vim</a></li>
+                    <li><a href="https://fallen70.github.io/workbook/category/virtualbox.html">virtualbox</a></li>
                 </ul></nav>
         </header><!-- /#banner -->
 
@@ -30,11 +35,11 @@
 <p>In <a href="https://fallen70.github.io/workbook/category/curl.html">curl</a>.</p>
 <p>tags: <a href="https://fallen70.github.io/workbook/tag/curl.html">curl</a> <a href="https://fallen70.github.io/workbook/tag/nexus.html">nexus</a> </p>
 </footer><!-- /.post-info --><h1>Upload</h1>
-<div class="highlight"><pre><span></span><code><span class="n">curl</span> <span class="o">-</span><span class="n">v</span> <span class="o">--</span><span class="n">user</span> <span class="s1">&#39;user:pass&#39;</span> <span class="o">--</span><span class="n">upload</span><span class="o">-</span><span class="n">file</span> <span class="o">/</span><span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">file</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">nexus</span><span class="o">/</span><span class="n">nexus</span><span class="o">/</span><span class="n">repository</span><span class="o">/</span><span class="n">component</span><span class="o">/</span><span class="n">subfolder</span><span class="o">/</span><span class="n">file</span>
+<div class="highlight"><pre><span></span><code>curl -v --user <span class="s1">&#39;user:pass&#39;</span> --upload-file /path/to/file http://nexus/nexus/repository/component/subfolder/file
 </code></pre></div>
 
 <h1>Delete</h1>
-<div class="highlight"><pre><span></span><code>curl -X DELETE -v --user  &#39;user:pass&#39;  http://nexus/nexus/repository/component/subfolder/file
+<div class="highlight"><pre><span></span><code>curl -X DELETE -v --user  <span class="s1">&#39;user:pass&#39;</span>  http://nexus/nexus/repository/component/subfolder/file
 </code></pre></div>                </article>
             </aside><!-- /#featured -->
                 <section id="content" class="body">
@@ -78,6 +83,13 @@
                             <li><a href="https://palletsprojects.com/p/jinja/">Jinja2</a></li>
                         </ul>
                 </div><!-- /.blogroll -->
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+                            <li><a href="https://fallen70.github.io/workbook/feeds/all.atom.xml" type="application/atom+xml" rel="alternate">atom feed</a></li>
+
+                        </ul>
+                </div><!-- /.social -->
         </section><!-- /#extras -->
 
         <footer id="contentinfo" class="body">

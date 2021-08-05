@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>WorkBook - find</title><link href="https://fallen70.github.io/workbook/" rel="alternate"></link><link href="https://fallen70.github.io/workbook/feeds/find.atom.xml" rel="self"></link><id>https://fallen70.github.io/workbook/</id><updated>2021-08-02T16:20:00+02:00</updated><entry><title>Find et lien symbolique</title><link href="https://fallen70.github.io/workbook/find-et-lien-symbolique.html" rel="alternate"></link><published>2021-08-02T16:20:00+02:00</published><updated>2021-08-02T16:20:00+02:00</updated><author><name>Fallen70</name></author><id>tag:fallen70.github.io,2021-08-02:/workbook/find-et-lien-symbolique.html</id><summary type="html">&lt;p&gt;Tiré de &lt;a href="https://stackoverflow.com/questions/8513133/how-do-i-find-all-of-the-symlinks-in-a-directory-tree/21438684"&gt;https://stackoverflow.com/questions/8513133/how-do-i-find-all-of-the-symlinks-in-a-directory-tree/21438684&lt;/a&gt;&lt;/p&gt;
+&lt;h1&gt;Find symbolic links&lt;/h1&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;find . -type l -ls
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h1&gt;Find symbolic links to a specific target&lt;/h1&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;find . -lname link_target
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Note that link_target may contain wildcard characters.&lt;/p&gt;
+&lt;h1&gt;Find broken symbolic links&lt;/h1&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;find -L . -type l -ls
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;The -L option instructs find to follow symbolic …&lt;/p&gt;</summary><content type="html">&lt;p&gt;Tiré de &lt;a href="https://stackoverflow.com/questions/8513133/how-do-i-find-all-of-the-symlinks-in-a-directory-tree/21438684"&gt;https://stackoverflow.com/questions/8513133/how-do-i-find-all-of-the-symlinks-in-a-directory-tree/21438684&lt;/a&gt;&lt;/p&gt;
+&lt;h1&gt;Find symbolic links&lt;/h1&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;find . -type l -ls
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h1&gt;Find symbolic links to a specific target&lt;/h1&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;find . -lname link_target
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Note that link_target may contain wildcard characters.&lt;/p&gt;
+&lt;h1&gt;Find broken symbolic links&lt;/h1&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;find -L . -type l -ls
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;The -L option instructs find to follow symbolic links, unless when broken.&lt;/p&gt;
+&lt;h1&gt;Find &amp;amp; replace broken symbolic links&lt;/h1&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;find -L . -type l -delete -exec ln -s new_target &lt;span class="o"&gt;{}&lt;/span&gt; &lt;span class="se"&gt;\;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;More find examples can be found here: &lt;a href="https://hamwaves.com/find/"&gt;https://hamwaves.com/find/&lt;/a&gt;&lt;/p&gt;</content><category term="find"></category><category term="find"></category><category term="sym-links"></category></entry></feed>

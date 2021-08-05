@@ -5,20 +5,285 @@
         <meta name="generator" content="Pelican" />
         <title>WorkBook</title>
         <link rel="stylesheet" href="https://fallen70.github.io/workbook/theme/css/main.css" />
+        <link href="https://fallen70.github.io/workbook/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="WorkBook Atom Feed" />
 </head>
 
 <body id="index" class="home">
         <header id="banner" class="body">
                 <h1><a href="https://fallen70.github.io/workbook/">WorkBook</a></h1>
                 <nav><ul>
+                    <li><a href="https://fallen70.github.io/workbook/category/bash.html">bash</a></li>
                     <li><a href="https://fallen70.github.io/workbook/category/curl.html">curl</a></li>
                     <li><a href="https://fallen70.github.io/workbook/category/find.html">find</a></li>
+                    <li><a href="https://fallen70.github.io/workbook/category/linux.html">linux</a></li>
+                    <li><a href="https://fallen70.github.io/workbook/category/vim.html">vim</a></li>
+                    <li><a href="https://fallen70.github.io/workbook/category/virtualbox.html">virtualbox</a></li>
                 </ul></nav>
         </header><!-- /#banner -->
 
             <aside id="featured" class="body">
                 <article>
-                    <h1 class="entry-title"><a href="https://fallen70.github.io/workbook/actions-nexus-avec-curl.html">Actions nexus avec curl</a></h1>
+                    <h1 class="entry-title"><a href="https://fallen70.github.io/workbook/ramswap.html">RAM/SWAP</a></h1>
+<footer class="post-info">
+        <abbr class="published" title="2021-08-05T13:50:00+02:00">
+                Published: Thu 05 August 2021
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="https://fallen70.github.io/workbook/author/fallen70.html">Fallen70</a>
+        </address>
+<p>In <a href="https://fallen70.github.io/workbook/category/linux.html">linux</a>.</p>
+<p>tags: <a href="https://fallen70.github.io/workbook/tag/netstat.html">netstat</a> <a href="https://fallen70.github.io/workbook/tag/linux.html">linux</a> </p>
+</footer><!-- /.post-info --><h1>Swappiness</h1>
+<ul>
+<li><a href="https://geekeries.de-labrusse.fr/?p=1806">https://geekeries.de-labrusse.fr/?p=1806</a></li>
+</ul>
+<div class="highlight"><pre><span></span><code>sudo sysctl -w vm.swappiness<span class="o">=</span><span class="m">30</span>
+</code></pre></div>
+
+<h1>RAM &amp; SWAP</h1>
+<p>Sources :</p>
+<ul>
+<li><a href="https://www.vincentliefooghe.net/content/linux-gestion-la-ram-et-du-swap">https://www.vincentliefooghe.net/content/linux-gestion-la-ram-et-du-swap</a></li>
+<li><a href="https://linuxpedia.fr/doku.php/expert/analyser_usage_memoire_vive">https://linuxpedia.fr/doku.php/expert/analyser_usage_memoire_vive</a></li>
+<li><a href="https://www.selenic.com/smem/">https://www.selenic.com/smem/</a></li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="k">for</span> proc <span class="k">in</span> /proc/<span class="o">[</span><span class="m">0</span>-9<span class="o">]</span>*<span class="p">;</span> <span class="k">do</span>   awk <span class="s1">&#39;/VmSwap/ { print $2 &quot;\t&#39;</span><span class="sb">`</span>readlink <span class="nv">$proc</span>/exe <span class="p">|</span> awk <span class="s1">&#39;{ print $1 }&#39;</span><span class="sb">`</span><span class="s1">&#39;&quot; }&#39;</span> <span class="nv">$proc</span>/status<span class="p">;</span> <span class="k">done</span> <span class="p">|</span> sort -n <span class="p">|</span> awk <span class="s1">&#39;{ total += $1 ; print $0 } END { print total &quot;\tTotal&quot;}&#39;</span>
+
+<span class="k">for</span> file <span class="k">in</span> /proc/*/status <span class="p">;</span> <span class="k">do</span> awk <span class="s1">&#39;/Tgid|VmSwap|Name/{printf $2 &quot; &quot; $3}END{ print &quot;&quot;}&#39;</span> <span class="nv">$file</span><span class="p">;</span> <span class="k">done</span> <span class="p">|</span> grep kB  <span class="p">|</span> sort -k <span class="m">3</span> -n
+</code></pre></div>                </article>
+            </aside><!-- /#featured -->
+                <section id="content" class="body">
+                    <h1>Other articles</h1>
+                    <hr />
+                    <ol id="posts-list" class="hfeed">
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="https://fallen70.github.io/workbook/time_wait.html" rel="bookmark"
+                           title="Permalink to TIME_WAIT">TIME_WAIT</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2021-08-05T13:50:00+02:00">
+                Published: Thu 05 August 2021
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="https://fallen70.github.io/workbook/author/fallen70.html">Fallen70</a>
+        </address>
+<p>In <a href="https://fallen70.github.io/workbook/category/linux.html">linux</a>.</p>
+<p>tags: <a href="https://fallen70.github.io/workbook/tag/netstat.html">netstat</a> <a href="https://fallen70.github.io/workbook/tag/linux.html">linux</a> </p>
+</footer><!-- /.post-info -->                <p>Sources :</p>
+<ul>
+<li><a href="https://vincent.bernat.ch/fr/blog/2014-tcp-time-wait-state-linux">https://vincent.bernat.ch/fr/blog/2014-tcp-time-wait-state-linux</a></li>
+<li><a href="https://www.skyminds.net/serveur-dedie-reduire-les-connexions-time_wait-des-sockets-et-optimiser-tcp/">https://www.skyminds.net/serveur-dedie-reduire-les-connexions-time_wait-des-sockets-et-optimiser-tcp/</a></li>
+</ul>
+<div class="highlight"><pre><span></span><code>netstat -nat <span class="p">|</span> awk <span class="s1">&#39;{print $6}&#39;</span> <span class="p">|</span> sort <span class="p">|</span> uniq -c <span class="p">|</span> sort -n
+</code></pre></div>
+                <a class="readmore" href="https://fallen70.github.io/workbook/time_wait.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="https://fallen70.github.io/workbook/creation-dutilisateur.html" rel="bookmark"
+                           title="Permalink to Création d'utilisateur">Création d'utilisateur</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2021-08-05T13:40:00+02:00">
+                Published: Thu 05 August 2021
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="https://fallen70.github.io/workbook/author/fallen70.html">Fallen70</a>
+        </address>
+<p>In <a href="https://fallen70.github.io/workbook/category/bash.html">bash</a>.</p>
+<p>tags: <a href="https://fallen70.github.io/workbook/tag/bash.html">bash</a> </p>
+</footer><!-- /.post-info -->                <p>Sources :</p>
+<ul>
+<li><a href="https://www.starmate.fr/creer-un-utilisateur-et-son-passwd-en-une-commande/">https://www.starmate.fr/creer-un-utilisateur-et-son-passwd-en-une-commande/</a></li>
+<li><a href="https://stackoverflow.com/questions/14810684/check-whether-a-user-exists">https://stackoverflow.com/questions/14810684/check-whether-a-user-exists</a></li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="c1"># Check if user exists</span>
+<span class="k">if</span> ! id -u <span class="nv">$FS_USER</span> &gt; /dev/null <span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span><span class="p">;</span> <span class="k">then</span>
+    <span class="nb">echo</span> <span class="s2">&quot;The user does not exist; execute below commands to create and try again:&quot;</span>
+    <span class="nb">echo</span> <span class="s2">&quot;  root@sh1:~# adduser --home /usr/local/freeswitch/ --shell /bin/false …</span></code></pre></div>
+                <a class="readmore" href="https://fallen70.github.io/workbook/creation-dutilisateur.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="https://fallen70.github.io/workbook/nettoyage-jenkins.html" rel="bookmark"
+                           title="Permalink to Nettoyage Jenkins">Nettoyage Jenkins</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2021-08-05T13:30:00+02:00">
+                Published: Thu 05 August 2021
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="https://fallen70.github.io/workbook/author/fallen70.html">Fallen70</a>
+        </address>
+<p>In <a href="https://fallen70.github.io/workbook/category/bash.html">bash</a>.</p>
+<p>tags: <a href="https://fallen70.github.io/workbook/tag/find.html">find</a> <a href="https://fallen70.github.io/workbook/tag/awk.html">awk</a> <a href="https://fallen70.github.io/workbook/tag/bash.html">bash</a> <a href="https://fallen70.github.io/workbook/tag/jenkins.html">jenkins</a> </p>
+</footer><!-- /.post-info -->                <p>Actions en s'appuyant sur les fichiers .pom:</p>
+<ul>
+<li>Nettoyage des logs catalina</li>
+<li>Suppression du cache Jenkins</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
+
+<span class="nb">export</span> <span class="nv">TOMCAT_DIR</span><span class="o">=</span><span class="s1">&#39;/path/to/jenkins/tomcat&#39;</span>
+<span class="nb">export</span> <span class="nv">CACHES_DIR</span><span class="o">=</span><span class="s1">&#39;/path/to/jenkins/jenkins_data/caches&#39;</span>
+
+<span class="c1"># Clean catalina.out without restart</span>
+<span class="nb">echo</span> <span class="s1">&#39;Cleaning catalina.out&#39;</span>
+<span class="nb">echo</span> <span class="k">$(</span>date<span class="k">)</span><span class="s1">&#39; Cleaned by XXXXX&#39;</span> &gt; <span class="si">${</span><span class="nv">TOMCAT_DIR</span><span class="si">}</span>/logs/catalina.out
+
+<span class="c1"># Cleaning caches …</span></code></pre></div>
+                <a class="readmore" href="https://fallen70.github.io/workbook/nettoyage-jenkins.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="https://fallen70.github.io/workbook/nettoyage-dun-repository-m2.html" rel="bookmark"
+                           title="Permalink to Nettoyage d'un repository M2">Nettoyage d'un repository M2</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2021-08-05T13:20:00+02:00">
+                Published: Thu 05 August 2021
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="https://fallen70.github.io/workbook/author/fallen70.html">Fallen70</a>
+        </address>
+<p>In <a href="https://fallen70.github.io/workbook/category/bash.html">bash</a>.</p>
+<p>tags: <a href="https://fallen70.github.io/workbook/tag/find.html">find</a> <a href="https://fallen70.github.io/workbook/tag/maven.html">maven</a> <a href="https://fallen70.github.io/workbook/tag/awk.html">awk</a> <a href="https://fallen70.github.io/workbook/tag/bash.html">bash</a> <a href="https://fallen70.github.io/workbook/tag/du.html">du</a> </p>
+</footer><!-- /.post-info -->                <p>Actions en s'appuyant sur les fichiers .pom:</p>
+<ul>
+<li>Suppression des snapshots avec un ctime &gt;14j</li>
+<li>Suppression des autres avec un atime &gt; 60j</li>
+</ul>
+<p>ctime -&gt; date de création</p>
+<p>atime -&gt; date de derniner accés</p>
+<div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
+
+<span class="nb">export</span> <span class="nv">MVN_REPO_DIR</span><span class="o">=</span><span class="s1">&#39;/path/to/m2&#39;</span>
+
+<span class="c1"># Cleaning mvn SNAPSHOT repository</span>
+<span class="nb">echo</span> <span class="s1">&#39;Cleaning SNAPSHOT repository&#39;</span>
+<span class="k">for</span> snapshot_dir <span class="k">in</span> <span class="k">$(</span>find <span class="si">${</span><span class="nv">MVN_REPO_DIR …</span></code></pre></div>
+                <a class="readmore" href="https://fallen70.github.io/workbook/nettoyage-dun-repository-m2.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="https://fallen70.github.io/workbook/nettoyage-de-fichierdossier-en-fonction-de-la-taille.html" rel="bookmark"
+                           title="Permalink to Nettoyage de fichier/dossier en fonction de la taille">Nettoyage de fichier/dossier en fonction de la taille</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2021-08-05T12:50:00+02:00">
+                Published: Thu 05 August 2021
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="https://fallen70.github.io/workbook/author/fallen70.html">Fallen70</a>
+        </address>
+<p>In <a href="https://fallen70.github.io/workbook/category/bash.html">bash</a>.</p>
+<p>tags: <a href="https://fallen70.github.io/workbook/tag/awk.html">awk</a> <a href="https://fallen70.github.io/workbook/tag/bash.html">bash</a> <a href="https://fallen70.github.io/workbook/tag/du.html">du</a> </p>
+</footer><!-- /.post-info -->                <h1>Liste de fichier qui dépassent une taille en byte</h1>
+<div class="highlight"><pre><span></span><code>du -s * <span class="p">|</span> sort -n <span class="p">|</span> awk  <span class="s1">&#39;{  if ( $1 &gt; 400000 ) print $2; }&#39;</span>
+</code></pre></div>
+
+<h2>Suppression du contenu trop volumineux</h2>
+<div class="highlight"><pre><span></span><code><span class="k">for</span> dir <span class="k">in</span> <span class="k">$(</span> du -s * <span class="p">|</span> sort -n <span class="p">|</span> awk  <span class="s1">&#39;{  if ( $1 &gt; 400000 ) print $2; }&#39;</span> <span class="k">)</span><span class="p">;</span>
+  <span class="k">do</span> rm -rvf <span class="nv">$dir</span><span class="p">;</span>
+<span class="k">done</span><span class="p">;</span>
+</code></pre></div>
+                <a class="readmore" href="https://fallen70.github.io/workbook/nettoyage-de-fichierdossier-en-fonction-de-la-taille.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="https://fallen70.github.io/workbook/formatage-contenu.html" rel="bookmark"
+                           title="Permalink to Formatage contenu">Formatage contenu</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2021-08-05T10:00:00+02:00">
+                Published: Thu 05 August 2021
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="https://fallen70.github.io/workbook/author/fallen70.html">Fallen70</a>
+        </address>
+<p>In <a href="https://fallen70.github.io/workbook/category/vim.html">vim</a>.</p>
+<p>tags: <a href="https://fallen70.github.io/workbook/tag/vim.html">vim</a> <a href="https://fallen70.github.io/workbook/tag/html.html">html</a> <a href="https://fallen70.github.io/workbook/tag/json.html">json</a> </p>
+</footer><!-- /.post-info -->                <h1>Formater du contenu dans vim</h1>
+<h2>HTML</h2>
+<p>Installer l'utilitaire <code>tidy</code></p>
+<div class="highlight"><pre><span></span><code>:!tidy -mi -html -wrap 0 %
+</code></pre></div>
+
+<h2>JSON</h2>
+<p>Nécessite python sur la machine</p>
+<div class="highlight"><pre><span></span><code><span class="p">:</span><span class="o">%!</span><span class="n">python</span> <span class="o">-</span><span class="n">m</span> <span class="n">json</span><span class="o">.</span><span class="k">tool</span>
+</code></pre></div>
+                <a class="readmore" href="https://fallen70.github.io/workbook/formatage-contenu.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="https://fallen70.github.io/workbook/installation-vm-tools.html" rel="bookmark"
+                           title="Permalink to Installation VM Tools">Installation VM Tools</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2021-08-05T08:40:00+02:00">
+                Published: Thu 05 August 2021
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="https://fallen70.github.io/workbook/author/fallen70.html">Fallen70</a>
+        </address>
+<p>In <a href="https://fallen70.github.io/workbook/category/virtualbox.html">virtualbox</a>.</p>
+<p>tags: <a href="https://fallen70.github.io/workbook/tag/virtualbox.html">virtualbox</a> </p>
+</footer><!-- /.post-info -->                <p>A faire aprés modification du Kernel</p>
+<p>Aprés  lancement de la VM depuis le menu Périphérique choisir <code>Insérer l'image CD des Additions invité</code></p>
+<p><img alt="Menu Virtualbox" src="https://fallen70.github.io/workbook/images/virtualbox/vm-tools.png"></p>
+<h1>Montage et éxecution du CD:</h1>
+<div class="highlight"><pre><span></span><code>sudo mount /dev/cdrom /mnt/cdrom
+<span class="nb">cd</span> /mnt/cdrom/
+sudo ./VBoxLinuxAdditions.run
+</code></pre></div>
+                <a class="readmore" href="https://fallen70.github.io/workbook/installation-vm-tools.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="https://fallen70.github.io/workbook/actions-nexus-avec-curl.html" rel="bookmark"
+                           title="Permalink to Actions nexus avec curl">Actions nexus avec curl</a></h1>
+                </header>
+
+                <div class="entry-content">
 <footer class="post-info">
         <abbr class="published" title="2021-08-02T17:00:00+02:00">
                 Published: Mon 02 August 2021
@@ -29,18 +294,16 @@
         </address>
 <p>In <a href="https://fallen70.github.io/workbook/category/curl.html">curl</a>.</p>
 <p>tags: <a href="https://fallen70.github.io/workbook/tag/curl.html">curl</a> <a href="https://fallen70.github.io/workbook/tag/nexus.html">nexus</a> </p>
-</footer><!-- /.post-info --><h1>Upload</h1>
-<div class="highlight"><pre><span></span><code><span class="n">curl</span> <span class="o">-</span><span class="n">v</span> <span class="o">--</span><span class="n">user</span> <span class="s1">&#39;user:pass&#39;</span> <span class="o">--</span><span class="n">upload</span><span class="o">-</span><span class="n">file</span> <span class="o">/</span><span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">file</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">nexus</span><span class="o">/</span><span class="n">nexus</span><span class="o">/</span><span class="n">repository</span><span class="o">/</span><span class="n">component</span><span class="o">/</span><span class="n">subfolder</span><span class="o">/</span><span class="n">file</span>
+</footer><!-- /.post-info -->                <h1>Upload</h1>
+<div class="highlight"><pre><span></span><code>curl -v --user <span class="s1">&#39;user:pass&#39;</span> --upload-file /path/to/file http://nexus/nexus/repository/component/subfolder/file
 </code></pre></div>
 
 <h1>Delete</h1>
-<div class="highlight"><pre><span></span><code>curl -X DELETE -v --user  &#39;user:pass&#39;  http://nexus/nexus/repository/component/subfolder/file
-</code></pre></div>                </article>
-            </aside><!-- /#featured -->
-                <section id="content" class="body">
-                    <h1>Other articles</h1>
-                    <hr />
-                    <ol id="posts-list" class="hfeed">
+<div class="highlight"><pre><span></span><code>curl -X DELETE -v --user  <span class="s1">&#39;user:pass&#39;</span>  http://nexus/nexus/repository/component/subfolder/file
+</code></pre></div>
+                <a class="readmore" href="https://fallen70.github.io/workbook/actions-nexus-avec-curl.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
 
             <li><article class="hentry">
                 <header>
@@ -61,43 +324,28 @@
 <p>tags: <a href="https://fallen70.github.io/workbook/tag/find.html">find</a> <a href="https://fallen70.github.io/workbook/tag/sym-links.html">sym-links</a> </p>
 </footer><!-- /.post-info -->                <p>Tiré de <a href="https://stackoverflow.com/questions/8513133/how-do-i-find-all-of-the-symlinks-in-a-directory-tree/21438684">https://stackoverflow.com/questions/8513133/how-do-i-find-all-of-the-symlinks-in-a-directory-tree/21438684</a></p>
 <h1>Find symbolic links</h1>
-<p><code>find . -type l -ls</code></p>
+<div class="highlight"><pre><span></span><code>find . -type l -ls
+</code></pre></div>
+
 <h1>Find symbolic links to a specific target</h1>
-<p><code>find . -lname link_target</code>
-Note that link_target may contain wildcard characters.</p>
+<div class="highlight"><pre><span></span><code>find . -lname link_target
+</code></pre></div>
+
+<p>Note that link_target may contain wildcard characters.</p>
 <h1>Find broken symbolic links</h1>
-<p><code>find -L . -type l -ls</code>
-The -L option instructs find to follow symbolic …</p>
+<div class="highlight"><pre><span></span><code>find -L . -type l -ls
+</code></pre></div>
+
+<p>The -L option instructs find to follow symbolic …</p>
                 <a class="readmore" href="https://fallen70.github.io/workbook/find-et-lien-symbolique.html">read more</a>
                 </div><!-- /.entry-content -->
             </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="https://fallen70.github.io/workbook/test-stickysession-avec-curl.html" rel="bookmark"
-                           title="Permalink to Test StickySession avec curl">Test StickySession avec curl</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2021-08-02T13:15:00+02:00">
-                Published: Mon 02 August 2021
-        </abbr>
-
-        <address class="vcard author">
-                By                         <a class="url fn" href="https://fallen70.github.io/workbook/author/fallen70.html">Fallen70</a>
-        </address>
-<p>In <a href="https://fallen70.github.io/workbook/category/curl.html">curl</a>.</p>
-<p>tags: <a href="https://fallen70.github.io/workbook/tag/curl.html">curl</a> <a href="https://fallen70.github.io/workbook/tag/load-balancer.html">load-balancer</a> </p>
-</footer><!-- /.post-info -->                <p>Méthode pour tester la session sur plusieurs loadbalancers avec curl.</p>
-<p>En parallèle vérifier que la route est bien respectée en surveillant les logs des machine ciblées par les routes</p>
-<p>Explication sur certaines options de curl</p>
-<p>-H 'host:ServerName' pour cibler un vhost par son ServerName</p>
-<p>--cookie-jar /tmp/cookie Sauver le …</p>
-                <a class="readmore" href="https://fallen70.github.io/workbook/test-stickysession-avec-curl.html">read more</a>
-                </div><!-- /.entry-content -->
-            </article></li>
                 </ol><!-- /#posts-list -->
+<p class="paginator">
+    Page 1 / 2
+        <a href="https://fallen70.github.io/workbook/index2.html">&raquo;</a>
+        <a href="https://fallen70.github.io/workbook/index2.html">&#8649;</a>
+</p>
                 </section><!-- /#content -->
         <section id="extras" class="body">
                 <div class="blogroll">
@@ -108,6 +356,13 @@ The -L option instructs find to follow symbolic …</p>
                             <li><a href="https://palletsprojects.com/p/jinja/">Jinja2</a></li>
                         </ul>
                 </div><!-- /.blogroll -->
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+                            <li><a href="https://fallen70.github.io/workbook/feeds/all.atom.xml" type="application/atom+xml" rel="alternate">atom feed</a></li>
+
+                        </ul>
+                </div><!-- /.social -->
         </section><!-- /#extras -->
 
         <footer id="contentinfo" class="body">

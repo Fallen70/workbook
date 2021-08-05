@@ -3,9 +3,10 @@
 <head>
         <meta charset="utf-8" />
         <meta name="generator" content="Pelican" />
-        <title>WorkBook - Categories</title>
+        <title>TIME_WAIT</title>
         <link rel="stylesheet" href="https://fallen70.github.io/workbook/theme/css/main.css" />
         <link href="https://fallen70.github.io/workbook/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="WorkBook Atom Feed" />
+        <meta name="description" content="Sources : https://vincent.bernat.ch/fr/blog/2014-tcp-time-wait-state-linux..." />
 </head>
 
 <body id="index" class="home">
@@ -15,20 +16,41 @@
                     <li><a href="https://fallen70.github.io/workbook/category/bash.html">bash</a></li>
                     <li><a href="https://fallen70.github.io/workbook/category/curl.html">curl</a></li>
                     <li><a href="https://fallen70.github.io/workbook/category/find.html">find</a></li>
-                    <li><a href="https://fallen70.github.io/workbook/category/linux.html">linux</a></li>
+                    <li class="active"><a href="https://fallen70.github.io/workbook/category/linux.html">linux</a></li>
                     <li><a href="https://fallen70.github.io/workbook/category/vim.html">vim</a></li>
                     <li><a href="https://fallen70.github.io/workbook/category/virtualbox.html">virtualbox</a></li>
                 </ul></nav>
         </header><!-- /#banner -->
-    <h1>Categories on WorkBook</h1>
-    <ul>
-        <li><a href="https://fallen70.github.io/workbook/category/bash.html">bash</a> (4)</li>
-        <li><a href="https://fallen70.github.io/workbook/category/curl.html">curl</a> (2)</li>
-        <li><a href="https://fallen70.github.io/workbook/category/find.html">find</a> (1)</li>
-        <li><a href="https://fallen70.github.io/workbook/category/linux.html">linux</a> (2)</li>
-        <li><a href="https://fallen70.github.io/workbook/category/vim.html">vim</a> (1)</li>
-        <li><a href="https://fallen70.github.io/workbook/category/virtualbox.html">virtualbox</a> (1)</li>
-    </ul>
+<section id="content" class="body">
+  <article>
+    <header>
+      <h1 class="entry-title">
+        <a href="https://fallen70.github.io/workbook/time_wait.html" rel="bookmark"
+           title="Permalink to TIME_WAIT">TIME_WAIT</a></h1>
+    </header>
+
+    <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2021-08-05T13:50:00+02:00">
+                Published: Thu 05 August 2021
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="https://fallen70.github.io/workbook/author/fallen70.html">Fallen70</a>
+        </address>
+<p>In <a href="https://fallen70.github.io/workbook/category/linux.html">linux</a>.</p>
+<p>tags: <a href="https://fallen70.github.io/workbook/tag/netstat.html">netstat</a> <a href="https://fallen70.github.io/workbook/tag/linux.html">linux</a> </p>
+</footer><!-- /.post-info -->      <p>Sources :</p>
+<ul>
+<li><a href="https://vincent.bernat.ch/fr/blog/2014-tcp-time-wait-state-linux">https://vincent.bernat.ch/fr/blog/2014-tcp-time-wait-state-linux</a></li>
+<li><a href="https://www.skyminds.net/serveur-dedie-reduire-les-connexions-time_wait-des-sockets-et-optimiser-tcp/">https://www.skyminds.net/serveur-dedie-reduire-les-connexions-time_wait-des-sockets-et-optimiser-tcp/</a></li>
+</ul>
+<div class="highlight"><pre><span></span><code>netstat -nat <span class="p">|</span> awk <span class="s1">&#39;{print $6}&#39;</span> <span class="p">|</span> sort <span class="p">|</span> uniq -c <span class="p">|</span> sort -n
+</code></pre></div>
+    </div><!-- /.entry-content -->
+
+  </article>
+</section>
         <section id="extras" class="body">
                 <div class="blogroll">
                         <h2>links</h2>

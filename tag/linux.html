@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+        <meta charset="utf-8" />
+        <meta name="generator" content="Pelican" />
+        <title>WorkBook - linux</title>
+        <link rel="stylesheet" href="https://fallen70.github.io/workbook/theme/css/main.css" />
+        <link href="https://fallen70.github.io/workbook/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="WorkBook Atom Feed" />
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="https://fallen70.github.io/workbook/">WorkBook</a></h1>
+                <nav><ul>
+                    <li><a href="https://fallen70.github.io/workbook/category/bash.html">bash</a></li>
+                    <li><a href="https://fallen70.github.io/workbook/category/curl.html">curl</a></li>
+                    <li><a href="https://fallen70.github.io/workbook/category/find.html">find</a></li>
+                    <li><a href="https://fallen70.github.io/workbook/category/linux.html">linux</a></li>
+                    <li><a href="https://fallen70.github.io/workbook/category/vim.html">vim</a></li>
+                    <li><a href="https://fallen70.github.io/workbook/category/virtualbox.html">virtualbox</a></li>
+                </ul></nav>
+        </header><!-- /#banner -->
+
+            <aside id="featured" class="body">
+                <article>
+                    <h1 class="entry-title"><a href="https://fallen70.github.io/workbook/ramswap.html">RAM/SWAP</a></h1>
+<footer class="post-info">
+        <abbr class="published" title="2021-08-05T13:50:00+02:00">
+                Published: Thu 05 August 2021
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="https://fallen70.github.io/workbook/author/fallen70.html">Fallen70</a>
+        </address>
+<p>In <a href="https://fallen70.github.io/workbook/category/linux.html">linux</a>.</p>
+<p>tags: <a href="https://fallen70.github.io/workbook/tag/netstat.html">netstat</a> <a href="https://fallen70.github.io/workbook/tag/linux.html">linux</a> </p>
+</footer><!-- /.post-info --><h1>Swappiness</h1>
+<ul>
+<li><a href="https://geekeries.de-labrusse.fr/?p=1806">https://geekeries.de-labrusse.fr/?p=1806</a></li>
+</ul>
+<div class="highlight"><pre><span></span><code>sudo sysctl -w vm.swappiness<span class="o">=</span><span class="m">30</span>
+</code></pre></div>
+
+<h1>RAM &amp; SWAP</h1>
+<p>Sources :</p>
+<ul>
+<li><a href="https://www.vincentliefooghe.net/content/linux-gestion-la-ram-et-du-swap">https://www.vincentliefooghe.net/content/linux-gestion-la-ram-et-du-swap</a></li>
+<li><a href="https://linuxpedia.fr/doku.php/expert/analyser_usage_memoire_vive">https://linuxpedia.fr/doku.php/expert/analyser_usage_memoire_vive</a></li>
+<li><a href="https://www.selenic.com/smem/">https://www.selenic.com/smem/</a></li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="k">for</span> proc <span class="k">in</span> /proc/<span class="o">[</span><span class="m">0</span>-9<span class="o">]</span>*<span class="p">;</span> <span class="k">do</span>   awk <span class="s1">&#39;/VmSwap/ { print $2 &quot;\t&#39;</span><span class="sb">`</span>readlink <span class="nv">$proc</span>/exe <span class="p">|</span> awk <span class="s1">&#39;{ print $1 }&#39;</span><span class="sb">`</span><span class="s1">&#39;&quot; }&#39;</span> <span class="nv">$proc</span>/status<span class="p">;</span> <span class="k">done</span> <span class="p">|</span> sort -n <span class="p">|</span> awk <span class="s1">&#39;{ total += $1 ; print $0 } END { print total &quot;\tTotal&quot;}&#39;</span>
+
+<span class="k">for</span> file <span class="k">in</span> /proc/*/status <span class="p">;</span> <span class="k">do</span> awk <span class="s1">&#39;/Tgid|VmSwap|Name/{printf $2 &quot; &quot; $3}END{ print &quot;&quot;}&#39;</span> <span class="nv">$file</span><span class="p">;</span> <span class="k">done</span> <span class="p">|</span> grep kB  <span class="p">|</span> sort -k <span class="m">3</span> -n
+</code></pre></div>                </article>
+            </aside><!-- /#featured -->
+                <section id="content" class="body">
+                    <h1>Other articles</h1>
+                    <hr />
+                    <ol id="posts-list" class="hfeed">
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="https://fallen70.github.io/workbook/time_wait.html" rel="bookmark"
+                           title="Permalink to TIME_WAIT">TIME_WAIT</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2021-08-05T13:50:00+02:00">
+                Published: Thu 05 August 2021
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="https://fallen70.github.io/workbook/author/fallen70.html">Fallen70</a>
+        </address>
+<p>In <a href="https://fallen70.github.io/workbook/category/linux.html">linux</a>.</p>
+<p>tags: <a href="https://fallen70.github.io/workbook/tag/netstat.html">netstat</a> <a href="https://fallen70.github.io/workbook/tag/linux.html">linux</a> </p>
+</footer><!-- /.post-info -->                <p>Sources :</p>
+<ul>
+<li><a href="https://vincent.bernat.ch/fr/blog/2014-tcp-time-wait-state-linux">https://vincent.bernat.ch/fr/blog/2014-tcp-time-wait-state-linux</a></li>
+<li><a href="https://www.skyminds.net/serveur-dedie-reduire-les-connexions-time_wait-des-sockets-et-optimiser-tcp/">https://www.skyminds.net/serveur-dedie-reduire-les-connexions-time_wait-des-sockets-et-optimiser-tcp/</a></li>
+</ul>
+<div class="highlight"><pre><span></span><code>netstat -nat <span class="p">|</span> awk <span class="s1">&#39;{print $6}&#39;</span> <span class="p">|</span> sort <span class="p">|</span> uniq -c <span class="p">|</span> sort -n
+</code></pre></div>
+                <a class="readmore" href="https://fallen70.github.io/workbook/time_wait.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+                </ol><!-- /#posts-list -->
+                </section><!-- /#content -->
+        <section id="extras" class="body">
+                <div class="blogroll">
+                        <h2>links</h2>
+                        <ul>
+                            <li><a href="https://getpelican.com/">Pelican</a></li>
+                            <li><a href="https://www.python.org/">Python.org</a></li>
+                            <li><a href="https://palletsprojects.com/p/jinja/">Jinja2</a></li>
+                        </ul>
+                </div><!-- /.blogroll -->
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+                            <li><a href="https://fallen70.github.io/workbook/feeds/all.atom.xml" type="application/atom+xml" rel="alternate">atom feed</a></li>
+
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="https://getpelican.com/">Pelican</a>, which takes great advantage of <a href="https://www.python.org/">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="https://www.smashingmagazine.com/2009/08/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>

@@ -3,10 +3,10 @@
 <head>
         <meta charset="utf-8" />
         <meta name="generator" content="Pelican" />
-        <title>Actions nexus avec curl</title>
+        <title>RAM/SWAP</title>
         <link rel="stylesheet" href="https://fallen70.github.io/workbook/theme/css/main.css" />
         <link href="https://fallen70.github.io/workbook/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="WorkBook Atom Feed" />
-        <meta name="description" content="Upload curl -v --user 'user:pass' --upload-file /path/to/file http://nexus/nexus/repository/component/subfolder/file Delete curl -X DELETE -v..." />
+        <meta name="description" content="Swappiness https://geekeries.de-labrusse.fr/?p=1806 sudo sysctl -w vm.swappiness=30 RAM & SWAP Sources :..." />
 </head>
 
 <body id="index" class="home">
@@ -14,9 +14,9 @@
                 <h1><a href="https://fallen70.github.io/workbook/">WorkBook</a></h1>
                 <nav><ul>
                     <li><a href="https://fallen70.github.io/workbook/category/bash.html">bash</a></li>
-                    <li class="active"><a href="https://fallen70.github.io/workbook/category/curl.html">curl</a></li>
+                    <li><a href="https://fallen70.github.io/workbook/category/curl.html">curl</a></li>
                     <li><a href="https://fallen70.github.io/workbook/category/find.html">find</a></li>
-                    <li><a href="https://fallen70.github.io/workbook/category/linux.html">linux</a></li>
+                    <li class="active"><a href="https://fallen70.github.io/workbook/category/linux.html">linux</a></li>
                     <li><a href="https://fallen70.github.io/workbook/category/vim.html">vim</a></li>
                     <li><a href="https://fallen70.github.io/workbook/category/virtualbox.html">virtualbox</a></li>
                 </ul></nav>
@@ -25,27 +25,38 @@
   <article>
     <header>
       <h1 class="entry-title">
-        <a href="https://fallen70.github.io/workbook/actions-nexus-avec-curl.html" rel="bookmark"
-           title="Permalink to Actions nexus avec curl">Actions nexus avec curl</a></h1>
+        <a href="https://fallen70.github.io/workbook/ramswap.html" rel="bookmark"
+           title="Permalink to RAM/SWAP">RAM/SWAP</a></h1>
     </header>
 
     <div class="entry-content">
 <footer class="post-info">
-        <abbr class="published" title="2021-08-02T17:00:00+02:00">
-                Published: Mon 02 August 2021
+        <abbr class="published" title="2021-08-05T13:50:00+02:00">
+                Published: Thu 05 August 2021
         </abbr>
 
         <address class="vcard author">
                 By                         <a class="url fn" href="https://fallen70.github.io/workbook/author/fallen70.html">Fallen70</a>
         </address>
-<p>In <a href="https://fallen70.github.io/workbook/category/curl.html">curl</a>.</p>
-<p>tags: <a href="https://fallen70.github.io/workbook/tag/curl.html">curl</a> <a href="https://fallen70.github.io/workbook/tag/nexus.html">nexus</a> </p>
-</footer><!-- /.post-info -->      <h1>Upload</h1>
-<div class="highlight"><pre><span></span><code>curl -v --user <span class="s1">&#39;user:pass&#39;</span> --upload-file /path/to/file http://nexus/nexus/repository/component/subfolder/file
+<p>In <a href="https://fallen70.github.io/workbook/category/linux.html">linux</a>.</p>
+<p>tags: <a href="https://fallen70.github.io/workbook/tag/netstat.html">netstat</a> <a href="https://fallen70.github.io/workbook/tag/linux.html">linux</a> </p>
+</footer><!-- /.post-info -->      <h1>Swappiness</h1>
+<ul>
+<li><a href="https://geekeries.de-labrusse.fr/?p=1806">https://geekeries.de-labrusse.fr/?p=1806</a></li>
+</ul>
+<div class="highlight"><pre><span></span><code>sudo sysctl -w vm.swappiness<span class="o">=</span><span class="m">30</span>
 </code></pre></div>
 
-<h1>Delete</h1>
-<div class="highlight"><pre><span></span><code>curl -X DELETE -v --user  <span class="s1">&#39;user:pass&#39;</span>  http://nexus/nexus/repository/component/subfolder/file
+<h1>RAM &amp; SWAP</h1>
+<p>Sources :</p>
+<ul>
+<li><a href="https://www.vincentliefooghe.net/content/linux-gestion-la-ram-et-du-swap">https://www.vincentliefooghe.net/content/linux-gestion-la-ram-et-du-swap</a></li>
+<li><a href="https://linuxpedia.fr/doku.php/expert/analyser_usage_memoire_vive">https://linuxpedia.fr/doku.php/expert/analyser_usage_memoire_vive</a></li>
+<li><a href="https://www.selenic.com/smem/">https://www.selenic.com/smem/</a></li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="k">for</span> proc <span class="k">in</span> /proc/<span class="o">[</span><span class="m">0</span>-9<span class="o">]</span>*<span class="p">;</span> <span class="k">do</span>   awk <span class="s1">&#39;/VmSwap/ { print $2 &quot;\t&#39;</span><span class="sb">`</span>readlink <span class="nv">$proc</span>/exe <span class="p">|</span> awk <span class="s1">&#39;{ print $1 }&#39;</span><span class="sb">`</span><span class="s1">&#39;&quot; }&#39;</span> <span class="nv">$proc</span>/status<span class="p">;</span> <span class="k">done</span> <span class="p">|</span> sort -n <span class="p">|</span> awk <span class="s1">&#39;{ total += $1 ; print $0 } END { print total &quot;\tTotal&quot;}&#39;</span>
+
+<span class="k">for</span> file <span class="k">in</span> /proc/*/status <span class="p">;</span> <span class="k">do</span> awk <span class="s1">&#39;/Tgid|VmSwap|Name/{printf $2 &quot; &quot; $3}END{ print &quot;&quot;}&#39;</span> <span class="nv">$file</span><span class="p">;</span> <span class="k">done</span> <span class="p">|</span> grep kB  <span class="p">|</span> sort -k <span class="m">3</span> -n
 </code></pre></div>
     </div><!-- /.entry-content -->
 

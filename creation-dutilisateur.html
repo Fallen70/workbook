@@ -3,16 +3,17 @@
 <head>
         <meta charset="utf-8" />
         <meta name="generator" content="Pelican" />
-        <title>WorkBook - sym-links</title>
+        <title>Création d'utilisateur</title>
         <link rel="stylesheet" href="https://fallen70.github.io/workbook/theme/css/main.css" />
         <link href="https://fallen70.github.io/workbook/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="WorkBook Atom Feed" />
+        <meta name="description" content="Sources : https://www.starmate.fr/creer-un-utilisateur-et-son-passwd-en-une-commande/..." />
 </head>
 
 <body id="index" class="home">
         <header id="banner" class="body">
                 <h1><a href="https://fallen70.github.io/workbook/">WorkBook</a></h1>
                 <nav><ul>
-                    <li><a href="https://fallen70.github.io/workbook/category/bash.html">bash</a></li>
+                    <li class="active"><a href="https://fallen70.github.io/workbook/category/bash.html">bash</a></li>
                     <li><a href="https://fallen70.github.io/workbook/category/curl.html">curl</a></li>
                     <li><a href="https://fallen70.github.io/workbook/category/find.html">find</a></li>
                     <li><a href="https://fallen70.github.io/workbook/category/linux.html">linux</a></li>
@@ -20,41 +21,43 @@
                     <li><a href="https://fallen70.github.io/workbook/category/virtualbox.html">virtualbox</a></li>
                 </ul></nav>
         </header><!-- /#banner -->
+<section id="content" class="body">
+  <article>
+    <header>
+      <h1 class="entry-title">
+        <a href="https://fallen70.github.io/workbook/creation-dutilisateur.html" rel="bookmark"
+           title="Permalink to Création d'utilisateur">Création d'utilisateur</a></h1>
+    </header>
 
-            <aside id="featured" class="body">
-                <article>
-                    <h1 class="entry-title"><a href="https://fallen70.github.io/workbook/find-et-lien-symbolique.html">Find et lien symbolique</a></h1>
+    <div class="entry-content">
 <footer class="post-info">
-        <abbr class="published" title="2021-08-02T16:20:00+02:00">
-                Published: Mon 02 August 2021
+        <abbr class="published" title="2021-08-05T13:40:00+02:00">
+                Published: Thu 05 August 2021
         </abbr>
 
         <address class="vcard author">
                 By                         <a class="url fn" href="https://fallen70.github.io/workbook/author/fallen70.html">Fallen70</a>
         </address>
-<p>In <a href="https://fallen70.github.io/workbook/category/find.html">find</a>.</p>
-<p>tags: <a href="https://fallen70.github.io/workbook/tag/find.html">find</a> <a href="https://fallen70.github.io/workbook/tag/sym-links.html">sym-links</a> </p>
-</footer><!-- /.post-info --><p>Tiré de <a href="https://stackoverflow.com/questions/8513133/how-do-i-find-all-of-the-symlinks-in-a-directory-tree/21438684">https://stackoverflow.com/questions/8513133/how-do-i-find-all-of-the-symlinks-in-a-directory-tree/21438684</a></p>
-<h1>Find symbolic links</h1>
-<div class="highlight"><pre><span></span><code>find . -type l -ls
+<p>In <a href="https://fallen70.github.io/workbook/category/bash.html">bash</a>.</p>
+<p>tags: <a href="https://fallen70.github.io/workbook/tag/bash.html">bash</a> </p>
+</footer><!-- /.post-info -->      <p>Sources :</p>
+<ul>
+<li><a href="https://www.starmate.fr/creer-un-utilisateur-et-son-passwd-en-une-commande/">https://www.starmate.fr/creer-un-utilisateur-et-son-passwd-en-une-commande/</a></li>
+<li><a href="https://stackoverflow.com/questions/14810684/check-whether-a-user-exists">https://stackoverflow.com/questions/14810684/check-whether-a-user-exists</a></li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="c1"># Check if user exists</span>
+<span class="k">if</span> ! id -u <span class="nv">$FS_USER</span> &gt; /dev/null <span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span><span class="p">;</span> <span class="k">then</span>
+    <span class="nb">echo</span> <span class="s2">&quot;The user does not exist; execute below commands to create and try again:&quot;</span>
+    <span class="nb">echo</span> <span class="s2">&quot;  root@sh1:~# adduser --home /usr/local/freeswitch/ --shell /bin/false --no-create-home --ingroup daemon --disabled-password --disabled-login </span><span class="nv">$FS_USER</span><span class="s2">&quot;</span>
+    <span class="nb">echo</span> <span class="s2">&quot;  ...&quot;</span>
+    <span class="nb">echo</span> <span class="s2">&quot;  root@sh1:~# chown freeswitch:daemon /usr/local/freeswitch/ -R&quot;</span>
+    <span class="nb">exit</span> <span class="m">1</span>
+<span class="k">fi</span>
 </code></pre></div>
+    </div><!-- /.entry-content -->
 
-<h1>Find symbolic links to a specific target</h1>
-<div class="highlight"><pre><span></span><code>find . -lname link_target
-</code></pre></div>
-
-<p>Note that link_target may contain wildcard characters.</p>
-<h1>Find broken symbolic links</h1>
-<div class="highlight"><pre><span></span><code>find -L . -type l -ls
-</code></pre></div>
-
-<p>The -L option instructs find to follow symbolic links, unless when broken.</p>
-<h1>Find &amp; replace broken symbolic links</h1>
-<div class="highlight"><pre><span></span><code>find -L . -type l -delete -exec ln -s new_target <span class="o">{}</span> <span class="se">\;</span>
-</code></pre></div>
-
-<p>More find examples can be found here: <a href="https://hamwaves.com/find/">https://hamwaves.com/find/</a></p>                </article>
-            </aside><!-- /#featured -->
+  </article>
+</section>
         <section id="extras" class="body">
                 <div class="blogroll">
                         <h2>links</h2>

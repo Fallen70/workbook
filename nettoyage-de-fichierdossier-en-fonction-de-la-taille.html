@@ -3,16 +3,17 @@
 <head>
         <meta charset="utf-8" />
         <meta name="generator" content="Pelican" />
-        <title>WorkBook - Categories</title>
+        <title>Nettoyage de fichier/dossier en fonction de la taille</title>
         <link rel="stylesheet" href="https://fallen70.github.io/workbook/theme/css/main.css" />
         <link href="https://fallen70.github.io/workbook/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="WorkBook Atom Feed" />
+        <meta name="description" content="Liste de fichier qui dépassent une taille en byte du -s * | sort -n | awk '{ if ( $1 > 400000 ) print $2; }' Suppression du contenu trop..." />
 </head>
 
 <body id="index" class="home">
         <header id="banner" class="body">
                 <h1><a href="https://fallen70.github.io/workbook/">WorkBook</a></h1>
                 <nav><ul>
-                    <li><a href="https://fallen70.github.io/workbook/category/bash.html">bash</a></li>
+                    <li class="active"><a href="https://fallen70.github.io/workbook/category/bash.html">bash</a></li>
                     <li><a href="https://fallen70.github.io/workbook/category/curl.html">curl</a></li>
                     <li><a href="https://fallen70.github.io/workbook/category/find.html">find</a></li>
                     <li><a href="https://fallen70.github.io/workbook/category/linux.html">linux</a></li>
@@ -20,15 +21,38 @@
                     <li><a href="https://fallen70.github.io/workbook/category/virtualbox.html">virtualbox</a></li>
                 </ul></nav>
         </header><!-- /#banner -->
-    <h1>Categories on WorkBook</h1>
-    <ul>
-        <li><a href="https://fallen70.github.io/workbook/category/bash.html">bash</a> (4)</li>
-        <li><a href="https://fallen70.github.io/workbook/category/curl.html">curl</a> (2)</li>
-        <li><a href="https://fallen70.github.io/workbook/category/find.html">find</a> (1)</li>
-        <li><a href="https://fallen70.github.io/workbook/category/linux.html">linux</a> (2)</li>
-        <li><a href="https://fallen70.github.io/workbook/category/vim.html">vim</a> (1)</li>
-        <li><a href="https://fallen70.github.io/workbook/category/virtualbox.html">virtualbox</a> (1)</li>
-    </ul>
+<section id="content" class="body">
+  <article>
+    <header>
+      <h1 class="entry-title">
+        <a href="https://fallen70.github.io/workbook/nettoyage-de-fichierdossier-en-fonction-de-la-taille.html" rel="bookmark"
+           title="Permalink to Nettoyage de fichier/dossier en fonction de la taille">Nettoyage de fichier/dossier en fonction de la taille</a></h1>
+    </header>
+
+    <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2021-08-05T12:50:00+02:00">
+                Published: Thu 05 August 2021
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="https://fallen70.github.io/workbook/author/fallen70.html">Fallen70</a>
+        </address>
+<p>In <a href="https://fallen70.github.io/workbook/category/bash.html">bash</a>.</p>
+<p>tags: <a href="https://fallen70.github.io/workbook/tag/awk.html">awk</a> <a href="https://fallen70.github.io/workbook/tag/bash.html">bash</a> <a href="https://fallen70.github.io/workbook/tag/du.html">du</a> </p>
+</footer><!-- /.post-info -->      <h1>Liste de fichier qui dépassent une taille en byte</h1>
+<div class="highlight"><pre><span></span><code>du -s * <span class="p">|</span> sort -n <span class="p">|</span> awk  <span class="s1">&#39;{  if ( $1 &gt; 400000 ) print $2; }&#39;</span>
+</code></pre></div>
+
+<h2>Suppression du contenu trop volumineux</h2>
+<div class="highlight"><pre><span></span><code><span class="k">for</span> dir <span class="k">in</span> <span class="k">$(</span> du -s * <span class="p">|</span> sort -n <span class="p">|</span> awk  <span class="s1">&#39;{  if ( $1 &gt; 400000 ) print $2; }&#39;</span> <span class="k">)</span><span class="p">;</span>
+  <span class="k">do</span> rm -rvf <span class="nv">$dir</span><span class="p">;</span>
+<span class="k">done</span><span class="p">;</span>
+</code></pre></div>
+    </div><!-- /.entry-content -->
+
+  </article>
+</section>
         <section id="extras" class="body">
                 <div class="blogroll">
                         <h2>links</h2>
