@@ -3,12 +3,17 @@
 
 AUTHOR = 'Fallen70'
 SITENAME = 'WorkBook'
+THEME = "./theme/"
 
 PATH = 'content'
 
 TIMEZONE = 'Europe/Paris'
 
 DEFAULT_LANG = 'fr'
+# On Unix/Linux
+DATE_FORMATS = {
+    'fr': ( "fr_FR" , "%d-%b-%Y" ),
+}
 
 # Feed generation is usually not desired when developing
 FEED_ALL_ATOM = None

@@ -2,7 +2,7 @@ Title: RAM/SWAP
 Date: 2021-08-05 13:50
 Category: linux
 Lang: fr
-Tags: netstat, linux
+Tags: linux
 
 # Swappiness
 
