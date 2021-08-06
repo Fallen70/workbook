@@ -1,8 +1,8 @@
 Title: Nettoyage Jenkins
 Date: 2021-08-05 13:30
-Category: bash
+Category: Linux
 Lang: fr
-Tags: find, awk, bash, jenkins
+Tags: Jenkins, admin-sys
 
 Actions en s'appuyant sur les fichiers .pom:
  

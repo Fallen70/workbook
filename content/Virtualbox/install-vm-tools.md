@@ -1,8 +1,7 @@
 Title: Installation VM Tools
 Date: 2021-08-05 08:40
-Category: virtualbox
+Category: Virtualbox
 Lang: fr
-Tags: virtualbox
 
 
 A faire aprés modification du Kernel

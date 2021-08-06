@@ -1,8 +1,8 @@
 Title: Test StickySession avec curl
 Date: 2021-08-02 13:15
 Lang: fr
-Tags: curl, load-balancer
-Category: curl
+Category: Curl
+Tags: load-balancer
 
 Méthode pour tester la session sur plusieurs loadbalancers avec curl.
 

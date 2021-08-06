@@ -1,8 +1,8 @@
 Title: Nettoyage d'un repository M2
 Date: 2021-08-05 13:20
-Category: bash
+Category: Linux
 Lang: fr
-Tags: find, maven, awk, bash, du
+Tags: Maven, admin-sys
 
 Actions en s'appuyant sur les fichiers .pom:
  

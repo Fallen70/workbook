@@ -1,8 +1,8 @@
 Title: TIME_WAIT
 Date: 2021-08-05 13:50
-Category: linux
+Category: Linux
 Lang: fr
-Tags: netstat, linux
+Tags: netstat, admin-sys
 
 Sources :
  

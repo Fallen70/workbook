@@ -1,8 +1,8 @@
 Title: Nettoyage de fichier/dossier en fonction de la taille
 Date: 2021-08-05 12:50
-Category: bash
+Category: Linux
 Lang: fr
-Tags: awk, bash, du
+Tags: admin-sys
 
 # Liste de fichier qui dépassent une taille en byte
 

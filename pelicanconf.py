@@ -30,7 +30,7 @@ LINKS = (('Pelican', 'https://getpelican.com/'),
 # Social widget
 SOCIAL = ()
 
-DEFAULT_PAGINATION = 10
+DEFAULT_PAGINATION = False
 
 STATIC_PATHS = ['images']
 

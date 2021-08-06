@@ -1,6 +1,6 @@
 Title: Find et lien symbolique
 Date: 2021-08-02 16:20
-Category: find
+Category: Linux
 Lang: fr
 Tags: find, sym-links
 

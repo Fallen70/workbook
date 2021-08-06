@@ -1,8 +1,8 @@
 Title: Formatage contenu
 Date: 2021-08-05 10:00
 Lang: fr
-Tags: vim, html, json
-Category: vim
+Tags: html, json
+Category: Vim
 
 # Formater du contenu dans vim
 

@@ -1,8 +1,8 @@
 Title: RAM/SWAP
 Date: 2021-08-05 13:50
-Category: linux
+Category: Linux
 Lang: fr
-Tags: linux
+Tags: admin-sys
 
 # Swappiness
 

@@ -1,8 +1,8 @@
 Title: Actions nexus avec curl
 Date: 2021-08-02 17:00
+Category: Curl
 Lang: fr
-Tags: curl, nexus
-Category: curl
+Tags: nexus, admin-sys
 
 # Upload
 
