@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+        <meta charset="utf-8" />
+        <meta name="generator" content="Pelican" />
+        <title>Logrotate</title>
+        <link rel="stylesheet" href="https://fallen70.github.io/workbook/theme/css/main.css" />
+        <link href="https://fallen70.github.io/workbook/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="WorkBook Atom Feed" />
+        <meta name="description" content="Source : https://www.croc-informatique.fr/2009/06/rotation-des-logs-avec-logrotate/ http://www.delafond.org/traducmanfr/man/man8/logrotate.8.html..." />
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="https://fallen70.github.io/workbook/">WorkBook</a></h1>
+                <nav><ul>
+                    <li><a href="https://fallen70.github.io/workbook/category/curl.html">Curl</a></li>
+                    <li class="active"><a href="https://fallen70.github.io/workbook/category/linux.html">Linux</a></li>
+                    <li><a href="https://fallen70.github.io/workbook/category/vim.html">Vim</a></li>
+                    <li><a href="https://fallen70.github.io/workbook/category/virtualbox.html">Virtualbox</a></li>
+                </ul></nav>
+        </header><!-- /#banner -->
+<section id="content" class="body">
+  <article>
+    <header>
+      <h1 class="entry-title">
+        <a href="https://fallen70.github.io/workbook/logrotate.html" rel="bookmark"
+           title="Permalink to Logrotate">Logrotate</a></h1>
+    </header>
+
+    <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2021-08-06T13:50:00+02:00">
+                Publié le: 06-août-2021
+        </abbr>
+
+        <address class="vcard author">
+                Par                         <a class="url fn" href="https://fallen70.github.io/workbook/author/fallen70.html">Fallen70</a>
+        </address>
+<p>Dans <a href="https://fallen70.github.io/workbook/category/linux.html">Linux</a>.</p>
+<p>Tags: <a href="https://fallen70.github.io/workbook/tag/admin-sys.html">admin-sys</a> <a href="https://fallen70.github.io/workbook/tag/logrotate.html">logrotate</a> </p>
+</footer><!-- /.post-info -->      <p>Source :</p>
+<ul>
+<li><a href="https://www.croc-informatique.fr/2009/06/rotation-des-logs-avec-logrotate/">https://www.croc-informatique.fr/2009/06/rotation-des-logs-avec-logrotate/</a></li>
+<li><a href="http://www.delafond.org/traducmanfr/man/man8/logrotate.8.html">http://www.delafond.org/traducmanfr/man/man8/logrotate.8.html</a></li>
+</ul>
+<p>Créer un fichier du nom de votre service (pour mémo) dans le répertoire /etc/logrotate.d. Nous allons prendre pour exemple le service postfix :</p>
+<div class="highlight"><pre><span></span><code>  vi /etc/logrotate.d/postfix
+</code></pre></div>
+
+<p>Saisissez ces quelques lignes :</p>
+<div class="highlight"><pre><span></span><code>  <span class="o">/</span><span class="k">var</span><span class="o">/</span><span class="nb">log</span><span class="o">/</span><span class="n">maillog</span> <span class="p">{</span>
+  <span class="n">daily</span>
+  <span class="n">missingok</span>
+  <span class="n">rotate</span> <span class="mi">52</span>
+  <span class="n">compress</span>
+  <span class="n">delaycompress</span>
+  <span class="n">notifempty</span>
+  <span class="n">create</span> <span class="mi">640</span> <span class="n">root</span>
+  <span class="n">sharedscripts</span>
+  <span class="n">postrotate</span>
+  <span class="k">if</span> <span class="p">[</span> <span class="o">-</span><span class="n">f</span> <span class="o">/</span><span class="k">var</span><span class="o">/</span><span class="n">run</span><span class="o">/</span><span class="n">postfix</span><span class="o">.</span><span class="n">pid</span> <span class="p">];</span> <span class="n">then</span>
+  <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">init</span><span class="o">.</span><span class="n">d</span><span class="o">/</span><span class="n">postfix</span> <span class="n">reload</span> <span class="o">&gt;</span> <span class="o">/</span><span class="n">dev</span><span class="o">/</span><span class="nb nb-Type">null</span>
+  <span class="n">fi</span>
+  <span class="n">endscript</span>
+  <span class="p">}</span>
+</code></pre></div>
+
+<p><strong>/var/log/maillog</strong> : Correspond au fichier log à utiliser</p>
+<p><strong>daily</strong> : La rotation s’effectuera tous les jours. Nous pouvons aussi mettre weekly pour toutes les semaines , monthly pour tous les mois.</p>
+<p><strong>missingok</strong> : signifie que l’absence du/des fichier(s) log(s) n’est pas anormale. Si cette option n’est pas active alors l’administrateur recevra un mail si le/les log(s) est/sont manquant(s).</p>
+<p><strong>rotate 52</strong>: Nous garderons 52 fichiers. Soit pour mon cas, 52 jours de logs</p>
+<p><strong>compress</strong> : Les fichiers logs secondaire c’est à dire tout ce qui n’est pas le fichier de log principal seront compréssés.</p>
+<p><strong>delaycompress</strong> : Reporte la compression du journal précédent au prochain cycle de permutation. Ceci n’a un effet qu’utilisé en combinaison avec l’option compress. Elle peut être utilisée quand il n’est pas possible de demander à un programme de fermer son journal et qu’il puisse par conséquent continuer à écrire pour un moment dans le journal précédent.</p>
+<p><strong>notifempty</strong> : permet de ne pas permuter le journal lorsqu’il est vide</p>
+<p><strong>create 640 root</strong> : Les fichiers secondaire créés auront pour créateur root et auront les droits 640</p>
+<p><strong>postrotate/endscript</strong> : Les lignes entre prerotate et endscript (chacun devant apparaître sur une ligne isolée) sont exécutées avant permutation du journal. Ces directives doivent apparaîtrent dans la définition d’un journal</p>
+<p><strong>sharedscripts</strong> : permet d’executer qu’ une fois le script postrotate par rotation</p>
+<h1>Execution</h1>
+<p>Une fois que vous avez fini de configurer votre logrotate, vous pouvez forcer sont éxecution de cette manière :</p>
+<div class="highlight"><pre><span></span><code>logrotate -f  /etc/logrotate.conf
+</code></pre></div>
+
+<p>Pour débugger :</p>
+<div class="highlight"><pre><span></span><code>logrotate -d /etc/logrotate.conf
+</code></pre></div>
+    </div><!-- /.entry-content -->
+
+  </article>
+</section>
+        <section id="extras" class="body">
+                <div class="blogroll">
+                        <h2>links</h2>
+                        <ul>
+                            <li><a href="https://getpelican.com/">Pelican</a></li>
+                            <li><a href="https://www.python.org/">Python.org</a></li>
+                            <li><a href="https://palletsprojects.com/p/jinja/">Jinja2</a></li>
+                        </ul>
+                </div><!-- /.blogroll -->
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+                            <li><a href="https://fallen70.github.io/workbook/feeds/all.atom.xml" type="application/atom+xml" rel="alternate">atom feed</a></li>
+
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="https://getpelican.com/">Pelican</a>, which takes great advantage of <a href="https://www.python.org/">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="https://www.smashingmagazine.com/2009/08/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>

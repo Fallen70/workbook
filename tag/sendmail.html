@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+        <meta charset="utf-8" />
+        <meta name="generator" content="Pelican" />
+        <title>WorkBook - sendmail</title>
+        <link rel="stylesheet" href="https://fallen70.github.io/workbook/theme/css/main.css" />
+        <link href="https://fallen70.github.io/workbook/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="WorkBook Atom Feed" />
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="https://fallen70.github.io/workbook/">WorkBook</a></h1>
+                <nav><ul>
+                    <li><a href="https://fallen70.github.io/workbook/category/curl.html">Curl</a></li>
+                    <li><a href="https://fallen70.github.io/workbook/category/linux.html">Linux</a></li>
+                    <li><a href="https://fallen70.github.io/workbook/category/vim.html">Vim</a></li>
+                    <li><a href="https://fallen70.github.io/workbook/category/virtualbox.html">Virtualbox</a></li>
+                </ul></nav>
+        </header><!-- /#banner -->
+
+            <aside id="featured" class="body">
+                <article>
+                    <h1 class="entry-title"><a href="https://fallen70.github.io/workbook/debug-envoi-de-mail.html">Debug envoi de mail</a></h1>
+<footer class="post-info">
+        <abbr class="published" title="2021-08-06T13:50:00+02:00">
+                Publié le: 06-août-2021
+        </abbr>
+
+        <address class="vcard author">
+                Par                         <a class="url fn" href="https://fallen70.github.io/workbook/author/fallen70.html">Fallen70</a>
+        </address>
+<p>Dans <a href="https://fallen70.github.io/workbook/category/linux.html">Linux</a>.</p>
+<p>Tags: <a href="https://fallen70.github.io/workbook/tag/admin-sys.html">admin-sys</a> <a href="https://fallen70.github.io/workbook/tag/sendmail.html">sendmail</a> <a href="https://fallen70.github.io/workbook/tag/exchange.html">exchange</a> </p>
+</footer><!-- /.post-info --><h1>sendmail</h1>
+<h2>Test simple</h2>
+<p>Ecrire le contenu a envoyer dans /tmp/test.mail</p>
+<div class="highlight"><pre><span></span><code>sendmail -v recipient@domain &lt; /tmp/test.mail
+</code></pre></div>
+
+<h2>Queue</h2>
+<div class="highlight"><pre><span></span><code>mailq
+sendmail -bp
+</code></pre></div>
+
+<h2>Aggregation des erreurs des mails dans la queue</h2>
+<div class="highlight"><pre><span></span><code>mailq <span class="p">|</span> grep smtpmailer.domain <span class="p">|</span> sort  <span class="p">|</span> uniq -c <span class="p">|</span> sort
+</code></pre></div>
+
+<h2>Forcer l'envoi des mails en attente</h2>
+<div class="highlight"><pre><span></span><code>sendmail -q -v
+</code></pre></div>
+
+<h1>Debug exchange avec  telnet</h1>
+<p>Source :</p>
+<ul>
+<li><a href="https://docs.microsoft.com/en-us/exchange/mail-flow/test-smtp-with-telnet?view=exchserver-2019">https://docs.microsoft.com/en-us/exchange/mail-flow/test-smtp-with-telnet?view=exchserver-2019</a></li>
+</ul>
+<div class="highlight"><pre><span></span><code>telnet smtpmailer.domain <span class="m">25</span>
+</code></pre></div>
+
+<p>Il faut ensuite taper chaque ligne suivante, valider avec la touche <code>entrée</code>.</p>
+<p><code>EHLO domain</code></p>
+<p><code>MAIL FROM: &lt;sender@domain&gt;</code></p>
+<p><code>RCPT TO: &lt;recipient@domain&gt; NOTIFY=success,failure</code></p>
+<p><code>DATA</code></p>
+<p><code>Subject: Telnet</code></p>
+<p><code>Envoyé avec telnet.</code></p>
+<p><code>.</code></p>
+<p><code>QUIT</code></p>                </article>
+            </aside><!-- /#featured -->
+        <section id="extras" class="body">
+                <div class="blogroll">
+                        <h2>links</h2>
+                        <ul>
+                            <li><a href="https://getpelican.com/">Pelican</a></li>
+                            <li><a href="https://www.python.org/">Python.org</a></li>
+                            <li><a href="https://palletsprojects.com/p/jinja/">Jinja2</a></li>
+                        </ul>
+                </div><!-- /.blogroll -->
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+                            <li><a href="https://fallen70.github.io/workbook/feeds/all.atom.xml" type="application/atom+xml" rel="alternate">atom feed</a></li>
+
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="https://getpelican.com/">Pelican</a>, which takes great advantage of <a href="https://www.python.org/">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="https://www.smashingmagazine.com/2009/08/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>

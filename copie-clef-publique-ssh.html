@@ -3,9 +3,10 @@
 <head>
         <meta charset="utf-8" />
         <meta name="generator" content="Pelican" />
-        <title>WorkBook - ansible</title>
+        <title>Copie clef publique ssh</title>
         <link rel="stylesheet" href="https://fallen70.github.io/workbook/theme/css/main.css" />
         <link href="https://fallen70.github.io/workbook/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="WorkBook Atom Feed" />
+        <meta name="description" content="bash Liste les cibles dans hosts.txt #!/bin/bash for host in $(cat ./hosts.txt); do echo $host; cat ~/.ssh/id_rsa.pub | ssh root@${host} 'cat >>..." />
 </head>
 
 <body id="index" class="home">
@@ -13,15 +14,20 @@
                 <h1><a href="https://fallen70.github.io/workbook/">WorkBook</a></h1>
                 <nav><ul>
                     <li><a href="https://fallen70.github.io/workbook/category/curl.html">Curl</a></li>
-                    <li><a href="https://fallen70.github.io/workbook/category/linux.html">Linux</a></li>
+                    <li class="active"><a href="https://fallen70.github.io/workbook/category/linux.html">Linux</a></li>
                     <li><a href="https://fallen70.github.io/workbook/category/vim.html">Vim</a></li>
                     <li><a href="https://fallen70.github.io/workbook/category/virtualbox.html">Virtualbox</a></li>
                 </ul></nav>
         </header><!-- /#banner -->
+<section id="content" class="body">
+  <article>
+    <header>
+      <h1 class="entry-title">
+        <a href="https://fallen70.github.io/workbook/copie-clef-publique-ssh.html" rel="bookmark"
+           title="Permalink to Copie clef publique ssh">Copie clef publique ssh</a></h1>
+    </header>
 
-            <aside id="featured" class="body">
-                <article>
-                    <h1 class="entry-title"><a href="https://fallen70.github.io/workbook/copie-clef-publique-ssh.html">Copie clef publique ssh</a></h1>
+    <div class="entry-content">
 <footer class="post-info">
         <abbr class="published" title="2021-08-06T13:50:00+02:00">
                 Publié le: 06-août-2021
@@ -32,7 +38,7 @@
         </address>
 <p>Dans <a href="https://fallen70.github.io/workbook/category/linux.html">Linux</a>.</p>
 <p>Tags: <a href="https://fallen70.github.io/workbook/tag/ssh.html">ssh</a> <a href="https://fallen70.github.io/workbook/tag/ansible.html">ansible</a> </p>
-</footer><!-- /.post-info --><h1>bash</h1>
+</footer><!-- /.post-info -->      <h1>bash</h1>
 <p>Liste les cibles dans hosts.txt</p>
 <div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
  
@@ -56,44 +62,11 @@ cat ~/.ssh/id_rsa.pub <span class="p">|</span> ssh root@<span class="si">${</spa
         <span class="nt">state</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">present</span>
         <span class="nt">key</span><span class="p">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">lookup(&#39;file&#39;,</span><span class="nv"> </span><span class="s">&#39;files/ssh_pub/id_rsa.pub&#39;)</span><span class="nv"> </span><span class="s">}}&quot;</span>
   <span class="nt">tags</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">always</span>
-</code></pre></div>                </article>
-            </aside><!-- /#featured -->
-                <section id="content" class="body">
-                    <h1>Other articles</h1>
-                    <hr />
-                    <ol id="posts-list" class="hfeed">
+</code></pre></div>
+    </div><!-- /.entry-content -->
 
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="https://fallen70.github.io/workbook/subcription-manager.html" rel="bookmark"
-                           title="Permalink to Subcription manager">Subcription manager</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2021-08-06T13:50:00+02:00">
-                Publié le: 06-août-2021
-        </abbr>
-
-        <address class="vcard author">
-                Par                         <a class="url fn" href="https://fallen70.github.io/workbook/author/fallen70.html">Fallen70</a>
-        </address>
-<p>Dans <a href="https://fallen70.github.io/workbook/category/linux.html">Linux</a>.</p>
-<p>Tags: <a href="https://fallen70.github.io/workbook/tag/redhat.html">RedHat</a> <a href="https://fallen70.github.io/workbook/tag/admin-sys.html">admin-sys</a> <a href="https://fallen70.github.io/workbook/tag/ansible.html">ansible</a> </p>
-</footer><!-- /.post-info -->                <h1>Prérequis</h1>
-<p>Les commandes sont lancées en utilisant ansible et un inventory pour pouvoir propoager la configuration.</p>
-<p>Il faut évidemment disposer de licences redhat et d'un compte associé ( <code>&lt;login&gt;</code> et '<password>' ).</p>
-<h1>Register</h1>
-<p>Source : </p>
-<ul>
-<li><a href="https://access.redhat.com/solutions/253273">https://access.redhat.com/solutions/253273</a></li>
-</ul>
-<div class="highlight"><pre><span></span><code>ansible all -i inventory -u ansible  -b --become-user<span class="o">=</span>root --become-method<span class="o">=</span>sudo -m redhat_subscription …</code></pre></div>
-                <a class="readmore" href="https://fallen70.github.io/workbook/subcription-manager.html">read more</a>
-                </div><!-- /.entry-content -->
-            </article></li>
-                </ol><!-- /#posts-list -->
-                </section><!-- /#content -->
+  </article>
+</section>
         <section id="extras" class="body">
                 <div class="blogroll">
                         <h2>links</h2>
