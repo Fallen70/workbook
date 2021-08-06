@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+        <meta charset="utf-8" />
+        <meta name="generator" content="Pelican" />
+        <title>WorkBook - ansible</title>
+        <link rel="stylesheet" href="https://fallen70.github.io/workbook/theme/css/main.css" />
+        <link href="https://fallen70.github.io/workbook/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="WorkBook Atom Feed" />
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="https://fallen70.github.io/workbook/">WorkBook</a></h1>
+                <nav><ul>
+                    <li><a href="https://fallen70.github.io/workbook/category/curl.html">Curl</a></li>
+                    <li><a href="https://fallen70.github.io/workbook/category/linux.html">Linux</a></li>
+                    <li><a href="https://fallen70.github.io/workbook/category/vim.html">Vim</a></li>
+                    <li><a href="https://fallen70.github.io/workbook/category/virtualbox.html">Virtualbox</a></li>
+                </ul></nav>
+        </header><!-- /#banner -->
+
+            <aside id="featured" class="body">
+                <article>
+                    <h1 class="entry-title"><a href="https://fallen70.github.io/workbook/subcription-manager.html">Subcription manager</a></h1>
+<footer class="post-info">
+        <abbr class="published" title="2021-08-06T13:50:00+02:00">
+                Publié le: 06-août-2021
+        </abbr>
+
+        <address class="vcard author">
+                Par                         <a class="url fn" href="https://fallen70.github.io/workbook/author/fallen70.html">Fallen70</a>
+        </address>
+<p>Dans <a href="https://fallen70.github.io/workbook/category/linux.html">Linux</a>.</p>
+<p>Tags: <a href="https://fallen70.github.io/workbook/tag/redhat.html">RedHat</a> <a href="https://fallen70.github.io/workbook/tag/admin-sys.html">admin-sys</a> <a href="https://fallen70.github.io/workbook/tag/ansible.html">ansible</a> </p>
+</footer><!-- /.post-info --><h1>Prérequis</h1>
+<p>Les commandes sont lancées en utilisant ansible et un inventory pour pouvoir propoager la configuration.</p>
+<p>Il faut évidemment disposer de licences redhat et d'un compte associé ( <code>&lt;login&gt;</code> et '<password>' ).</p>
+<h1>Register</h1>
+<p>Source : </p>
+<ul>
+<li><a href="https://access.redhat.com/solutions/253273">https://access.redhat.com/solutions/253273</a></li>
+</ul>
+<div class="highlight"><pre><span></span><code>ansible all -i inventory -u ansible  -b --become-user<span class="o">=</span>root --become-method<span class="o">=</span>sudo -m redhat_subscription -a <span class="s2">&quot;state=present username=&lt;login&gt; password=&lt;password&gt; auto_attach=true&quot;</span>
+</code></pre></div>
+
+<h1>Lock version</h1>
+<p>Source :</p>
+<ul>
+<li><a href="https://access.redhat.com/solutions/238533">https://access.redhat.com/solutions/238533</a></li>
+</ul>
+<div class="highlight"><pre><span></span><code>ansible all -i inventory -u ansible  -b --become-user<span class="o">=</span>root --become-method<span class="o">=</span>sudo -m <span class="s2">&quot;command /usr/sbin/subscription-manager release --list&quot;</span>
+
+ansible all -i inventory -u ansible  -b --become-user<span class="o">=</span>root --become-method<span class="o">=</span>sudo -m <span class="s2">&quot;command /usr/sbin/subscription-manager release --set=&lt;version&gt;&quot;</span>
+
+ansible all -i inventory -u ansible  -b --become-user<span class="o">=</span>root --become-method<span class="o">=</span>sudo -m <span class="s2">&quot;command /usr/sbin/subscription-manager release --show&quot;</span>
+
+ansible all -i inventory -u ansible  -b --become-user<span class="o">=</span>root --become-method<span class="o">=</span>sudo -m <span class="s2">&quot;command yum clean all&quot;</span>
+</code></pre></div>
+
+<h1>Unsubscribe</h1>
+<p>Source :</p>
+<ul>
+<li><a href="https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/6/html/installation_guide/ch-deregister_rhn_entitlement">https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/6/html/installation_guide/ch-deregister_rhn_entitlement</a></li>
+</ul>
+<div class="highlight"><pre><span></span><code>ansible all -i inventory -u ansible  -b --become-user<span class="o">=</span>root --become-method<span class="o">=</span>sudo -m <span class="s2">&quot;command /usr/sbin/subscription-manager unregister --username=&lt;login&gt;&quot;</span>
+</code></pre></div>
+
+<h2>Redhat 7:</h2>
+<div class="highlight"><pre><span></span><code>ansible all -i inventory -u ansible  -b --become-user<span class="o">=</span>root --become-method<span class="o">=</span>sudo -m <span class="s2">&quot;command /usr/sbin/subscription-manager unregister&quot;</span>
+</code></pre></div>                </article>
+            </aside><!-- /#featured -->
+        <section id="extras" class="body">
+                <div class="blogroll">
+                        <h2>links</h2>
+                        <ul>
+                            <li><a href="https://getpelican.com/">Pelican</a></li>
+                            <li><a href="https://www.python.org/">Python.org</a></li>
+                            <li><a href="https://palletsprojects.com/p/jinja/">Jinja2</a></li>
+                        </ul>
+                </div><!-- /.blogroll -->
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+                            <li><a href="https://fallen70.github.io/workbook/feeds/all.atom.xml" type="application/atom+xml" rel="alternate">atom feed</a></li>
+
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="https://getpelican.com/">Pelican</a>, which takes great advantage of <a href="https://www.python.org/">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="https://www.smashingmagazine.com/2009/08/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>

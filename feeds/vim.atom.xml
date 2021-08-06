@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>WorkBook - vim</title><link href="https://fallen70.github.io/workbook/" rel="alternate"></link><link href="https://fallen70.github.io/workbook/feeds/vim.atom.xml" rel="self"></link><id>https://fallen70.github.io/workbook/</id><updated>2021-08-05T10:00:00+02:00</updated><entry><title>Formatage contenu</title><link href="https://fallen70.github.io/workbook/formatage-contenu.html" rel="alternate"></link><published>2021-08-05T10:00:00+02:00</published><updated>2021-08-05T10:00:00+02:00</updated><author><name>Fallen70</name></author><id>tag:fallen70.github.io,2021-08-05:/workbook/formatage-contenu.html</id><content type="html">&lt;h1&gt;Formater du contenu dans vim&lt;/h1&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>WorkBook - Vim</title><link href="https://fallen70.github.io/workbook/" rel="alternate"></link><link href="https://fallen70.github.io/workbook/feeds/vim.atom.xml" rel="self"></link><id>https://fallen70.github.io/workbook/</id><updated>2021-08-05T10:00:00+02:00</updated><entry><title>Formatage contenu</title><link href="https://fallen70.github.io/workbook/formatage-contenu.html" rel="alternate"></link><published>2021-08-05T10:00:00+02:00</published><updated>2021-08-05T10:00:00+02:00</updated><author><name>Fallen70</name></author><id>tag:fallen70.github.io,2021-08-05:/workbook/formatage-contenu.html</id><content type="html">&lt;h1&gt;Formater du contenu dans vim&lt;/h1&gt;
 &lt;h2&gt;HTML&lt;/h2&gt;
 &lt;p&gt;Installer l'utilitaire &lt;code&gt;tidy&lt;/code&gt;&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;:!tidy -mi -html -wrap 0 %
@@ -8,4 +8,4 @@
 &lt;h2&gt;JSON&lt;/h2&gt;
 &lt;p&gt;Nécessite python sur la machine&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="o"&gt;%!&lt;/span&gt;&lt;span class="n"&gt;python&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;m&lt;/span&gt; &lt;span class="n"&gt;json&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="k"&gt;tool&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content><category term="vim"></category><category term="vim"></category><category term="html"></category><category term="json"></category></entry></feed>
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content><category term="Vim"></category><category term="html"></category><category term="json"></category></entry></feed>

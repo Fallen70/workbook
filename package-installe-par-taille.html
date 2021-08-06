@@ -3,48 +3,47 @@
 <head>
         <meta charset="utf-8" />
         <meta name="generator" content="Pelican" />
-        <title>WorkBook - vim</title>
+        <title>Package installé par taille</title>
         <link rel="stylesheet" href="https://fallen70.github.io/workbook/theme/css/main.css" />
         <link href="https://fallen70.github.io/workbook/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="WorkBook Atom Feed" />
+        <meta name="description" content="rpm -qa --queryformat '%10{size} - %-25{name} \t %{version}\n' | sort -n" />
 </head>
 
 <body id="index" class="home">
         <header id="banner" class="body">
                 <h1><a href="https://fallen70.github.io/workbook/">WorkBook</a></h1>
                 <nav><ul>
-                    <li><a href="https://fallen70.github.io/workbook/category/bash.html">bash</a></li>
-                    <li><a href="https://fallen70.github.io/workbook/category/curl.html">curl</a></li>
-                    <li><a href="https://fallen70.github.io/workbook/category/find.html">find</a></li>
-                    <li><a href="https://fallen70.github.io/workbook/category/linux.html">linux</a></li>
-                    <li><a href="https://fallen70.github.io/workbook/category/vim.html">vim</a></li>
-                    <li><a href="https://fallen70.github.io/workbook/category/virtualbox.html">virtualbox</a></li>
+                    <li><a href="https://fallen70.github.io/workbook/category/curl.html">Curl</a></li>
+                    <li class="active"><a href="https://fallen70.github.io/workbook/category/linux.html">Linux</a></li>
+                    <li><a href="https://fallen70.github.io/workbook/category/vim.html">Vim</a></li>
+                    <li><a href="https://fallen70.github.io/workbook/category/virtualbox.html">Virtualbox</a></li>
                 </ul></nav>
         </header><!-- /#banner -->
+<section id="content" class="body">
+  <article>
+    <header>
+      <h1 class="entry-title">
+        <a href="https://fallen70.github.io/workbook/package-installe-par-taille.html" rel="bookmark"
+           title="Permalink to Package installé par taille">Package installé par taille</a></h1>
+    </header>
 
-            <aside id="featured" class="body">
-                <article>
-                    <h1 class="entry-title"><a href="https://fallen70.github.io/workbook/formatage-contenu.html">Formatage contenu</a></h1>
+    <div class="entry-content">
 <footer class="post-info">
-        <abbr class="published" title="2021-08-05T10:00:00+02:00">
-                Published: 05-août-2021
+        <abbr class="published" title="2021-08-06T13:50:00+02:00">
+                Publié le: 06-août-2021
         </abbr>
 
         <address class="vcard author">
-                By                         <a class="url fn" href="https://fallen70.github.io/workbook/author/fallen70.html">Fallen70</a>
+                Par                         <a class="url fn" href="https://fallen70.github.io/workbook/author/fallen70.html">Fallen70</a>
         </address>
-<p>In <a href="https://fallen70.github.io/workbook/category/vim.html">vim</a>.</p>
-<p>tags: <a href="https://fallen70.github.io/workbook/tag/vim.html">vim</a> <a href="https://fallen70.github.io/workbook/tag/html.html">html</a> <a href="https://fallen70.github.io/workbook/tag/json.html">json</a> </p>
-</footer><!-- /.post-info --><h1>Formater du contenu dans vim</h1>
-<h2>HTML</h2>
-<p>Installer l'utilitaire <code>tidy</code></p>
-<div class="highlight"><pre><span></span><code>:!tidy -mi -html -wrap 0 %
+<p>Dans <a href="https://fallen70.github.io/workbook/category/linux.html">Linux</a>.</p>
+<p>Tags: <a href="https://fallen70.github.io/workbook/tag/redhat.html">RedHat</a> <a href="https://fallen70.github.io/workbook/tag/admin-sys.html">admin-sys</a> </p>
+</footer><!-- /.post-info -->      <div class="highlight"><pre><span></span><code>rpm -qa --queryformat <span class="s1">&#39;%10{size} - %-25{name} \t %{version}\n&#39;</span> <span class="p">|</span> sort -n
 </code></pre></div>
+    </div><!-- /.entry-content -->
 
-<h2>JSON</h2>
-<p>Nécessite python sur la machine</p>
-<div class="highlight"><pre><span></span><code><span class="p">:</span><span class="o">%!</span><span class="n">python</span> <span class="o">-</span><span class="n">m</span> <span class="n">json</span><span class="o">.</span><span class="k">tool</span>
-</code></pre></div>                </article>
-            </aside><!-- /#featured -->
+  </article>
+</section>
         <section id="extras" class="body">
                 <div class="blogroll">
                         <h2>links</h2>

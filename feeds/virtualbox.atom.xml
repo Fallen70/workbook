@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>WorkBook - virtualbox</title><link href="https://fallen70.github.io/workbook/" rel="alternate"></link><link href="https://fallen70.github.io/workbook/feeds/virtualbox.atom.xml" rel="self"></link><id>https://fallen70.github.io/workbook/</id><updated>2021-08-05T08:40:00+02:00</updated><entry><title>Installation VM Tools</title><link href="https://fallen70.github.io/workbook/installation-vm-tools.html" rel="alternate"></link><published>2021-08-05T08:40:00+02:00</published><updated>2021-08-05T08:40:00+02:00</updated><author><name>Fallen70</name></author><id>tag:fallen70.github.io,2021-08-05:/workbook/installation-vm-tools.html</id><content type="html">&lt;p&gt;A faire aprés modification du Kernel&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>WorkBook - Virtualbox</title><link href="https://fallen70.github.io/workbook/" rel="alternate"></link><link href="https://fallen70.github.io/workbook/feeds/virtualbox.atom.xml" rel="self"></link><id>https://fallen70.github.io/workbook/</id><updated>2021-08-05T08:40:00+02:00</updated><entry><title>Installation VM Tools</title><link href="https://fallen70.github.io/workbook/installation-vm-tools.html" rel="alternate"></link><published>2021-08-05T08:40:00+02:00</published><updated>2021-08-05T08:40:00+02:00</updated><author><name>Fallen70</name></author><id>tag:fallen70.github.io,2021-08-05:/workbook/installation-vm-tools.html</id><content type="html">&lt;p&gt;A faire aprés modification du Kernel&lt;/p&gt;
 &lt;p&gt;Aprés  lancement de la VM depuis le menu Périphérique choisir &lt;code&gt;Insérer l'image CD des Additions invité&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;&lt;img alt="Menu Virtualbox" src="https://fallen70.github.io/workbook/images/virtualbox/vm-tools.png"&gt;&lt;/p&gt;
 &lt;h1&gt;Montage et éxecution du CD:&lt;/h1&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;sudo mount /dev/cdrom /mnt/cdrom
 &lt;span class="nb"&gt;cd&lt;/span&gt; /mnt/cdrom/
 sudo ./VBoxLinuxAdditions.run
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content><category term="virtualbox"></category><category term="virtualbox"></category></entry></feed>
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content><category term="Virtualbox"></category></entry></feed>

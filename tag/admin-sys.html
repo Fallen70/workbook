@@ -3,7 +3,7 @@
 <head>
         <meta charset="utf-8" />
         <meta name="generator" content="Pelican" />
-        <title>WorkBook - Linux</title>
+        <title>WorkBook - admin-sys</title>
         <link rel="stylesheet" href="https://fallen70.github.io/workbook/theme/css/main.css" />
         <link href="https://fallen70.github.io/workbook/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="WorkBook Atom Feed" />
 </head>
@@ -13,7 +13,7 @@
                 <h1><a href="https://fallen70.github.io/workbook/">WorkBook</a></h1>
                 <nav><ul>
                     <li><a href="https://fallen70.github.io/workbook/category/curl.html">Curl</a></li>
-                    <li class="active"><a href="https://fallen70.github.io/workbook/category/linux.html">Linux</a></li>
+                    <li><a href="https://fallen70.github.io/workbook/category/linux.html">Linux</a></li>
                     <li><a href="https://fallen70.github.io/workbook/category/vim.html">Vim</a></li>
                     <li><a href="https://fallen70.github.io/workbook/category/virtualbox.html">Virtualbox</a></li>
                 </ul></nav>
@@ -291,37 +291,29 @@
 
             <li><article class="hentry">
                 <header>
-                    <h1><a href="https://fallen70.github.io/workbook/find-et-lien-symbolique.html" rel="bookmark"
-                           title="Permalink to Find et lien symbolique">Find et lien symbolique</a></h1>
+                    <h1><a href="https://fallen70.github.io/workbook/actions-nexus-avec-curl.html" rel="bookmark"
+                           title="Permalink to Actions nexus avec curl">Actions nexus avec curl</a></h1>
                 </header>
 
                 <div class="entry-content">
 <footer class="post-info">
-        <abbr class="published" title="2021-08-02T16:20:00+02:00">
+        <abbr class="published" title="2021-08-02T17:00:00+02:00">
                 Publié le: 02-août-2021
         </abbr>
 
         <address class="vcard author">
                 Par                         <a class="url fn" href="https://fallen70.github.io/workbook/author/fallen70.html">Fallen70</a>
         </address>
-<p>Dans <a href="https://fallen70.github.io/workbook/category/linux.html">Linux</a>.</p>
-<p>Tags: <a href="https://fallen70.github.io/workbook/tag/find.html">find</a> <a href="https://fallen70.github.io/workbook/tag/sym-links.html">sym-links</a> </p>
-</footer><!-- /.post-info -->                <p>Tiré de <a href="https://stackoverflow.com/questions/8513133/how-do-i-find-all-of-the-symlinks-in-a-directory-tree/21438684">https://stackoverflow.com/questions/8513133/how-do-i-find-all-of-the-symlinks-in-a-directory-tree/21438684</a></p>
-<h1>Find symbolic links</h1>
-<div class="highlight"><pre><span></span><code>find . -type l -ls
+<p>Dans <a href="https://fallen70.github.io/workbook/category/curl.html">Curl</a>.</p>
+<p>Tags: <a href="https://fallen70.github.io/workbook/tag/nexus.html">nexus</a> <a href="https://fallen70.github.io/workbook/tag/admin-sys.html">admin-sys</a> </p>
+</footer><!-- /.post-info -->                <h1>Upload</h1>
+<div class="highlight"><pre><span></span><code>curl -v --user <span class="s1">&#39;user:pass&#39;</span> --upload-file /path/to/file http://nexus/nexus/repository/component/subfolder/file
 </code></pre></div>
 
-<h1>Find symbolic links to a specific target</h1>
-<div class="highlight"><pre><span></span><code>find . -lname link_target
+<h1>Delete</h1>
+<div class="highlight"><pre><span></span><code>curl -X DELETE -v --user  <span class="s1">&#39;user:pass&#39;</span>  http://nexus/nexus/repository/component/subfolder/file
 </code></pre></div>
-
-<p>Note that link_target may contain wildcard characters.</p>
-<h1>Find broken symbolic links</h1>
-<div class="highlight"><pre><span></span><code>find -L . -type l -ls
-</code></pre></div>
-
-<p>The -L option instructs find to follow symbolic …</p>
-                <a class="readmore" href="https://fallen70.github.io/workbook/find-et-lien-symbolique.html">read more</a>
+                <a class="readmore" href="https://fallen70.github.io/workbook/actions-nexus-avec-curl.html">read more</a>
                 </div><!-- /.entry-content -->
             </article></li>
                 </ol><!-- /#posts-list -->
