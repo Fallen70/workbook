@@ -2,7 +2,7 @@ Title: Création d'utilisateur
 Date: 2021-08-05 13:40
 Category: Linux
 Lang: fr
-Tags: bash, root
+Tags: admin-sys
 
 Sources :
  
