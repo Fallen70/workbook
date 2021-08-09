@@ -3,9 +3,10 @@
 <head>
         <meta charset="utf-8" />
         <meta name="generator" content="Pelican" />
-        <title>WorkBook - Authors</title>
+        <title>Télecharger certificats</title>
         <link rel="stylesheet" href="https://fallen70.github.io/workbook/theme/css/main.css" />
         <link href="https://fallen70.github.io/workbook/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="WorkBook Atom Feed" />
+        <meta name="description" content="Récupére tous les certificats affiché par $HOST:$PORT. rm -rf /tmp/certs/ mkdir -p /tmp/certs/ openssl s_client -showcerts -connect $HOST:$PORT..." />
 </head>
 
 <body id="index" class="home">
@@ -13,19 +14,39 @@
                 <h1><a href="https://fallen70.github.io/workbook/">WorkBook</a></h1>
                 <nav><ul>
                     <li><a href="https://fallen70.github.io/workbook/category/curl.html">Curl</a></li>
-                    <li><a href="https://fallen70.github.io/workbook/category/linux.html">Linux</a></li>
+                    <li class="active"><a href="https://fallen70.github.io/workbook/category/linux.html">Linux</a></li>
                     <li><a href="https://fallen70.github.io/workbook/category/vim.html">Vim</a></li>
                     <li><a href="https://fallen70.github.io/workbook/category/virtualbox.html">Virtualbox</a></li>
                 </ul></nav>
         </header><!-- /#banner -->
-
 <section id="content" class="body">
-    <h1>Authors on WorkBook</h1>
-    <ul>
-        <li><a href="https://fallen70.github.io/workbook/author/fallen70.html">Fallen70</a> (22)</li>
-    </ul>
-</section>
+  <article>
+    <header>
+      <h1 class="entry-title">
+        <a href="https://fallen70.github.io/workbook/telecharger-certificats.html" rel="bookmark"
+           title="Permalink to Télecharger certificats">Télecharger certificats</a></h1>
+    </header>
 
+    <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2021-08-09T17:00:00+02:00">
+                Publié le: 09-août-2021
+        </abbr>
+
+        <address class="vcard author">
+                Par                         <a class="url fn" href="https://fallen70.github.io/workbook/author/fallen70.html">Fallen70</a>
+        </address>
+<p>Dans <a href="https://fallen70.github.io/workbook/category/linux.html">Linux</a>.</p>
+<p>Tags: <a href="https://fallen70.github.io/workbook/tag/admin-sys.html">admin-sys</a> <a href="https://fallen70.github.io/workbook/tag/openssl.html">openssl</a> </p>
+</footer><!-- /.post-info -->      <p>Récupére tous les certificats affiché par <code>$HOST:$PORT</code>.</p>
+<div class="highlight"><pre><span></span><code>rm -rf /tmp/certs/
+mkdir -p /tmp/certs/
+openssl s_client -showcerts -connect <span class="nv">$HOST</span>:<span class="nv">$PORT</span> &lt;/dev/null <span class="m">2</span>&gt;/dev/null <span class="p">|</span> sed -n <span class="s2">&quot;/BEGIN CERTIFICATE/,/END CERTIFICATE/p&quot;</span> <span class="p">|</span> awk <span class="s1">&#39;BEGIN {c=0;} /BEGIN CERT/{c++} { print &gt; &quot;/tmp/certs/cert.&quot; c &quot;.pem&quot;}&#39;</span>
+</code></pre></div>
+    </div><!-- /.entry-content -->
+
+  </article>
+</section>
         <section id="extras" class="body">
                 <div class="blogroll">
                         <h2>links</h2>

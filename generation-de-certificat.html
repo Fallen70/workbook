@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+        <meta charset="utf-8" />
+        <meta name="generator" content="Pelican" />
+        <title>Génération de certificat</title>
+        <link rel="stylesheet" href="https://fallen70.github.io/workbook/theme/css/main.css" />
+        <link href="https://fallen70.github.io/workbook/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="WorkBook Atom Feed" />
+        <meta name="description" content="#!/bin/bash # Nettoyage du dossier temporaire cible rm -rf /tmp/@option.host@ mkdir -p /tmp/@option.host@ # Définition des fichiers cible export..." />
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="https://fallen70.github.io/workbook/">WorkBook</a></h1>
+                <nav><ul>
+                    <li><a href="https://fallen70.github.io/workbook/category/curl.html">Curl</a></li>
+                    <li class="active"><a href="https://fallen70.github.io/workbook/category/linux.html">Linux</a></li>
+                    <li><a href="https://fallen70.github.io/workbook/category/vim.html">Vim</a></li>
+                    <li><a href="https://fallen70.github.io/workbook/category/virtualbox.html">Virtualbox</a></li>
+                </ul></nav>
+        </header><!-- /#banner -->
+<section id="content" class="body">
+  <article>
+    <header>
+      <h1 class="entry-title">
+        <a href="https://fallen70.github.io/workbook/generation-de-certificat.html" rel="bookmark"
+           title="Permalink to Génération de certificat">Génération de certificat</a></h1>
+    </header>
+
+    <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2021-08-09T16:50:00+02:00">
+                Publié le: 09-août-2021
+        </abbr>
+
+        <address class="vcard author">
+                Par                         <a class="url fn" href="https://fallen70.github.io/workbook/author/fallen70.html">Fallen70</a>
+        </address>
+<p>Dans <a href="https://fallen70.github.io/workbook/category/linux.html">Linux</a>.</p>
+<p>Tags: <a href="https://fallen70.github.io/workbook/tag/admin-sys.html">admin-sys</a> <a href="https://fallen70.github.io/workbook/tag/openssl.html">openssl</a> </p>
+</footer><!-- /.post-info -->      <div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
+
+<span class="c1"># Nettoyage du dossier temporaire cible</span>
+rm -rf /tmp/@option.host@
+mkdir -p /tmp/@option.host@
+
+<span class="c1"># Définition des fichiers cible</span>
+<span class="nb">export</span> <span class="nv">host</span><span class="o">=</span><span class="s2">&quot;server.name&quot;</span>
+<span class="nb">export</span> <span class="nv">key</span><span class="o">=</span><span class="s1">&#39;/tmp/&#39;</span><span class="nv">$host</span><span class="s1">&#39;/&#39;</span><span class="nv">$host</span><span class="s1">&#39;.key&#39;</span>
+<span class="nb">export</span> <span class="nv">csr</span><span class="o">=</span><span class="s1">&#39;/tmp/&#39;</span><span class="nv">$host</span><span class="s1">&#39;/&#39;</span><span class="nv">$host</span><span class="s1">&#39;.csr&#39;</span>
+<span class="nb">export</span> <span class="nv">srl</span><span class="o">=</span><span class="s1">&#39;/tmp/&#39;</span><span class="nv">$host</span><span class="s1">&#39;/&#39;</span><span class="nv">$host</span><span class="s1">&#39;.srl&#39;</span>
+<span class="nb">export</span> <span class="nv">crt</span><span class="o">=</span><span class="s1">&#39;/tmp/&#39;</span><span class="nv">$host</span><span class="s1">&#39;/&#39;</span><span class="nv">$host</span><span class="s1">&#39;.crt&#39;</span>
+
+<span class="c1">#-- generate key</span>
+openssl genrsa -out <span class="si">${</span><span class="nv">key</span><span class="si">}</span>  <span class="nv">$RD_OPTION_KEY_SIZE</span>
+
+<span class="c1">#-- generate csr</span>
+openssl req -new -key <span class="si">${</span><span class="nv">key</span><span class="si">}</span> -out <span class="si">${</span><span class="nv">csr</span><span class="si">}</span> -subj <span class="s2">&quot;/CN=@option.host@&quot;</span>
+
+<span class="c1">#-- generate self siging key</span>
+openssl x509 -req -days <span class="nv">$RD_OPTION_KEY_DURATION</span> -in <span class="si">${</span><span class="nv">csr</span><span class="si">}</span> -signkey <span class="si">${</span><span class="nv">key</span><span class="si">}</span> -out <span class="si">${</span><span class="nv">crt</span><span class="si">}</span>
+
+<span class="c1">#-- cleanup</span>
+rm -f <span class="si">${</span><span class="nv">srl</span><span class="si">}</span>
+</code></pre></div>
+    </div><!-- /.entry-content -->
+
+  </article>
+</section>
+        <section id="extras" class="body">
+                <div class="blogroll">
+                        <h2>links</h2>
+                        <ul>
+                            <li><a href="https://getpelican.com/">Pelican</a></li>
+                            <li><a href="https://www.python.org/">Python.org</a></li>
+                            <li><a href="https://palletsprojects.com/p/jinja/">Jinja2</a></li>
+                        </ul>
+                </div><!-- /.blogroll -->
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+                            <li><a href="https://fallen70.github.io/workbook/feeds/all.atom.xml" type="application/atom+xml" rel="alternate">atom feed</a></li>
+
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="https://getpelican.com/">Pelican</a>, which takes great advantage of <a href="https://www.python.org/">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="https://www.smashingmagazine.com/2009/08/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>

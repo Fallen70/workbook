@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+        <meta charset="utf-8" />
+        <meta name="generator" content="Pelican" />
+        <title>Vérifier la date de fin d'un certificat SSL</title>
+        <link rel="stylesheet" href="https://fallen70.github.io/workbook/theme/css/main.css" />
+        <link href="https://fallen70.github.io/workbook/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="WorkBook Atom Feed" />
+        <meta name="description" content="Le script a pour but d'être éxécuter sur la machine cible en local avec un outil type rundeck. #!/bin/sh HOSTNAME="localhost" PORT="443"..." />
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="https://fallen70.github.io/workbook/">WorkBook</a></h1>
+                <nav><ul>
+                    <li><a href="https://fallen70.github.io/workbook/category/curl.html">Curl</a></li>
+                    <li class="active"><a href="https://fallen70.github.io/workbook/category/linux.html">Linux</a></li>
+                    <li><a href="https://fallen70.github.io/workbook/category/vim.html">Vim</a></li>
+                    <li><a href="https://fallen70.github.io/workbook/category/virtualbox.html">Virtualbox</a></li>
+                </ul></nav>
+        </header><!-- /#banner -->
+<section id="content" class="body">
+  <article>
+    <header>
+      <h1 class="entry-title">
+        <a href="https://fallen70.github.io/workbook/verifier-la-date-de-fin-dun-certificat-ssl.html" rel="bookmark"
+           title="Permalink to Vérifier la date de fin d'un certificat SSL">Vérifier la date de fin d'un certificat SSL</a></h1>
+    </header>
+
+    <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2021-08-09T16:20:00+02:00">
+                Publié le: 09-août-2021
+        </abbr>
+
+        <address class="vcard author">
+                Par                         <a class="url fn" href="https://fallen70.github.io/workbook/author/fallen70.html">Fallen70</a>
+        </address>
+<p>Dans <a href="https://fallen70.github.io/workbook/category/linux.html">Linux</a>.</p>
+<p>Tags: <a href="https://fallen70.github.io/workbook/tag/admin-sys.html">admin-sys</a> <a href="https://fallen70.github.io/workbook/tag/openssl.html">openssl</a> </p>
+</footer><!-- /.post-info -->      <p>Le script a pour but d'être éxécuter sur la machine cible en local avec un outil type rundeck.</p>
+<div class="highlight"><pre><span></span><code><span class="ch">#!/bin/sh</span>
+
+<span class="nv">HOSTNAME</span><span class="o">=</span><span class="s2">&quot;localhost&quot;</span>
+<span class="nv">PORT</span><span class="o">=</span><span class="s2">&quot;443&quot;</span>
+<span class="nv">ALERT_X_DAY_BEFORE</span><span class="o">=</span><span class="m">10</span>
+
+<span class="c1"># Get current date as timestamp</span>
+<span class="nv">CURR_DATE</span><span class="o">=</span><span class="k">$(</span>date +%s<span class="k">)</span>
+
+<span class="c1"># Get enddate from certificate of hostname:port identified</span>
+<span class="nv">CERT_DATE_AS_STRING</span><span class="o">=</span><span class="k">$(</span><span class="nb">echo</span> <span class="p">|</span> openssl s_client -connect <span class="si">${</span><span class="nv">HOSTNAME</span><span class="si">}</span>:<span class="si">${</span><span class="nv">PORT</span><span class="si">}</span> <span class="m">2</span>&gt;/dev/null <span class="p">|</span> openssl x509 -enddate -noout <span class="p">|</span> cut -d <span class="s1">&#39;=&#39;</span> -f <span class="m">2</span><span class="k">)</span>                                                                            
+
+<span class="nv">CERT_EXP_DATE</span><span class="o">=</span><span class="k">$(</span>date --date<span class="o">=</span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">CERT_DATE_AS_STRING</span><span class="si">}</span><span class="s2">&quot;</span> +%s<span class="k">)</span>
+
+<span class="nv">DAYS_REMAINING</span><span class="o">=</span><span class="k">$((</span> <span class="o">(</span> <span class="nv">$CERT_EXP_DATE</span> <span class="o">-</span> <span class="nv">$CURR_DATE</span> <span class="o">)</span> <span class="o">/</span> <span class="m">86400</span> <span class="k">))</span>
+
+<span class="k">if</span> <span class="o">[</span> <span class="nv">$DAYS_REMAINING</span> -lt <span class="m">0</span> <span class="o">]</span><span class="p">;</span> <span class="k">then</span>
+  <span class="nb">echo</span> <span class="s2">&quot;Certificat expiré  sur </span><span class="k">$(</span>hostname -f<span class="k">)</span><span class="s2">&quot;</span>
+  <span class="nb">exit</span> <span class="m">1</span><span class="p">;</span>
+<span class="k">fi</span>
+
+<span class="k">if</span> <span class="o">[</span> <span class="nv">$DAYS_REMAINING</span> -lt <span class="nv">$ALERT_X_DAY_BEFORE</span> <span class="o">]</span><span class="p">;</span> <span class="k">then</span>
+  <span class="nb">echo</span> <span class="s2">&quot;</span><span class="nv">$DAYS_REMAINING</span><span class="s2"> jours avant expiration sur </span><span class="k">$(</span>hostname -f<span class="k">)</span><span class="s2">&quot;</span>
+  <span class="nb">exit</span> <span class="m">1</span><span class="p">;</span>
+<span class="k">fi</span>
+</code></pre></div>
+    </div><!-- /.entry-content -->
+
+  </article>
+</section>
+        <section id="extras" class="body">
+                <div class="blogroll">
+                        <h2>links</h2>
+                        <ul>
+                            <li><a href="https://getpelican.com/">Pelican</a></li>
+                            <li><a href="https://www.python.org/">Python.org</a></li>
+                            <li><a href="https://palletsprojects.com/p/jinja/">Jinja2</a></li>
+                        </ul>
+                </div><!-- /.blogroll -->
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+                            <li><a href="https://fallen70.github.io/workbook/feeds/all.atom.xml" type="application/atom+xml" rel="alternate">atom feed</a></li>
+
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="https://getpelican.com/">Pelican</a>, which takes great advantage of <a href="https://www.python.org/">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="https://www.smashingmagazine.com/2009/08/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>

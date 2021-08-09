@@ -1,5 +1,190 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>WorkBook - Linux</title><link href="https://fallen70.github.io/workbook/" rel="alternate"></link><link href="https://fallen70.github.io/workbook/feeds/linux.atom.xml" rel="self"></link><id>https://fallen70.github.io/workbook/</id><updated>2021-08-06T13:50:00+02:00</updated><entry><title>Cacher information Serveur</title><link href="https://fallen70.github.io/workbook/cacher-information-serveur.html" rel="alternate"></link><published>2021-08-06T13:50:00+02:00</published><updated>2021-08-06T13:50:00+02:00</updated><author><name>Fallen70</name></author><id>tag:fallen70.github.io,2021-08-06:/workbook/cacher-information-serveur.html</id><summary type="html">&lt;p&gt;Source :&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>WorkBook - Linux</title><link href="https://fallen70.github.io/workbook/" rel="alternate"></link><link href="https://fallen70.github.io/workbook/feeds/linux.atom.xml" rel="self"></link><id>https://fallen70.github.io/workbook/</id><updated>2021-08-09T17:00:00+02:00</updated><entry><title>Télecharger certificats</title><link href="https://fallen70.github.io/workbook/telecharger-certificats.html" rel="alternate"></link><published>2021-08-09T17:00:00+02:00</published><updated>2021-08-09T17:00:00+02:00</updated><author><name>Fallen70</name></author><id>tag:fallen70.github.io,2021-08-09:/workbook/telecharger-certificats.html</id><content type="html">&lt;p&gt;Récupére tous les certificats affiché par &lt;code&gt;$HOST:$PORT&lt;/code&gt;.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;rm -rf /tmp/certs/
+mkdir -p /tmp/certs/
+openssl s_client -showcerts -connect &lt;span class="nv"&gt;$HOST&lt;/span&gt;:&lt;span class="nv"&gt;$PORT&lt;/span&gt; &amp;lt;/dev/null &lt;span class="m"&gt;2&lt;/span&gt;&amp;gt;/dev/null &lt;span class="p"&gt;|&lt;/span&gt; sed -n &lt;span class="s2"&gt;&amp;quot;/BEGIN CERTIFICATE/,/END CERTIFICATE/p&amp;quot;&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt; awk &lt;span class="s1"&gt;&amp;#39;BEGIN {c=0;} /BEGIN CERT/{c++} { print &amp;gt; &amp;quot;/tmp/certs/cert.&amp;quot; c &amp;quot;.pem&amp;quot;}&amp;#39;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content><category term="Linux"></category><category term="admin-sys"></category><category term="openssl"></category></entry><entry><title>Génération de certificat</title><link href="https://fallen70.github.io/workbook/generation-de-certificat.html" rel="alternate"></link><published>2021-08-09T16:50:00+02:00</published><updated>2021-08-09T16:50:00+02:00</updated><author><name>Fallen70</name></author><id>tag:fallen70.github.io,2021-08-09:/workbook/generation-de-certificat.html</id><summary type="html">&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="ch"&gt;#!/bin/bash&lt;/span&gt;
+
+&lt;span class="c1"&gt;# Nettoyage du dossier temporaire cible&lt;/span&gt;
+rm -rf /tmp/@option.host@
+mkdir -p /tmp/@option.host@
+
+&lt;span class="c1"&gt;# Définition des fichiers cible&lt;/span&gt;
+&lt;span class="nb"&gt;export&lt;/span&gt; &lt;span class="nv"&gt;host&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;server.name&amp;quot;&lt;/span&gt;
+&lt;span class="nb"&gt;export&lt;/span&gt; &lt;span class="nv"&gt;key&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;/tmp/&amp;#39;&lt;/span&gt;&lt;span class="nv"&gt;$host&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;/&amp;#39;&lt;/span&gt;&lt;span class="nv"&gt;$host&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;.key&amp;#39;&lt;/span&gt;
+&lt;span class="nb"&gt;export&lt;/span&gt; &lt;span class="nv"&gt;csr&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;/tmp/&amp;#39;&lt;/span&gt;&lt;span class="nv"&gt;$host&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;/&amp;#39;&lt;/span&gt;&lt;span class="nv"&gt;$host&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;.csr&amp;#39;&lt;/span&gt;
+&lt;span class="nb"&gt;export&lt;/span&gt; &lt;span class="nv"&gt;srl&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;/tmp/&amp;#39;&lt;/span&gt;&lt;span class="nv"&gt;$host&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;/&amp;#39;&lt;/span&gt;&lt;span class="nv"&gt;$host&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;.srl&amp;#39;&lt;/span&gt;
+&lt;span class="nb"&gt;export&lt;/span&gt; &lt;span class="nv"&gt;crt&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;/tmp/&amp;#39;&lt;/span&gt;&lt;span class="nv"&gt;$host&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;/&amp;#39;&lt;/span&gt;&lt;span class="nv"&gt;$host&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;.crt&amp;#39;&lt;/span&gt;
+
+&lt;span class="c1"&gt;#-- generate …&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</summary><content type="html">&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="ch"&gt;#!/bin/bash&lt;/span&gt;
+
+&lt;span class="c1"&gt;# Nettoyage du dossier temporaire cible&lt;/span&gt;
+rm -rf /tmp/@option.host@
+mkdir -p /tmp/@option.host@
+
+&lt;span class="c1"&gt;# Définition des fichiers cible&lt;/span&gt;
+&lt;span class="nb"&gt;export&lt;/span&gt; &lt;span class="nv"&gt;host&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;server.name&amp;quot;&lt;/span&gt;
+&lt;span class="nb"&gt;export&lt;/span&gt; &lt;span class="nv"&gt;key&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;/tmp/&amp;#39;&lt;/span&gt;&lt;span class="nv"&gt;$host&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;/&amp;#39;&lt;/span&gt;&lt;span class="nv"&gt;$host&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;.key&amp;#39;&lt;/span&gt;
+&lt;span class="nb"&gt;export&lt;/span&gt; &lt;span class="nv"&gt;csr&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;/tmp/&amp;#39;&lt;/span&gt;&lt;span class="nv"&gt;$host&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;/&amp;#39;&lt;/span&gt;&lt;span class="nv"&gt;$host&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;.csr&amp;#39;&lt;/span&gt;
+&lt;span class="nb"&gt;export&lt;/span&gt; &lt;span class="nv"&gt;srl&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;/tmp/&amp;#39;&lt;/span&gt;&lt;span class="nv"&gt;$host&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;/&amp;#39;&lt;/span&gt;&lt;span class="nv"&gt;$host&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;.srl&amp;#39;&lt;/span&gt;
+&lt;span class="nb"&gt;export&lt;/span&gt; &lt;span class="nv"&gt;crt&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;/tmp/&amp;#39;&lt;/span&gt;&lt;span class="nv"&gt;$host&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;/&amp;#39;&lt;/span&gt;&lt;span class="nv"&gt;$host&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;.crt&amp;#39;&lt;/span&gt;
+
+&lt;span class="c1"&gt;#-- generate key&lt;/span&gt;
+openssl genrsa -out &lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;key&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;  &lt;span class="nv"&gt;$RD_OPTION_KEY_SIZE&lt;/span&gt;
+
+&lt;span class="c1"&gt;#-- generate csr&lt;/span&gt;
+openssl req -new -key &lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;key&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt; -out &lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;csr&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt; -subj &lt;span class="s2"&gt;&amp;quot;/CN=@option.host@&amp;quot;&lt;/span&gt;
+
+&lt;span class="c1"&gt;#-- generate self siging key&lt;/span&gt;
+openssl x509 -req -days &lt;span class="nv"&gt;$RD_OPTION_KEY_DURATION&lt;/span&gt; -in &lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;csr&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt; -signkey &lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;key&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt; -out &lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;crt&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;
+
+&lt;span class="c1"&gt;#-- cleanup&lt;/span&gt;
+rm -f &lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;srl&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content><category term="Linux"></category><category term="admin-sys"></category><category term="openssl"></category></entry><entry><title>Vérifier la date de fin d'un certificat SSL</title><link href="https://fallen70.github.io/workbook/verifier-la-date-de-fin-dun-certificat-ssl.html" rel="alternate"></link><published>2021-08-09T16:20:00+02:00</published><updated>2021-08-09T16:20:00+02:00</updated><author><name>Fallen70</name></author><id>tag:fallen70.github.io,2021-08-09:/workbook/verifier-la-date-de-fin-dun-certificat-ssl.html</id><summary type="html">&lt;p&gt;Le script a pour but d'être éxécuter sur la machine cible en local avec un outil type rundeck.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="ch"&gt;#!/bin/sh&lt;/span&gt;
+
+&lt;span class="nv"&gt;HOSTNAME&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;localhost&amp;quot;&lt;/span&gt;
+&lt;span class="nv"&gt;PORT&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;443&amp;quot;&lt;/span&gt;
+&lt;span class="nv"&gt;ALERT_X_DAY_BEFORE&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="m"&gt;10&lt;/span&gt;
+
+&lt;span class="c1"&gt;# Get current date as timestamp&lt;/span&gt;
+&lt;span class="nv"&gt;CURR_DATE&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="k"&gt;$(&lt;/span&gt;date +%s&lt;span class="k"&gt;)&lt;/span&gt;
+
+&lt;span class="c1"&gt;# Get enddate from certificate of hostname:port identified&lt;/span&gt;
+&lt;span class="nv"&gt;CERT_DATE_AS_STRING&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="k"&gt;$(&lt;/span&gt;&lt;span class="nb"&gt;echo&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt; openssl s_client -connect &lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;HOSTNAME&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;:&lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;PORT&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt; &lt;span class="m"&gt;2 …&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</summary><content type="html">&lt;p&gt;Le script a pour but d'être éxécuter sur la machine cible en local avec un outil type rundeck.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="ch"&gt;#!/bin/sh&lt;/span&gt;
+
+&lt;span class="nv"&gt;HOSTNAME&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;localhost&amp;quot;&lt;/span&gt;
+&lt;span class="nv"&gt;PORT&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;443&amp;quot;&lt;/span&gt;
+&lt;span class="nv"&gt;ALERT_X_DAY_BEFORE&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="m"&gt;10&lt;/span&gt;
+
+&lt;span class="c1"&gt;# Get current date as timestamp&lt;/span&gt;
+&lt;span class="nv"&gt;CURR_DATE&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="k"&gt;$(&lt;/span&gt;date +%s&lt;span class="k"&gt;)&lt;/span&gt;
+
+&lt;span class="c1"&gt;# Get enddate from certificate of hostname:port identified&lt;/span&gt;
+&lt;span class="nv"&gt;CERT_DATE_AS_STRING&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="k"&gt;$(&lt;/span&gt;&lt;span class="nb"&gt;echo&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt; openssl s_client -connect &lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;HOSTNAME&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;:&lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;PORT&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt; &lt;span class="m"&gt;2&lt;/span&gt;&amp;gt;/dev/null &lt;span class="p"&gt;|&lt;/span&gt; openssl x509 -enddate -noout &lt;span class="p"&gt;|&lt;/span&gt; cut -d &lt;span class="s1"&gt;&amp;#39;=&amp;#39;&lt;/span&gt; -f &lt;span class="m"&gt;2&lt;/span&gt;&lt;span class="k"&gt;)&lt;/span&gt;                                                                            
+
+&lt;span class="nv"&gt;CERT_EXP_DATE&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="k"&gt;$(&lt;/span&gt;date --date&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;CERT_DATE_AS_STRING&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt; +%s&lt;span class="k"&gt;)&lt;/span&gt;
+
+&lt;span class="nv"&gt;DAYS_REMAINING&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="k"&gt;$((&lt;/span&gt; &lt;span class="o"&gt;(&lt;/span&gt; &lt;span class="nv"&gt;$CERT_EXP_DATE&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="nv"&gt;$CURR_DATE&lt;/span&gt; &lt;span class="o"&gt;)&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt; &lt;span class="m"&gt;86400&lt;/span&gt; &lt;span class="k"&gt;))&lt;/span&gt;
+
+&lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="o"&gt;[&lt;/span&gt; &lt;span class="nv"&gt;$DAYS_REMAINING&lt;/span&gt; -lt &lt;span class="m"&gt;0&lt;/span&gt; &lt;span class="o"&gt;]&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="k"&gt;then&lt;/span&gt;
+  &lt;span class="nb"&gt;echo&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;Certificat expiré  sur &lt;/span&gt;&lt;span class="k"&gt;$(&lt;/span&gt;hostname -f&lt;span class="k"&gt;)&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;
+  &lt;span class="nb"&gt;exit&lt;/span&gt; &lt;span class="m"&gt;1&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="k"&gt;fi&lt;/span&gt;
+
+&lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="o"&gt;[&lt;/span&gt; &lt;span class="nv"&gt;$DAYS_REMAINING&lt;/span&gt; -lt &lt;span class="nv"&gt;$ALERT_X_DAY_BEFORE&lt;/span&gt; &lt;span class="o"&gt;]&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="k"&gt;then&lt;/span&gt;
+  &lt;span class="nb"&gt;echo&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="nv"&gt;$DAYS_REMAINING&lt;/span&gt;&lt;span class="s2"&gt; jours avant expiration sur &lt;/span&gt;&lt;span class="k"&gt;$(&lt;/span&gt;hostname -f&lt;span class="k"&gt;)&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;
+  &lt;span class="nb"&gt;exit&lt;/span&gt; &lt;span class="m"&gt;1&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="k"&gt;fi&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content><category term="Linux"></category><category term="admin-sys"></category><category term="openssl"></category></entry><entry><title>OpenSSL CheatSheat</title><link href="https://fallen70.github.io/workbook/openssl-cheatsheat.html" rel="alternate"></link><published>2021-08-09T16:00:00+02:00</published><updated>2021-08-09T16:00:00+02:00</updated><author><name>Fallen70</name></author><id>tag:fallen70.github.io,2021-08-09:/workbook/openssl-cheatsheat.html</id><summary type="html">&lt;p&gt;Sources :&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://www.kinamo.fr/fr/support/faq/commandes-openssl-utiles"&gt;https://www.kinamo.fr/fr/support/faq/commandes-openssl-utiles&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://www.system-linux.eu/index.php?post/2017/03/03/Convertir-un-fichier-pfx-en-crt-et-key"&gt;https://www.system-linux.eu/index.php?post/2017/03/03/Convertir-un-fichier-pfx-en-crt-et-key&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1&gt;OpenSSL - commandes utiles&lt;/h1&gt;
+&lt;h2&gt;Comment se servir d'OpenSSL?&lt;/h2&gt;
+&lt;p&gt;OpenSSL est véritablement le couteau suisse de la gestion de certificats, mais à l'instar du canif suisse, on passe un temps fou à …&lt;/p&gt;</summary><content type="html">&lt;p&gt;Sources :&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://www.kinamo.fr/fr/support/faq/commandes-openssl-utiles"&gt;https://www.kinamo.fr/fr/support/faq/commandes-openssl-utiles&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://www.system-linux.eu/index.php?post/2017/03/03/Convertir-un-fichier-pfx-en-crt-et-key"&gt;https://www.system-linux.eu/index.php?post/2017/03/03/Convertir-un-fichier-pfx-en-crt-et-key&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1&gt;OpenSSL - commandes utiles&lt;/h1&gt;
+&lt;h2&gt;Comment se servir d'OpenSSL?&lt;/h2&gt;
+&lt;p&gt;OpenSSL est véritablement le couteau suisse de la gestion de certificats, mais à l'instar du canif suisse, on passe un temps fou à essayer de distinguer la lime à ongles du tire-bouchon. Vous trouverez ci-dessous une liste des commandes les plus fréquemment utilisées.&lt;/p&gt;
+&lt;h2&gt;Demandes de certificats et gestion de clés&lt;/h2&gt;
+&lt;p&gt;Si vous avez commandé un certificat, il faut générer une demande de certificat pour finaliser la commande. Vous pouvez le faire comme suivant, avec une nouvelle private key:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;openssl req -sha256 -nodes -newkey rsa:2048 -keyout www.server.com.key -out www.server.com.csr
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Vous pouvez également employer le Générateur de CSR Kinamo pour créer votre CSR.
+Générer une nouvelle demande de certificat à base d'une clé existante:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;openssl req -new -sha256 -key www.server.com.key -out www.server.com.csr
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Générer une demande de certificat à base d'un certificat existant:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;openssl x509 -x509toreq -in www.server.com.crt -out www.server.com.csr -signkey www.server.com.key
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Générer une nouvelle clé RSA:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;openssl genrsa -out www.server.com.key &lt;span class="m"&gt;2048&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Générer une nouvelle clé ECC:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;openssl ecparam -out server.key -name prime256v1 -genkey
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Générer un certificat auto-signé (self-signed) pour des tests:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;openssl req -x509 -newkey rsa:2048 -nodes -keyout www.server.com.key -out www.server.com.crt -days &lt;span class="m"&gt;365&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h2&gt;Afficher et contrôler les certificats&lt;/h2&gt;
+&lt;p&gt;Contrôler et afficher une demande de certificat:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;openssl req -noout -text -verify -in www.server.com.csr
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Contrôler et afficher une clé privée et publique:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;openssl rsa -noout -text -check -in www.server.com.key
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Afficher le contenu décodé d'un certificat en format PEM:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;openssl x509 -noout -text -in www.server.com.crt
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Afficher le contenu d'un certificat en format PKCS#7:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;openssl pkcs7 -print_certs -in www.server.com.p7b
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Afficher le contenu d'un certificat et d'une clé en format PKCS#12:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;openssl pkcs12 -info -in www.server.com.pfx
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Contrôler une connection SSL et afficher tous les certificats intermédiaires:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;openssl s_client -connect www.server.com:443
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Contrôler si un certificat, une demande de certificat et une clé ont la même clé publique:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;openssl x509 -noout -modulus www.server.com.crt &lt;span class="p"&gt;|&lt;/span&gt; openssl sha256
+openssl req -noout -modulus www.server.com.csr &lt;span class="p"&gt;|&lt;/span&gt; openssl sha256
+openssl rsa -noout -modulus www.server.com.key &lt;span class="p"&gt;|&lt;/span&gt; openssl sha256
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h2&gt;Convertir des certificats&lt;/h2&gt;
+&lt;p&gt;Conversion d'un fichier PKCS#12 ( .pfx .p12, typiquement utulisé sur Microsoft Windows) contenant clé privée et certificat vers le format PEM (utilisé sur Linux):&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;openssl pkcs12 -nodes -in www.server.com.pfx -out www.server.com.crt
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Conversion du format PEM vers le format PKCS#12:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;openssl pkcs12 -export -in www.server.com.crt -inkey www.server.com.key -out www.server.com.pfx
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Conversion du format PKCS#7 ( .p7b .p7c ) vers le format PEM:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;openssl pkcs7 -print_certs -in www.server.com.p7b -out www.server.com.crt  
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Conversion du format PEM vers le format PKCS#7:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;openssl crl2pkcs7 -nocrl -certfile www.server.com.crt -out www.server.com.p7b
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Conversion du format DER (.crt .cer ou .der) vers le format PEM:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;openssl x509 -inform der -in certificate.cer -out certificate.pem
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h2&gt;Extraire la clef :&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;openssl pkcs12 -in votre.pfx -nocerts -out votre.key -nodes
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h2&gt;Extraire le certificat :&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;openssl pkcs12 -in votre.pfx -clcerts -nokeys -out votre.crt
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h2&gt;Créer le fullchain.pem&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;openssl pkcs12 -in votre.pfx -out fullchain.pem -nodes
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h2&gt;Générer une demande de certificat à base d'un certificat existant:&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;openssl x509 -x509toreq -in www.server.com.crt -out www.server.com.csr -signkey ww.server.com.key
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content><category term="Linux"></category><category term="admin-sys"></category><category term="openssl"></category></entry><entry><title>Cacher information Serveur</title><link href="https://fallen70.github.io/workbook/cacher-information-serveur.html" rel="alternate"></link><published>2021-08-06T13:50:00+02:00</published><updated>2021-08-06T13:50:00+02:00</updated><author><name>Fallen70</name></author><id>tag:fallen70.github.io,2021-08-06:/workbook/cacher-information-serveur.html</id><summary type="html">&lt;p&gt;Source :&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href="https://www.if-not-true-then-false.com/2009/howto-hide-and-modify-apache-server-information-serversignature-and-servertokens-and-hide-php-version-x-powered-by/"&gt;https://www.if-not-true-then-false.com/2009/howto-hide-and-modify-apache-server-information-serversignature-and-servertokens-and-hide-php-version-x-powered-by/&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;

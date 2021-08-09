@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+        <meta charset="utf-8" />
+        <meta name="generator" content="Pelican" />
+        <title>WorkBook - openssl</title>
+        <link rel="stylesheet" href="https://fallen70.github.io/workbook/theme/css/main.css" />
+        <link href="https://fallen70.github.io/workbook/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="WorkBook Atom Feed" />
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="https://fallen70.github.io/workbook/">WorkBook</a></h1>
+                <nav><ul>
+                    <li><a href="https://fallen70.github.io/workbook/category/curl.html">Curl</a></li>
+                    <li><a href="https://fallen70.github.io/workbook/category/linux.html">Linux</a></li>
+                    <li><a href="https://fallen70.github.io/workbook/category/vim.html">Vim</a></li>
+                    <li><a href="https://fallen70.github.io/workbook/category/virtualbox.html">Virtualbox</a></li>
+                </ul></nav>
+        </header><!-- /#banner -->
+
+            <aside id="featured" class="body">
+                <article>
+                    <h1 class="entry-title"><a href="https://fallen70.github.io/workbook/telecharger-certificats.html">Télecharger certificats</a></h1>
+<footer class="post-info">
+        <abbr class="published" title="2021-08-09T17:00:00+02:00">
+                Publié le: 09-août-2021
+        </abbr>
+
+        <address class="vcard author">
+                Par                         <a class="url fn" href="https://fallen70.github.io/workbook/author/fallen70.html">Fallen70</a>
+        </address>
+<p>Dans <a href="https://fallen70.github.io/workbook/category/linux.html">Linux</a>.</p>
+<p>Tags: <a href="https://fallen70.github.io/workbook/tag/admin-sys.html">admin-sys</a> <a href="https://fallen70.github.io/workbook/tag/openssl.html">openssl</a> </p>
+</footer><!-- /.post-info --><p>Récupére tous les certificats affiché par <code>$HOST:$PORT</code>.</p>
+<div class="highlight"><pre><span></span><code>rm -rf /tmp/certs/
+mkdir -p /tmp/certs/
+openssl s_client -showcerts -connect <span class="nv">$HOST</span>:<span class="nv">$PORT</span> &lt;/dev/null <span class="m">2</span>&gt;/dev/null <span class="p">|</span> sed -n <span class="s2">&quot;/BEGIN CERTIFICATE/,/END CERTIFICATE/p&quot;</span> <span class="p">|</span> awk <span class="s1">&#39;BEGIN {c=0;} /BEGIN CERT/{c++} { print &gt; &quot;/tmp/certs/cert.&quot; c &quot;.pem&quot;}&#39;</span>
+</code></pre></div>                </article>
+            </aside><!-- /#featured -->
+                <section id="content" class="body">
+                    <h1>Other articles</h1>
+                    <hr />
+                    <ol id="posts-list" class="hfeed">
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="https://fallen70.github.io/workbook/generation-de-certificat.html" rel="bookmark"
+                           title="Permalink to Génération de certificat">Génération de certificat</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2021-08-09T16:50:00+02:00">
+                Publié le: 09-août-2021
+        </abbr>
+
+        <address class="vcard author">
+                Par                         <a class="url fn" href="https://fallen70.github.io/workbook/author/fallen70.html">Fallen70</a>
+        </address>
+<p>Dans <a href="https://fallen70.github.io/workbook/category/linux.html">Linux</a>.</p>
+<p>Tags: <a href="https://fallen70.github.io/workbook/tag/admin-sys.html">admin-sys</a> <a href="https://fallen70.github.io/workbook/tag/openssl.html">openssl</a> </p>
+</footer><!-- /.post-info -->                <div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
+
+<span class="c1"># Nettoyage du dossier temporaire cible</span>
+rm -rf /tmp/@option.host@
+mkdir -p /tmp/@option.host@
+
+<span class="c1"># Définition des fichiers cible</span>
+<span class="nb">export</span> <span class="nv">host</span><span class="o">=</span><span class="s2">&quot;server.name&quot;</span>
+<span class="nb">export</span> <span class="nv">key</span><span class="o">=</span><span class="s1">&#39;/tmp/&#39;</span><span class="nv">$host</span><span class="s1">&#39;/&#39;</span><span class="nv">$host</span><span class="s1">&#39;.key&#39;</span>
+<span class="nb">export</span> <span class="nv">csr</span><span class="o">=</span><span class="s1">&#39;/tmp/&#39;</span><span class="nv">$host</span><span class="s1">&#39;/&#39;</span><span class="nv">$host</span><span class="s1">&#39;.csr&#39;</span>
+<span class="nb">export</span> <span class="nv">srl</span><span class="o">=</span><span class="s1">&#39;/tmp/&#39;</span><span class="nv">$host</span><span class="s1">&#39;/&#39;</span><span class="nv">$host</span><span class="s1">&#39;.srl&#39;</span>
+<span class="nb">export</span> <span class="nv">crt</span><span class="o">=</span><span class="s1">&#39;/tmp/&#39;</span><span class="nv">$host</span><span class="s1">&#39;/&#39;</span><span class="nv">$host</span><span class="s1">&#39;.crt&#39;</span>
+
+<span class="c1">#-- generate …</span></code></pre></div>
+                <a class="readmore" href="https://fallen70.github.io/workbook/generation-de-certificat.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="https://fallen70.github.io/workbook/verifier-la-date-de-fin-dun-certificat-ssl.html" rel="bookmark"
+                           title="Permalink to Vérifier la date de fin d'un certificat SSL">Vérifier la date de fin d'un certificat SSL</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2021-08-09T16:20:00+02:00">
+                Publié le: 09-août-2021
+        </abbr>
+
+        <address class="vcard author">
+                Par                         <a class="url fn" href="https://fallen70.github.io/workbook/author/fallen70.html">Fallen70</a>
+        </address>
+<p>Dans <a href="https://fallen70.github.io/workbook/category/linux.html">Linux</a>.</p>
+<p>Tags: <a href="https://fallen70.github.io/workbook/tag/admin-sys.html">admin-sys</a> <a href="https://fallen70.github.io/workbook/tag/openssl.html">openssl</a> </p>
+</footer><!-- /.post-info -->                <p>Le script a pour but d'être éxécuter sur la machine cible en local avec un outil type rundeck.</p>
+<div class="highlight"><pre><span></span><code><span class="ch">#!/bin/sh</span>
+
+<span class="nv">HOSTNAME</span><span class="o">=</span><span class="s2">&quot;localhost&quot;</span>
+<span class="nv">PORT</span><span class="o">=</span><span class="s2">&quot;443&quot;</span>
+<span class="nv">ALERT_X_DAY_BEFORE</span><span class="o">=</span><span class="m">10</span>
+
+<span class="c1"># Get current date as timestamp</span>
+<span class="nv">CURR_DATE</span><span class="o">=</span><span class="k">$(</span>date +%s<span class="k">)</span>
+
+<span class="c1"># Get enddate from certificate of hostname:port identified</span>
+<span class="nv">CERT_DATE_AS_STRING</span><span class="o">=</span><span class="k">$(</span><span class="nb">echo</span> <span class="p">|</span> openssl s_client -connect <span class="si">${</span><span class="nv">HOSTNAME</span><span class="si">}</span>:<span class="si">${</span><span class="nv">PORT</span><span class="si">}</span> <span class="m">2 …</span></code></pre></div>
+                <a class="readmore" href="https://fallen70.github.io/workbook/verifier-la-date-de-fin-dun-certificat-ssl.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="https://fallen70.github.io/workbook/openssl-cheatsheat.html" rel="bookmark"
+                           title="Permalink to OpenSSL CheatSheat">OpenSSL CheatSheat</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2021-08-09T16:00:00+02:00">
+                Publié le: 09-août-2021
+        </abbr>
+
+        <address class="vcard author">
+                Par                         <a class="url fn" href="https://fallen70.github.io/workbook/author/fallen70.html">Fallen70</a>
+        </address>
+<p>Dans <a href="https://fallen70.github.io/workbook/category/linux.html">Linux</a>.</p>
+<p>Tags: <a href="https://fallen70.github.io/workbook/tag/admin-sys.html">admin-sys</a> <a href="https://fallen70.github.io/workbook/tag/openssl.html">openssl</a> </p>
+</footer><!-- /.post-info -->                <p>Sources :</p>
+<ul>
+<li><a href="https://www.kinamo.fr/fr/support/faq/commandes-openssl-utiles">https://www.kinamo.fr/fr/support/faq/commandes-openssl-utiles</a></li>
+<li><a href="https://www.system-linux.eu/index.php?post/2017/03/03/Convertir-un-fichier-pfx-en-crt-et-key">https://www.system-linux.eu/index.php?post/2017/03/03/Convertir-un-fichier-pfx-en-crt-et-key</a></li>
+</ul>
+<h1>OpenSSL - commandes utiles</h1>
+<h2>Comment se servir d'OpenSSL?</h2>
+<p>OpenSSL est véritablement le couteau suisse de la gestion de certificats, mais à l'instar du canif suisse, on passe un temps fou à …</p>
+                <a class="readmore" href="https://fallen70.github.io/workbook/openssl-cheatsheat.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+                </ol><!-- /#posts-list -->
+                </section><!-- /#content -->
+        <section id="extras" class="body">
+                <div class="blogroll">
+                        <h2>links</h2>
+                        <ul>
+                            <li><a href="https://getpelican.com/">Pelican</a></li>
+                            <li><a href="https://www.python.org/">Python.org</a></li>
+                            <li><a href="https://palletsprojects.com/p/jinja/">Jinja2</a></li>
+                        </ul>
+                </div><!-- /.blogroll -->
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+                            <li><a href="https://fallen70.github.io/workbook/feeds/all.atom.xml" type="application/atom+xml" rel="alternate">atom feed</a></li>
+
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="https://getpelican.com/">Pelican</a>, which takes great advantage of <a href="https://www.python.org/">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="https://www.smashingmagazine.com/2009/08/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>
