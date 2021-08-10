@@ -1,5 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>WorkBook</title><link href="https://fallen70.github.io/workbook/" rel="alternate"></link><link href="https://fallen70.github.io/workbook/feeds/all.atom.xml" rel="self"></link><id>https://fallen70.github.io/workbook/</id><updated>2021-08-09T17:00:00+02:00</updated><entry><title>Télecharger certificats</title><link href="https://fallen70.github.io/workbook/telecharger-certificats.html" rel="alternate"></link><published>2021-08-09T17:00:00+02:00</published><updated>2021-08-09T17:00:00+02:00</updated><author><name>Fallen70</name></author><id>tag:fallen70.github.io,2021-08-09:/workbook/telecharger-certificats.html</id><content type="html">&lt;p&gt;Récupére tous les certificats affiché par &lt;code&gt;$HOST:$PORT&lt;/code&gt;.&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>WorkBook</title><link href="https://fallen70.github.io/workbook/" rel="alternate"></link><link href="https://fallen70.github.io/workbook/feeds/all.atom.xml" rel="self"></link><id>https://fallen70.github.io/workbook/</id><updated>2021-08-10T10:50:00+02:00</updated><entry><title>Liste des services</title><link href="https://fallen70.github.io/workbook/liste-des-services.html" rel="alternate"></link><published>2021-08-10T10:50:00+02:00</published><updated>2021-08-10T10:50:00+02:00</updated><author><name>Fallen70</name></author><id>tag:fallen70.github.io,2021-08-10:/workbook/liste-des-services.html</id><content type="html">&lt;p&gt;Sources :&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://linoxide.com/how-to-list-services-in-linux/"&gt;https://linoxide.com/how-to-list-services-in-linux/&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Liste de tous les services&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;systemctl list-unit-files
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Recherche d'un service &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;systemctl &lt;span class="p"&gt;|&lt;/span&gt; grep &lt;span class="s2"&gt;&amp;quot;apache2&amp;quot;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Liste des services avec netstat&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;netstat -pnltu 
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content><category term="Linux"></category><category term="admin-sys"></category><category term="RedHat"></category></entry><entry><title>Télecharger certificats</title><link href="https://fallen70.github.io/workbook/telecharger-certificats.html" rel="alternate"></link><published>2021-08-09T17:00:00+02:00</published><updated>2021-08-09T17:00:00+02:00</updated><author><name>Fallen70</name></author><id>tag:fallen70.github.io,2021-08-09:/workbook/telecharger-certificats.html</id><content type="html">&lt;p&gt;Récupére tous les certificats affiché par &lt;code&gt;$HOST:$PORT&lt;/code&gt;.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;rm -rf /tmp/certs/
 mkdir -p /tmp/certs/
 openssl s_client -showcerts -connect &lt;span class="nv"&gt;$HOST&lt;/span&gt;:&lt;span class="nv"&gt;$PORT&lt;/span&gt; &amp;lt;/dev/null &lt;span class="m"&gt;2&lt;/span&gt;&amp;gt;/dev/null &lt;span class="p"&gt;|&lt;/span&gt; sed -n &lt;span class="s2"&gt;&amp;quot;/BEGIN CERTIFICATE/,/END CERTIFICATE/p&amp;quot;&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt; awk &lt;span class="s1"&gt;&amp;#39;BEGIN {c=0;} /BEGIN CERT/{c++} { print &amp;gt; &amp;quot;/tmp/certs/cert.&amp;quot; c &amp;quot;.pem&amp;quot;}&amp;#39;&lt;/span&gt;

@@ -21,7 +21,45 @@
 
             <aside id="featured" class="body">
                 <article>
-                    <h1 class="entry-title"><a href="https://fallen70.github.io/workbook/telecharger-certificats.html">Télecharger certificats</a></h1>
+                    <h1 class="entry-title"><a href="https://fallen70.github.io/workbook/liste-des-services.html">Liste des services</a></h1>
+<footer class="post-info">
+        <abbr class="published" title="2021-08-10T10:50:00+02:00">
+                Publié le: 10-août-2021
+        </abbr>
+
+        <address class="vcard author">
+                Par                         <a class="url fn" href="https://fallen70.github.io/workbook/author/fallen70.html">Fallen70</a>
+        </address>
+<p>Dans <a href="https://fallen70.github.io/workbook/category/linux.html">Linux</a>.</p>
+<p>Tags: <a href="https://fallen70.github.io/workbook/tag/admin-sys.html">admin-sys</a> <a href="https://fallen70.github.io/workbook/tag/redhat.html">RedHat</a> </p>
+</footer><!-- /.post-info --><p>Sources :</p>
+<ul>
+<li><a href="https://linoxide.com/how-to-list-services-in-linux/">https://linoxide.com/how-to-list-services-in-linux/</a></li>
+</ul>
+<p>Liste de tous les services</p>
+<div class="highlight"><pre><span></span><code>systemctl list-unit-files
+</code></pre></div>
+
+<p>Recherche d'un service </p>
+<div class="highlight"><pre><span></span><code>systemctl <span class="p">|</span> grep <span class="s2">&quot;apache2&quot;</span>
+</code></pre></div>
+
+<p>Liste des services avec netstat</p>
+<div class="highlight"><pre><span></span><code>netstat -pnltu 
+</code></pre></div>                </article>
+            </aside><!-- /#featured -->
+                <section id="content" class="body">
+                    <h1>Other articles</h1>
+                    <hr />
+                    <ol id="posts-list" class="hfeed">
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="https://fallen70.github.io/workbook/telecharger-certificats.html" rel="bookmark"
+                           title="Permalink to Télecharger certificats">Télecharger certificats</a></h1>
+                </header>
+
+                <div class="entry-content">
 <footer class="post-info">
         <abbr class="published" title="2021-08-09T17:00:00+02:00">
                 Publié le: 09-août-2021
@@ -32,16 +70,14 @@
         </address>
 <p>Dans <a href="https://fallen70.github.io/workbook/category/linux.html">Linux</a>.</p>
 <p>Tags: <a href="https://fallen70.github.io/workbook/tag/admin-sys.html">admin-sys</a> <a href="https://fallen70.github.io/workbook/tag/openssl.html">openssl</a> </p>
-</footer><!-- /.post-info --><p>Récupére tous les certificats affiché par <code>$HOST:$PORT</code>.</p>
+</footer><!-- /.post-info -->                <p>Récupére tous les certificats affiché par <code>$HOST:$PORT</code>.</p>
 <div class="highlight"><pre><span></span><code>rm -rf /tmp/certs/
 mkdir -p /tmp/certs/
 openssl s_client -showcerts -connect <span class="nv">$HOST</span>:<span class="nv">$PORT</span> &lt;/dev/null <span class="m">2</span>&gt;/dev/null <span class="p">|</span> sed -n <span class="s2">&quot;/BEGIN CERTIFICATE/,/END CERTIFICATE/p&quot;</span> <span class="p">|</span> awk <span class="s1">&#39;BEGIN {c=0;} /BEGIN CERT/{c++} { print &gt; &quot;/tmp/certs/cert.&quot; c &quot;.pem&quot;}&#39;</span>
-</code></pre></div>                </article>
-            </aside><!-- /#featured -->
-                <section id="content" class="body">
-                    <h1>Other articles</h1>
-                    <hr />
-                    <ol id="posts-list" class="hfeed">
+</code></pre></div>
+                <a class="readmore" href="https://fallen70.github.io/workbook/telecharger-certificats.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
 
             <li><article class="hentry">
                 <header>
