@@ -23,6 +23,14 @@ jobs:
           shell: bash
           run: "pip install -r requirements.txt"
 
+        - name: Set LC_ALL 
+          shell: bash
+          run: "export LC_ALL='en_US.UTF-8'"
+
+        - name: Set LC_CTYPE 
+          shell: bash
+          run: "export LC_CTYPE='en_US.UTF-8'"
+
         - name: Build the project
           shell: bash
           run: "pelican content -o output -s publishconf.py"
