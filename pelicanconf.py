@@ -12,7 +12,7 @@ TIMEZONE = 'Europe/Paris'
 DEFAULT_LANG = 'fr'
 # On Unix/Linux
 DATE_FORMATS = {
-    'fr': ( "fr_FR" , "%d-%b-%Y" ),
+    'fr': ( "fr_FR.UTF-8" , "%d-%b-%Y" ),
 }
 
 # Feed generation is usually not desired when developing
