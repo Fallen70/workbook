@@ -48,21 +48,21 @@
 </code></pre></div>
 
 <p>Saisissez ces quelques lignes :</p>
-<div class="highlight"><pre><span></span><code>  <span class="o">/</span><span class="k">var</span><span class="o">/</span><span class="nb">log</span><span class="o">/</span><span class="n">maillog</span> <span class="p">{</span>
-  <span class="n">daily</span>
-  <span class="n">missingok</span>
-  <span class="n">rotate</span> <span class="mi">52</span>
-  <span class="n">compress</span>
-  <span class="n">delaycompress</span>
-  <span class="n">notifempty</span>
-  <span class="n">create</span> <span class="mi">640</span> <span class="n">root</span>
-  <span class="n">sharedscripts</span>
-  <span class="n">postrotate</span>
-  <span class="k">if</span> <span class="p">[</span> <span class="o">-</span><span class="n">f</span> <span class="o">/</span><span class="k">var</span><span class="o">/</span><span class="n">run</span><span class="o">/</span><span class="n">postfix</span><span class="o">.</span><span class="n">pid</span> <span class="p">];</span> <span class="n">then</span>
-  <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">init</span><span class="o">.</span><span class="n">d</span><span class="o">/</span><span class="n">postfix</span> <span class="n">reload</span> <span class="o">&gt;</span> <span class="o">/</span><span class="n">dev</span><span class="o">/</span><span class="nb nb-Type">null</span>
-  <span class="n">fi</span>
-  <span class="n">endscript</span>
-  <span class="p">}</span>
+<div class="highlight"><pre><span></span><code><span class="w">  </span><span class="o">/</span><span class="k">var</span><span class="o">/</span><span class="nb">log</span><span class="o">/</span><span class="n">maillog</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="n">daily</span><span class="w"></span>
+<span class="w">  </span><span class="n">missingok</span><span class="w"></span>
+<span class="w">  </span><span class="n">rotate</span><span class="w"> </span><span class="mi">52</span><span class="w"></span>
+<span class="w">  </span><span class="n">compress</span><span class="w"></span>
+<span class="w">  </span><span class="n">delaycompress</span><span class="w"></span>
+<span class="w">  </span><span class="n">notifempty</span><span class="w"></span>
+<span class="w">  </span><span class="n">create</span><span class="w"> </span><span class="mi">640</span><span class="w"> </span><span class="n">root</span><span class="w"></span>
+<span class="w">  </span><span class="n">sharedscripts</span><span class="w"></span>
+<span class="w">  </span><span class="n">postrotate</span><span class="w"></span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="o">-</span><span class="n">f</span><span class="w"> </span><span class="o">/</span><span class="k">var</span><span class="o">/</span><span class="n">run</span><span class="o">/</span><span class="n">postfix</span><span class="o">.</span><span class="n">pid</span><span class="w"> </span><span class="p">];</span><span class="w"> </span><span class="n">then</span><span class="w"></span>
+<span class="w">  </span><span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">init</span><span class="o">.</span><span class="n">d</span><span class="o">/</span><span class="n">postfix</span><span class="w"> </span><span class="n">reload</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="o">/</span><span class="n">dev</span><span class="o">/</span><span class="nb nb-Type">null</span><span class="w"></span>
+<span class="w">  </span><span class="n">fi</span><span class="w"></span>
+<span class="w">  </span><span class="n">endscript</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
 </code></pre></div>
 
 <p><strong>/var/log/maillog</strong> : Correspond au fichier log à utiliser</p>
