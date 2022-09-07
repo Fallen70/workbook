@@ -9,15 +9,16 @@ jobs:
         runs-on: ubuntu-latest
 
         steps:
+
         - name: fr_FR.UTF-8
           run: |
               sudo locale-gen fr_FR.UTF-8
               sudo update-locale LANG=fr_FR.UTF-8
+
         - name: date
           run: |
               date
 
-        steps:
         - uses: actions/checkout@v1
 
         - name: Set up Python 3.8
