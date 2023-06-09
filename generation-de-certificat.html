@@ -15,6 +15,7 @@
                 <nav><ul>
                     <li><a href="https://fallen70.github.io/workbook/category/curl.html">Curl</a></li>
                     <li class="active"><a href="https://fallen70.github.io/workbook/category/linux.html">Linux</a></li>
+                    <li><a href="https://fallen70.github.io/workbook/category/python.html">Python</a></li>
                     <li><a href="https://fallen70.github.io/workbook/category/vim.html">Vim</a></li>
                     <li><a href="https://fallen70.github.io/workbook/category/virtualbox.html">Virtualbox</a></li>
                 </ul></nav>
@@ -41,27 +42,27 @@
 </footer><!-- /.post-info -->      <div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
 
 <span class="c1"># Nettoyage du dossier temporaire cible</span>
-rm -rf /tmp/@option.host@
-mkdir -p /tmp/@option.host@
+rm<span class="w"> </span>-rf<span class="w"> </span>/tmp/@option.host@
+mkdir<span class="w"> </span>-p<span class="w"> </span>/tmp/@option.host@
 
 <span class="c1"># Définition des fichiers cible</span>
-<span class="nb">export</span> <span class="nv">host</span><span class="o">=</span><span class="s2">&quot;server.name&quot;</span>
-<span class="nb">export</span> <span class="nv">key</span><span class="o">=</span><span class="s1">&#39;/tmp/&#39;</span><span class="nv">$host</span><span class="s1">&#39;/&#39;</span><span class="nv">$host</span><span class="s1">&#39;.key&#39;</span>
-<span class="nb">export</span> <span class="nv">csr</span><span class="o">=</span><span class="s1">&#39;/tmp/&#39;</span><span class="nv">$host</span><span class="s1">&#39;/&#39;</span><span class="nv">$host</span><span class="s1">&#39;.csr&#39;</span>
-<span class="nb">export</span> <span class="nv">srl</span><span class="o">=</span><span class="s1">&#39;/tmp/&#39;</span><span class="nv">$host</span><span class="s1">&#39;/&#39;</span><span class="nv">$host</span><span class="s1">&#39;.srl&#39;</span>
-<span class="nb">export</span> <span class="nv">crt</span><span class="o">=</span><span class="s1">&#39;/tmp/&#39;</span><span class="nv">$host</span><span class="s1">&#39;/&#39;</span><span class="nv">$host</span><span class="s1">&#39;.crt&#39;</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">host</span><span class="o">=</span><span class="s2">&quot;server.name&quot;</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">key</span><span class="o">=</span><span class="s1">&#39;/tmp/&#39;</span><span class="nv">$host</span><span class="s1">&#39;/&#39;</span><span class="nv">$host</span><span class="s1">&#39;.key&#39;</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">csr</span><span class="o">=</span><span class="s1">&#39;/tmp/&#39;</span><span class="nv">$host</span><span class="s1">&#39;/&#39;</span><span class="nv">$host</span><span class="s1">&#39;.csr&#39;</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">srl</span><span class="o">=</span><span class="s1">&#39;/tmp/&#39;</span><span class="nv">$host</span><span class="s1">&#39;/&#39;</span><span class="nv">$host</span><span class="s1">&#39;.srl&#39;</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">crt</span><span class="o">=</span><span class="s1">&#39;/tmp/&#39;</span><span class="nv">$host</span><span class="s1">&#39;/&#39;</span><span class="nv">$host</span><span class="s1">&#39;.crt&#39;</span>
 
 <span class="c1">#-- generate key</span>
-openssl genrsa -out <span class="si">${</span><span class="nv">key</span><span class="si">}</span>  <span class="nv">$RD_OPTION_KEY_SIZE</span>
+openssl<span class="w"> </span>genrsa<span class="w"> </span>-out<span class="w"> </span><span class="si">${</span><span class="nv">key</span><span class="si">}</span><span class="w">  </span><span class="nv">$RD_OPTION_KEY_SIZE</span>
 
 <span class="c1">#-- generate csr</span>
-openssl req -new -key <span class="si">${</span><span class="nv">key</span><span class="si">}</span> -out <span class="si">${</span><span class="nv">csr</span><span class="si">}</span> -subj <span class="s2">&quot;/CN=@option.host@&quot;</span>
+openssl<span class="w"> </span>req<span class="w"> </span>-new<span class="w"> </span>-key<span class="w"> </span><span class="si">${</span><span class="nv">key</span><span class="si">}</span><span class="w"> </span>-out<span class="w"> </span><span class="si">${</span><span class="nv">csr</span><span class="si">}</span><span class="w"> </span>-subj<span class="w"> </span><span class="s2">&quot;/CN=@option.host@&quot;</span>
 
 <span class="c1">#-- generate self siging key</span>
-openssl x509 -req -days <span class="nv">$RD_OPTION_KEY_DURATION</span> -in <span class="si">${</span><span class="nv">csr</span><span class="si">}</span> -signkey <span class="si">${</span><span class="nv">key</span><span class="si">}</span> -out <span class="si">${</span><span class="nv">crt</span><span class="si">}</span>
+openssl<span class="w"> </span>x509<span class="w"> </span>-req<span class="w"> </span>-days<span class="w"> </span><span class="nv">$RD_OPTION_KEY_DURATION</span><span class="w"> </span>-in<span class="w"> </span><span class="si">${</span><span class="nv">csr</span><span class="si">}</span><span class="w"> </span>-signkey<span class="w"> </span><span class="si">${</span><span class="nv">key</span><span class="si">}</span><span class="w"> </span>-out<span class="w"> </span><span class="si">${</span><span class="nv">crt</span><span class="si">}</span>
 
 <span class="c1">#-- cleanup</span>
-rm -f <span class="si">${</span><span class="nv">srl</span><span class="si">}</span>
+rm<span class="w"> </span>-f<span class="w"> </span><span class="si">${</span><span class="nv">srl</span><span class="si">}</span>
 </code></pre></div>
     </div><!-- /.entry-content -->
 

@@ -15,6 +15,7 @@
                 <nav><ul>
                     <li><a href="https://fallen70.github.io/workbook/category/curl.html">Curl</a></li>
                     <li class="active"><a href="https://fallen70.github.io/workbook/category/linux.html">Linux</a></li>
+                    <li><a href="https://fallen70.github.io/workbook/category/python.html">Python</a></li>
                     <li><a href="https://fallen70.github.io/workbook/category/vim.html">Vim</a></li>
                     <li><a href="https://fallen70.github.io/workbook/category/virtualbox.html">Virtualbox</a></li>
                 </ul></nav>
@@ -41,27 +42,27 @@
 </footer><!-- /.post-info -->      <h1>bash</h1>
 <p>Liste les cibles dans hosts.txt</p>
 <div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
- 
-<span class="k">for</span> host <span class="k">in</span> <span class="k">$(</span>cat ./hosts.txt<span class="k">)</span><span class="p">;</span> <span class="k">do</span>
-<span class="nb">echo</span> <span class="nv">$host</span><span class="p">;</span>
-cat ~/.ssh/id_rsa.pub <span class="p">|</span> ssh root@<span class="si">${</span><span class="nv">host</span><span class="si">}</span> <span class="s1">&#39;cat &gt;&gt; ~/.ssh/authorized_keys&#39;</span>
-<span class="k">done</span> 
+<span class="w"> </span>
+<span class="k">for</span><span class="w"> </span>host<span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="k">$(</span>cat<span class="w"> </span>./hosts.txt<span class="k">)</span><span class="p">;</span><span class="w"> </span><span class="k">do</span>
+<span class="nb">echo</span><span class="w"> </span><span class="nv">$host</span><span class="p">;</span>
+cat<span class="w"> </span>~/.ssh/id_rsa.pub<span class="w"> </span><span class="p">|</span><span class="w"> </span>ssh<span class="w"> </span>root@<span class="si">${</span><span class="nv">host</span><span class="si">}</span><span class="w"> </span><span class="s1">&#39;cat &gt;&gt; ~/.ssh/authorized_keys&#39;</span>
+<span class="k">done</span><span class="w"> </span>
 
-<span class="k">for</span> host <span class="k">in</span> <span class="k">$(</span>cat ./hosts.txt<span class="k">)</span> <span class="p">;</span> <span class="k">do</span> <span class="nb">echo</span> <span class="nv">$host</span><span class="p">;</span> sshpass -p <span class="s1">&#39;&lt;password&gt;&#39;</span> ssh-copy-id root@<span class="si">${</span><span class="nv">host</span><span class="si">}</span><span class="p">;</span> <span class="k">done</span><span class="p">;</span> 
+<span class="k">for</span><span class="w"> </span>host<span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="k">$(</span>cat<span class="w"> </span>./hosts.txt<span class="k">)</span><span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="k">do</span><span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="nv">$host</span><span class="p">;</span><span class="w"> </span>sshpass<span class="w"> </span>-p<span class="w"> </span><span class="s1">&#39;&lt;password&gt;&#39;</span><span class="w"> </span>ssh-copy-id<span class="w"> </span>root@<span class="si">${</span><span class="nv">host</span><span class="si">}</span><span class="p">;</span><span class="w"> </span><span class="k">done</span><span class="p">;</span><span class="w"> </span>
 </code></pre></div>
 
 <h1>ansible</h1>
 <div class="highlight"><pre><span></span><code><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">hosts</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">servers_to_update</span><span class="w"> </span>
-<span class="w">  </span><span class="nt">remote_user</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">root</span><span class="w"></span>
-<span class="w">  </span><span class="nt">become</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">yes</span><span class="w"></span>
-<span class="w">  </span><span class="nt">become_method</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">sudo</span><span class="w"></span>
-<span class="w">  </span><span class="nt">tasks</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="nt">remote_user</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">root</span>
+<span class="w">  </span><span class="nt">become</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">yes</span>
+<span class="w">  </span><span class="nt">become_method</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">sudo</span>
+<span class="w">  </span><span class="nt">tasks</span><span class="p">:</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Copie</span><span class="nv"> </span><span class="s">de</span><span class="nv"> </span><span class="s">la</span><span class="nv"> </span><span class="s">clef</span><span class="nv"> </span><span class="s">publique&quot;</span><span class="w"> </span>
-<span class="w">      </span><span class="nt">authorized_key</span><span class="p">:</span><span class="w"></span>
-<span class="w">        </span><span class="nt">user</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;{{</span><span class="nv"> </span><span class="s">authorised_username</span><span class="nv"> </span><span class="s">}}&quot;</span><span class="w"></span>
-<span class="w">        </span><span class="nt">state</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">present</span><span class="w"></span>
-<span class="w">        </span><span class="nt">key</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;{{</span><span class="nv"> </span><span class="s">lookup(&#39;file&#39;,</span><span class="nv"> </span><span class="s">&#39;files/ssh_pub/id_rsa.pub&#39;)</span><span class="nv"> </span><span class="s">}}&quot;</span><span class="w"></span>
-<span class="w">  </span><span class="nt">tags</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">always</span><span class="w"></span>
+<span class="w">      </span><span class="nt">authorized_key</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">user</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;{{</span><span class="nv"> </span><span class="s">authorised_username</span><span class="nv"> </span><span class="s">}}&quot;</span>
+<span class="w">        </span><span class="nt">state</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">present</span>
+<span class="w">        </span><span class="nt">key</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;{{</span><span class="nv"> </span><span class="s">lookup(&#39;file&#39;,</span><span class="nv"> </span><span class="s">&#39;files/ssh_pub/id_rsa.pub&#39;)</span><span class="nv"> </span><span class="s">}}&quot;</span>
+<span class="w">  </span><span class="nt">tags</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">always</span>
 </code></pre></div>
     </div><!-- /.entry-content -->
 

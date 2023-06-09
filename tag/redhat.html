@@ -14,6 +14,7 @@
                 <nav><ul>
                     <li><a href="https://fallen70.github.io/workbook/category/curl.html">Curl</a></li>
                     <li><a href="https://fallen70.github.io/workbook/category/linux.html">Linux</a></li>
+                    <li><a href="https://fallen70.github.io/workbook/category/python.html">Python</a></li>
                     <li><a href="https://fallen70.github.io/workbook/category/vim.html">Vim</a></li>
                     <li><a href="https://fallen70.github.io/workbook/category/virtualbox.html">Virtualbox</a></li>
                 </ul></nav>
@@ -37,15 +38,15 @@
 <li><a href="https://linoxide.com/how-to-list-services-in-linux/">https://linoxide.com/how-to-list-services-in-linux/</a></li>
 </ul>
 <p>Liste de tous les services</p>
-<div class="highlight"><pre><span></span><code>systemctl list-unit-files
+<div class="highlight"><pre><span></span><code>systemctl<span class="w"> </span>list-unit-files
 </code></pre></div>
 
 <p>Recherche d'un service </p>
-<div class="highlight"><pre><span></span><code>systemctl <span class="p">|</span> grep <span class="s2">&quot;apache2&quot;</span>
+<div class="highlight"><pre><span></span><code>systemctl<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span><span class="s2">&quot;apache2&quot;</span>
 </code></pre></div>
 
 <p>Liste des services avec netstat</p>
-<div class="highlight"><pre><span></span><code>netstat -pnltu 
+<div class="highlight"><pre><span></span><code>netstat<span class="w"> </span>-pnltu<span class="w"> </span>
 </code></pre></div>                </article>
             </aside><!-- /#featured -->
                 <section id="content" class="body">
@@ -70,7 +71,7 @@
         </address>
 <p>Dans <a href="https://fallen70.github.io/workbook/category/linux.html">Linux</a>.</p>
 <p>Tags: <a href="https://fallen70.github.io/workbook/tag/redhat.html">RedHat</a> <a href="https://fallen70.github.io/workbook/tag/admin-sys.html">admin-sys</a> </p>
-</footer><!-- /.post-info -->                <div class="highlight"><pre><span></span><code>rpm -qa --queryformat <span class="s1">&#39;%10{size} - %-25{name} \t %{version}\n&#39;</span> <span class="p">|</span> sort -n
+</footer><!-- /.post-info -->                <div class="highlight"><pre><span></span><code>rpm<span class="w"> </span>-qa<span class="w"> </span>--queryformat<span class="w"> </span><span class="s1">&#39;%10{size} - %-25{name} \t %{version}\n&#39;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>sort<span class="w"> </span>-n
 </code></pre></div>
                 <a class="readmore" href="https://fallen70.github.io/workbook/package-installe-par-taille.html">read more</a>
                 </div><!-- /.entry-content -->
@@ -101,7 +102,7 @@
 <ul>
 <li><a href="https://access.redhat.com/solutions/253273">https://access.redhat.com/solutions/253273</a></li>
 </ul>
-<div class="highlight"><pre><span></span><code>ansible all -i inventory -u ansible  -b --become-user<span class="o">=</span>root --become-method<span class="o">=</span>sudo -m redhat_subscription …</code></pre></div>
+<div class="highlight"><pre><span></span><code>ansible<span class="w"> </span>all<span class="w"> </span>-i<span class="w"> </span>inventory<span class="w"> </span>-u<span class="w"> </span>ansible<span class="w">  </span>-b<span class="w"> </span>--become-user<span class="o">=</span>root<span class="w"> </span>--become-method<span class="o">=</span>sudo<span class="w"> </span>-m<span class="w"> </span>redhat_subscription …</code></pre></div>
                 <a class="readmore" href="https://fallen70.github.io/workbook/subcription-manager.html">read more</a>
                 </div><!-- /.entry-content -->
             </article></li>

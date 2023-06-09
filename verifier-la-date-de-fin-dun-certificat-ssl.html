@@ -15,6 +15,7 @@
                 <nav><ul>
                     <li><a href="https://fallen70.github.io/workbook/category/curl.html">Curl</a></li>
                     <li class="active"><a href="https://fallen70.github.io/workbook/category/linux.html">Linux</a></li>
+                    <li><a href="https://fallen70.github.io/workbook/category/python.html">Python</a></li>
                     <li><a href="https://fallen70.github.io/workbook/category/vim.html">Vim</a></li>
                     <li><a href="https://fallen70.github.io/workbook/category/virtualbox.html">Virtualbox</a></li>
                 </ul></nav>
@@ -46,23 +47,23 @@
 <span class="nv">ALERT_X_DAY_BEFORE</span><span class="o">=</span><span class="m">10</span>
 
 <span class="c1"># Get current date as timestamp</span>
-<span class="nv">CURR_DATE</span><span class="o">=</span><span class="k">$(</span>date +%s<span class="k">)</span>
+<span class="nv">CURR_DATE</span><span class="o">=</span><span class="k">$(</span>date<span class="w"> </span>+%s<span class="k">)</span>
 
 <span class="c1"># Get enddate from certificate of hostname:port identified</span>
-<span class="nv">CERT_DATE_AS_STRING</span><span class="o">=</span><span class="k">$(</span><span class="nb">echo</span> <span class="p">|</span> openssl s_client -connect <span class="si">${</span><span class="nv">HOSTNAME</span><span class="si">}</span>:<span class="si">${</span><span class="nv">PORT</span><span class="si">}</span> <span class="m">2</span>&gt;/dev/null <span class="p">|</span> openssl x509 -enddate -noout <span class="p">|</span> cut -d <span class="s1">&#39;=&#39;</span> -f <span class="m">2</span><span class="k">)</span>                                                                            
+<span class="nv">CERT_DATE_AS_STRING</span><span class="o">=</span><span class="k">$(</span><span class="nb">echo</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>openssl<span class="w"> </span>s_client<span class="w"> </span>-connect<span class="w"> </span><span class="si">${</span><span class="nv">HOSTNAME</span><span class="si">}</span>:<span class="si">${</span><span class="nv">PORT</span><span class="si">}</span><span class="w"> </span><span class="m">2</span>&gt;/dev/null<span class="w"> </span><span class="p">|</span><span class="w"> </span>openssl<span class="w"> </span>x509<span class="w"> </span>-enddate<span class="w"> </span>-noout<span class="w"> </span><span class="p">|</span><span class="w"> </span>cut<span class="w"> </span>-d<span class="w"> </span><span class="s1">&#39;=&#39;</span><span class="w"> </span>-f<span class="w"> </span><span class="m">2</span><span class="k">)</span><span class="w">                                                                            </span>
 
-<span class="nv">CERT_EXP_DATE</span><span class="o">=</span><span class="k">$(</span>date --date<span class="o">=</span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">CERT_DATE_AS_STRING</span><span class="si">}</span><span class="s2">&quot;</span> +%s<span class="k">)</span>
+<span class="nv">CERT_EXP_DATE</span><span class="o">=</span><span class="k">$(</span>date<span class="w"> </span>--date<span class="o">=</span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">CERT_DATE_AS_STRING</span><span class="si">}</span><span class="s2">&quot;</span><span class="w"> </span>+%s<span class="k">)</span>
 
-<span class="nv">DAYS_REMAINING</span><span class="o">=</span><span class="k">$((</span> <span class="o">(</span> <span class="nv">$CERT_EXP_DATE</span> <span class="o">-</span> <span class="nv">$CURR_DATE</span> <span class="o">)</span> <span class="o">/</span> <span class="m">86400</span> <span class="k">))</span>
+<span class="nv">DAYS_REMAINING</span><span class="o">=</span><span class="k">$((</span><span class="w"> </span><span class="o">(</span><span class="w"> </span><span class="nv">$CERT_EXP_DATE</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="nv">$CURR_DATE</span><span class="w"> </span><span class="o">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="m">86400</span><span class="w"> </span><span class="k">))</span>
 
-<span class="k">if</span> <span class="o">[</span> <span class="nv">$DAYS_REMAINING</span> -lt <span class="m">0</span> <span class="o">]</span><span class="p">;</span> <span class="k">then</span>
-  <span class="nb">echo</span> <span class="s2">&quot;Certificat expiré  sur </span><span class="k">$(</span>hostname -f<span class="k">)</span><span class="s2">&quot;</span>
-  <span class="nb">exit</span> <span class="m">1</span><span class="p">;</span>
+<span class="k">if</span><span class="w"> </span><span class="o">[</span><span class="w"> </span><span class="nv">$DAYS_REMAINING</span><span class="w"> </span>-lt<span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="o">]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<span class="w">  </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Certificat expiré  sur </span><span class="k">$(</span>hostname<span class="w"> </span>-f<span class="k">)</span><span class="s2">&quot;</span>
+<span class="w">  </span><span class="nb">exit</span><span class="w"> </span><span class="m">1</span><span class="p">;</span>
 <span class="k">fi</span>
 
-<span class="k">if</span> <span class="o">[</span> <span class="nv">$DAYS_REMAINING</span> -lt <span class="nv">$ALERT_X_DAY_BEFORE</span> <span class="o">]</span><span class="p">;</span> <span class="k">then</span>
-  <span class="nb">echo</span> <span class="s2">&quot;</span><span class="nv">$DAYS_REMAINING</span><span class="s2"> jours avant expiration sur </span><span class="k">$(</span>hostname -f<span class="k">)</span><span class="s2">&quot;</span>
-  <span class="nb">exit</span> <span class="m">1</span><span class="p">;</span>
+<span class="k">if</span><span class="w"> </span><span class="o">[</span><span class="w"> </span><span class="nv">$DAYS_REMAINING</span><span class="w"> </span>-lt<span class="w"> </span><span class="nv">$ALERT_X_DAY_BEFORE</span><span class="w"> </span><span class="o">]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<span class="w">  </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$DAYS_REMAINING</span><span class="s2"> jours avant expiration sur </span><span class="k">$(</span>hostname<span class="w"> </span>-f<span class="k">)</span><span class="s2">&quot;</span>
+<span class="w">  </span><span class="nb">exit</span><span class="w"> </span><span class="m">1</span><span class="p">;</span>
 <span class="k">fi</span>
 </code></pre></div>
     </div><!-- /.entry-content -->

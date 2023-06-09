@@ -15,6 +15,7 @@
                 <nav><ul>
                     <li><a href="https://fallen70.github.io/workbook/category/curl.html">Curl</a></li>
                     <li class="active"><a href="https://fallen70.github.io/workbook/category/linux.html">Linux</a></li>
+                    <li><a href="https://fallen70.github.io/workbook/category/python.html">Python</a></li>
                     <li><a href="https://fallen70.github.io/workbook/category/vim.html">Vim</a></li>
                     <li><a href="https://fallen70.github.io/workbook/category/virtualbox.html">Virtualbox</a></li>
                 </ul></nav>
@@ -45,16 +46,16 @@
 </ul>
 <div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
 
-<span class="nb">export</span> <span class="nv">TOMCAT_DIR</span><span class="o">=</span><span class="s1">&#39;/path/to/jenkins/tomcat&#39;</span>
-<span class="nb">export</span> <span class="nv">CACHES_DIR</span><span class="o">=</span><span class="s1">&#39;/path/to/jenkins/jenkins_data/caches&#39;</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">TOMCAT_DIR</span><span class="o">=</span><span class="s1">&#39;/path/to/jenkins/tomcat&#39;</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">CACHES_DIR</span><span class="o">=</span><span class="s1">&#39;/path/to/jenkins/jenkins_data/caches&#39;</span>
 
 <span class="c1"># Clean catalina.out without restart</span>
-<span class="nb">echo</span> <span class="s1">&#39;Cleaning catalina.out&#39;</span>
-<span class="nb">echo</span> <span class="k">$(</span>date<span class="k">)</span><span class="s1">&#39; Cleaned by XXXXX&#39;</span> &gt; <span class="si">${</span><span class="nv">TOMCAT_DIR</span><span class="si">}</span>/logs/catalina.out
+<span class="nb">echo</span><span class="w"> </span><span class="s1">&#39;Cleaning catalina.out&#39;</span>
+<span class="nb">echo</span><span class="w"> </span><span class="k">$(</span>date<span class="k">)</span><span class="s1">&#39; Cleaned by XXXXX&#39;</span><span class="w"> </span>&gt;<span class="w"> </span><span class="si">${</span><span class="nv">TOMCAT_DIR</span><span class="si">}</span>/logs/catalina.out
 
 <span class="c1"># Cleaning caches dir</span>
-<span class="nb">echo</span> <span class="s1">&#39;Cleaning caches dir&#39;</span>
-rm -rvf <span class="si">${</span><span class="nv">CACHES_DIR</span><span class="si">}</span>/*
+<span class="nb">echo</span><span class="w"> </span><span class="s1">&#39;Cleaning caches dir&#39;</span>
+rm<span class="w"> </span>-rvf<span class="w"> </span><span class="si">${</span><span class="nv">CACHES_DIR</span><span class="si">}</span>/*
 </code></pre></div>
     </div><!-- /.entry-content -->
 

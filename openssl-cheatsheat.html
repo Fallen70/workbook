@@ -15,6 +15,7 @@
                 <nav><ul>
                     <li><a href="https://fallen70.github.io/workbook/category/curl.html">Curl</a></li>
                     <li class="active"><a href="https://fallen70.github.io/workbook/category/linux.html">Linux</a></li>
+                    <li><a href="https://fallen70.github.io/workbook/category/python.html">Python</a></li>
                     <li><a href="https://fallen70.github.io/workbook/category/vim.html">Vim</a></li>
                     <li><a href="https://fallen70.github.io/workbook/category/virtualbox.html">Virtualbox</a></li>
                 </ul></nav>
@@ -48,96 +49,96 @@
 <p>OpenSSL est véritablement le couteau suisse de la gestion de certificats, mais à l'instar du canif suisse, on passe un temps fou à essayer de distinguer la lime à ongles du tire-bouchon. Vous trouverez ci-dessous une liste des commandes les plus fréquemment utilisées.</p>
 <h2>Demandes de certificats et gestion de clés</h2>
 <p>Si vous avez commandé un certificat, il faut générer une demande de certificat pour finaliser la commande. Vous pouvez le faire comme suivant, avec une nouvelle private key:</p>
-<div class="highlight"><pre><span></span><code>openssl req -sha256 -nodes -newkey rsa:2048 -keyout www.server.com.key -out www.server.com.csr
+<div class="highlight"><pre><span></span><code>openssl<span class="w"> </span>req<span class="w"> </span>-sha256<span class="w"> </span>-nodes<span class="w"> </span>-newkey<span class="w"> </span>rsa:2048<span class="w"> </span>-keyout<span class="w"> </span>www.server.com.key<span class="w"> </span>-out<span class="w"> </span>www.server.com.csr
 </code></pre></div>
 
 <p>Vous pouvez également employer le Générateur de CSR Kinamo pour créer votre CSR.
 Générer une nouvelle demande de certificat à base d'une clé existante:</p>
-<div class="highlight"><pre><span></span><code>openssl req -new -sha256 -key www.server.com.key -out www.server.com.csr
+<div class="highlight"><pre><span></span><code>openssl<span class="w"> </span>req<span class="w"> </span>-new<span class="w"> </span>-sha256<span class="w"> </span>-key<span class="w"> </span>www.server.com.key<span class="w"> </span>-out<span class="w"> </span>www.server.com.csr
 </code></pre></div>
 
 <p>Générer une demande de certificat à base d'un certificat existant:</p>
-<div class="highlight"><pre><span></span><code>openssl x509 -x509toreq -in www.server.com.crt -out www.server.com.csr -signkey www.server.com.key
+<div class="highlight"><pre><span></span><code>openssl<span class="w"> </span>x509<span class="w"> </span>-x509toreq<span class="w"> </span>-in<span class="w"> </span>www.server.com.crt<span class="w"> </span>-out<span class="w"> </span>www.server.com.csr<span class="w"> </span>-signkey<span class="w"> </span>www.server.com.key
 </code></pre></div>
 
 <p>Générer une nouvelle clé RSA:</p>
-<div class="highlight"><pre><span></span><code>openssl genrsa -out www.server.com.key <span class="m">2048</span>
+<div class="highlight"><pre><span></span><code>openssl<span class="w"> </span>genrsa<span class="w"> </span>-out<span class="w"> </span>www.server.com.key<span class="w"> </span><span class="m">2048</span>
 </code></pre></div>
 
 <p>Générer une nouvelle clé ECC:</p>
-<div class="highlight"><pre><span></span><code>openssl ecparam -out server.key -name prime256v1 -genkey
+<div class="highlight"><pre><span></span><code>openssl<span class="w"> </span>ecparam<span class="w"> </span>-out<span class="w"> </span>server.key<span class="w"> </span>-name<span class="w"> </span>prime256v1<span class="w"> </span>-genkey
 </code></pre></div>
 
 <p>Générer un certificat auto-signé (self-signed) pour des tests:</p>
-<div class="highlight"><pre><span></span><code>openssl req -x509 -newkey rsa:2048 -nodes -keyout www.server.com.key -out www.server.com.crt -days <span class="m">365</span>
+<div class="highlight"><pre><span></span><code>openssl<span class="w"> </span>req<span class="w"> </span>-x509<span class="w"> </span>-newkey<span class="w"> </span>rsa:2048<span class="w"> </span>-nodes<span class="w"> </span>-keyout<span class="w"> </span>www.server.com.key<span class="w"> </span>-out<span class="w"> </span>www.server.com.crt<span class="w"> </span>-days<span class="w"> </span><span class="m">365</span>
 </code></pre></div>
 
 <h2>Afficher et contrôler les certificats</h2>
 <p>Contrôler et afficher une demande de certificat:</p>
-<div class="highlight"><pre><span></span><code>openssl req -noout -text -verify -in www.server.com.csr
+<div class="highlight"><pre><span></span><code>openssl<span class="w"> </span>req<span class="w"> </span>-noout<span class="w"> </span>-text<span class="w"> </span>-verify<span class="w"> </span>-in<span class="w"> </span>www.server.com.csr
 </code></pre></div>
 
 <p>Contrôler et afficher une clé privée et publique:</p>
-<div class="highlight"><pre><span></span><code>openssl rsa -noout -text -check -in www.server.com.key
+<div class="highlight"><pre><span></span><code>openssl<span class="w"> </span>rsa<span class="w"> </span>-noout<span class="w"> </span>-text<span class="w"> </span>-check<span class="w"> </span>-in<span class="w"> </span>www.server.com.key
 </code></pre></div>
 
 <p>Afficher le contenu décodé d'un certificat en format PEM:</p>
-<div class="highlight"><pre><span></span><code>openssl x509 -noout -text -in www.server.com.crt
+<div class="highlight"><pre><span></span><code>openssl<span class="w"> </span>x509<span class="w"> </span>-noout<span class="w"> </span>-text<span class="w"> </span>-in<span class="w"> </span>www.server.com.crt
 </code></pre></div>
 
 <p>Afficher le contenu d'un certificat en format PKCS#7:</p>
-<div class="highlight"><pre><span></span><code>openssl pkcs7 -print_certs -in www.server.com.p7b
+<div class="highlight"><pre><span></span><code>openssl<span class="w"> </span>pkcs7<span class="w"> </span>-print_certs<span class="w"> </span>-in<span class="w"> </span>www.server.com.p7b
 </code></pre></div>
 
 <p>Afficher le contenu d'un certificat et d'une clé en format PKCS#12:</p>
-<div class="highlight"><pre><span></span><code>openssl pkcs12 -info -in www.server.com.pfx
+<div class="highlight"><pre><span></span><code>openssl<span class="w"> </span>pkcs12<span class="w"> </span>-info<span class="w"> </span>-in<span class="w"> </span>www.server.com.pfx
 </code></pre></div>
 
 <p>Contrôler une connection SSL et afficher tous les certificats intermédiaires:</p>
-<div class="highlight"><pre><span></span><code>openssl s_client -connect www.server.com:443
+<div class="highlight"><pre><span></span><code>openssl<span class="w"> </span>s_client<span class="w"> </span>-connect<span class="w"> </span>www.server.com:443
 </code></pre></div>
 
 <p>Contrôler si un certificat, une demande de certificat et une clé ont la même clé publique:</p>
-<div class="highlight"><pre><span></span><code>openssl x509 -noout -modulus www.server.com.crt <span class="p">|</span> openssl sha256
-openssl req -noout -modulus www.server.com.csr <span class="p">|</span> openssl sha256
-openssl rsa -noout -modulus www.server.com.key <span class="p">|</span> openssl sha256
+<div class="highlight"><pre><span></span><code>openssl<span class="w"> </span>x509<span class="w"> </span>-noout<span class="w"> </span>-modulus<span class="w"> </span>www.server.com.crt<span class="w"> </span><span class="p">|</span><span class="w"> </span>openssl<span class="w"> </span>sha256
+openssl<span class="w"> </span>req<span class="w"> </span>-noout<span class="w"> </span>-modulus<span class="w"> </span>www.server.com.csr<span class="w"> </span><span class="p">|</span><span class="w"> </span>openssl<span class="w"> </span>sha256
+openssl<span class="w"> </span>rsa<span class="w"> </span>-noout<span class="w"> </span>-modulus<span class="w"> </span>www.server.com.key<span class="w"> </span><span class="p">|</span><span class="w"> </span>openssl<span class="w"> </span>sha256
 </code></pre></div>
 
 <h2>Convertir des certificats</h2>
 <p>Conversion d'un fichier PKCS#12 ( .pfx .p12, typiquement utulisé sur Microsoft Windows) contenant clé privée et certificat vers le format PEM (utilisé sur Linux):</p>
-<div class="highlight"><pre><span></span><code>openssl pkcs12 -nodes -in www.server.com.pfx -out www.server.com.crt
+<div class="highlight"><pre><span></span><code>openssl<span class="w"> </span>pkcs12<span class="w"> </span>-nodes<span class="w"> </span>-in<span class="w"> </span>www.server.com.pfx<span class="w"> </span>-out<span class="w"> </span>www.server.com.crt
 </code></pre></div>
 
 <p>Conversion du format PEM vers le format PKCS#12:</p>
-<div class="highlight"><pre><span></span><code>openssl pkcs12 -export -in www.server.com.crt -inkey www.server.com.key -out www.server.com.pfx
+<div class="highlight"><pre><span></span><code>openssl<span class="w"> </span>pkcs12<span class="w"> </span>-export<span class="w"> </span>-in<span class="w"> </span>www.server.com.crt<span class="w"> </span>-inkey<span class="w"> </span>www.server.com.key<span class="w"> </span>-out<span class="w"> </span>www.server.com.pfx
 </code></pre></div>
 
 <p>Conversion du format PKCS#7 ( .p7b .p7c ) vers le format PEM:</p>
-<div class="highlight"><pre><span></span><code>openssl pkcs7 -print_certs -in www.server.com.p7b -out www.server.com.crt  
+<div class="highlight"><pre><span></span><code>openssl<span class="w"> </span>pkcs7<span class="w"> </span>-print_certs<span class="w"> </span>-in<span class="w"> </span>www.server.com.p7b<span class="w"> </span>-out<span class="w"> </span>www.server.com.crt<span class="w">  </span>
 </code></pre></div>
 
 <p>Conversion du format PEM vers le format PKCS#7:</p>
-<div class="highlight"><pre><span></span><code>openssl crl2pkcs7 -nocrl -certfile www.server.com.crt -out www.server.com.p7b
+<div class="highlight"><pre><span></span><code>openssl<span class="w"> </span>crl2pkcs7<span class="w"> </span>-nocrl<span class="w"> </span>-certfile<span class="w"> </span>www.server.com.crt<span class="w"> </span>-out<span class="w"> </span>www.server.com.p7b
 </code></pre></div>
 
 <p>Conversion du format DER (.crt .cer ou .der) vers le format PEM:</p>
-<div class="highlight"><pre><span></span><code>openssl x509 -inform der -in certificate.cer -out certificate.pem
+<div class="highlight"><pre><span></span><code>openssl<span class="w"> </span>x509<span class="w"> </span>-inform<span class="w"> </span>der<span class="w"> </span>-in<span class="w"> </span>certificate.cer<span class="w"> </span>-out<span class="w"> </span>certificate.pem
 </code></pre></div>
 
 <h2>Extraire la clef :</h2>
-<div class="highlight"><pre><span></span><code>openssl pkcs12 -in votre.pfx -nocerts -out votre.key -nodes
+<div class="highlight"><pre><span></span><code>openssl<span class="w"> </span>pkcs12<span class="w"> </span>-in<span class="w"> </span>votre.pfx<span class="w"> </span>-nocerts<span class="w"> </span>-out<span class="w"> </span>votre.key<span class="w"> </span>-nodes
 </code></pre></div>
 
 <h2>Extraire le certificat :</h2>
-<div class="highlight"><pre><span></span><code>openssl pkcs12 -in votre.pfx -clcerts -nokeys -out votre.crt
+<div class="highlight"><pre><span></span><code>openssl<span class="w"> </span>pkcs12<span class="w"> </span>-in<span class="w"> </span>votre.pfx<span class="w"> </span>-clcerts<span class="w"> </span>-nokeys<span class="w"> </span>-out<span class="w"> </span>votre.crt
 </code></pre></div>
 
 <h2>Créer le fullchain.pem</h2>
-<div class="highlight"><pre><span></span><code>openssl pkcs12 -in votre.pfx -out fullchain.pem -nodes
+<div class="highlight"><pre><span></span><code>openssl<span class="w"> </span>pkcs12<span class="w"> </span>-in<span class="w"> </span>votre.pfx<span class="w"> </span>-out<span class="w"> </span>fullchain.pem<span class="w"> </span>-nodes
 </code></pre></div>
 
 <h2>Générer une demande de certificat à base d'un certificat existant:</h2>
-<div class="highlight"><pre><span></span><code>openssl x509 -x509toreq -in www.server.com.crt -out www.server.com.csr -signkey ww.server.com.key
+<div class="highlight"><pre><span></span><code>openssl<span class="w"> </span>x509<span class="w"> </span>-x509toreq<span class="w"> </span>-in<span class="w"> </span>www.server.com.crt<span class="w"> </span>-out<span class="w"> </span>www.server.com.csr<span class="w"> </span>-signkey<span class="w"> </span>ww.server.com.key
 </code></pre></div>
     </div><!-- /.entry-content -->
 

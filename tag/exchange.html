@@ -14,6 +14,7 @@
                 <nav><ul>
                     <li><a href="https://fallen70.github.io/workbook/category/curl.html">Curl</a></li>
                     <li><a href="https://fallen70.github.io/workbook/category/linux.html">Linux</a></li>
+                    <li><a href="https://fallen70.github.io/workbook/category/python.html">Python</a></li>
                     <li><a href="https://fallen70.github.io/workbook/category/vim.html">Vim</a></li>
                     <li><a href="https://fallen70.github.io/workbook/category/virtualbox.html">Virtualbox</a></li>
                 </ul></nav>
@@ -35,20 +36,20 @@
 </footer><!-- /.post-info --><h1>sendmail</h1>
 <h2>Test simple</h2>
 <p>Ecrire le contenu a envoyer dans /tmp/test.mail</p>
-<div class="highlight"><pre><span></span><code>sendmail -v recipient@domain &lt; /tmp/test.mail
+<div class="highlight"><pre><span></span><code>sendmail<span class="w"> </span>-v<span class="w"> </span>recipient@domain<span class="w"> </span>&lt;<span class="w"> </span>/tmp/test.mail
 </code></pre></div>
 
 <h2>Queue</h2>
 <div class="highlight"><pre><span></span><code>mailq
-sendmail -bp
+sendmail<span class="w"> </span>-bp
 </code></pre></div>
 
 <h2>Aggregation des erreurs des mails dans la queue</h2>
-<div class="highlight"><pre><span></span><code>mailq <span class="p">|</span> grep smtpmailer.domain <span class="p">|</span> sort  <span class="p">|</span> uniq -c <span class="p">|</span> sort
+<div class="highlight"><pre><span></span><code>mailq<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>smtpmailer.domain<span class="w"> </span><span class="p">|</span><span class="w"> </span>sort<span class="w">  </span><span class="p">|</span><span class="w"> </span>uniq<span class="w"> </span>-c<span class="w"> </span><span class="p">|</span><span class="w"> </span>sort
 </code></pre></div>
 
 <h2>Forcer l'envoi des mails en attente</h2>
-<div class="highlight"><pre><span></span><code>sendmail -q -v
+<div class="highlight"><pre><span></span><code>sendmail<span class="w"> </span>-q<span class="w"> </span>-v
 </code></pre></div>
 
 <h1>Debug exchange avec  telnet</h1>
@@ -56,7 +57,7 @@ sendmail -bp
 <ul>
 <li><a href="https://docs.microsoft.com/en-us/exchange/mail-flow/test-smtp-with-telnet?view=exchserver-2019">https://docs.microsoft.com/en-us/exchange/mail-flow/test-smtp-with-telnet?view=exchserver-2019</a></li>
 </ul>
-<div class="highlight"><pre><span></span><code>telnet smtpmailer.domain <span class="m">25</span>
+<div class="highlight"><pre><span></span><code>telnet<span class="w"> </span>smtpmailer.domain<span class="w"> </span><span class="m">25</span>
 </code></pre></div>
 
 <p>Il faut ensuite taper chaque ligne suivante, valider avec la touche <code>entrée</code>.</p>

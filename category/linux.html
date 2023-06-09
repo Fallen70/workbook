@@ -14,6 +14,7 @@
                 <nav><ul>
                     <li><a href="https://fallen70.github.io/workbook/category/curl.html">Curl</a></li>
                     <li class="active"><a href="https://fallen70.github.io/workbook/category/linux.html">Linux</a></li>
+                    <li><a href="https://fallen70.github.io/workbook/category/python.html">Python</a></li>
                     <li><a href="https://fallen70.github.io/workbook/category/vim.html">Vim</a></li>
                     <li><a href="https://fallen70.github.io/workbook/category/virtualbox.html">Virtualbox</a></li>
                 </ul></nav>
@@ -37,15 +38,15 @@
 <li><a href="https://linoxide.com/how-to-list-services-in-linux/">https://linoxide.com/how-to-list-services-in-linux/</a></li>
 </ul>
 <p>Liste de tous les services</p>
-<div class="highlight"><pre><span></span><code>systemctl list-unit-files
+<div class="highlight"><pre><span></span><code>systemctl<span class="w"> </span>list-unit-files
 </code></pre></div>
 
 <p>Recherche d'un service </p>
-<div class="highlight"><pre><span></span><code>systemctl <span class="p">|</span> grep <span class="s2">&quot;apache2&quot;</span>
+<div class="highlight"><pre><span></span><code>systemctl<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span><span class="s2">&quot;apache2&quot;</span>
 </code></pre></div>
 
 <p>Liste des services avec netstat</p>
-<div class="highlight"><pre><span></span><code>netstat -pnltu 
+<div class="highlight"><pre><span></span><code>netstat<span class="w"> </span>-pnltu<span class="w"> </span>
 </code></pre></div>                </article>
             </aside><!-- /#featured -->
                 <section id="content" class="body">
@@ -71,9 +72,9 @@
 <p>Dans <a href="https://fallen70.github.io/workbook/category/linux.html">Linux</a>.</p>
 <p>Tags: <a href="https://fallen70.github.io/workbook/tag/admin-sys.html">admin-sys</a> <a href="https://fallen70.github.io/workbook/tag/openssl.html">openssl</a> </p>
 </footer><!-- /.post-info -->                <p>Récupére tous les certificats affiché par <code>$HOST:$PORT</code>.</p>
-<div class="highlight"><pre><span></span><code>rm -rf /tmp/certs/
-mkdir -p /tmp/certs/
-openssl s_client -showcerts -connect <span class="nv">$HOST</span>:<span class="nv">$PORT</span> &lt;/dev/null <span class="m">2</span>&gt;/dev/null <span class="p">|</span> sed -n <span class="s2">&quot;/BEGIN CERTIFICATE/,/END CERTIFICATE/p&quot;</span> <span class="p">|</span> awk <span class="s1">&#39;BEGIN {c=0;} /BEGIN CERT/{c++} { print &gt; &quot;/tmp/certs/cert.&quot; c &quot;.pem&quot;}&#39;</span>
+<div class="highlight"><pre><span></span><code>rm<span class="w"> </span>-rf<span class="w"> </span>/tmp/certs/
+mkdir<span class="w"> </span>-p<span class="w"> </span>/tmp/certs/
+openssl<span class="w"> </span>s_client<span class="w"> </span>-showcerts<span class="w"> </span>-connect<span class="w"> </span><span class="nv">$HOST</span>:<span class="nv">$PORT</span><span class="w"> </span>&lt;/dev/null<span class="w"> </span><span class="m">2</span>&gt;/dev/null<span class="w"> </span><span class="p">|</span><span class="w"> </span>sed<span class="w"> </span>-n<span class="w"> </span><span class="s2">&quot;/BEGIN CERTIFICATE/,/END CERTIFICATE/p&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>awk<span class="w"> </span><span class="s1">&#39;BEGIN {c=0;} /BEGIN CERT/{c++} { print &gt; &quot;/tmp/certs/cert.&quot; c &quot;.pem&quot;}&#39;</span>
 </code></pre></div>
                 <a class="readmore" href="https://fallen70.github.io/workbook/telecharger-certificats.html">read more</a>
                 </div><!-- /.entry-content -->
@@ -99,15 +100,15 @@ openssl s_client -showcerts -connect <span class="nv">$HOST</span>:<span class="
 </footer><!-- /.post-info -->                <div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
 
 <span class="c1"># Nettoyage du dossier temporaire cible</span>
-rm -rf /tmp/@option.host@
-mkdir -p /tmp/@option.host@
+rm<span class="w"> </span>-rf<span class="w"> </span>/tmp/@option.host@
+mkdir<span class="w"> </span>-p<span class="w"> </span>/tmp/@option.host@
 
 <span class="c1"># Définition des fichiers cible</span>
-<span class="nb">export</span> <span class="nv">host</span><span class="o">=</span><span class="s2">&quot;server.name&quot;</span>
-<span class="nb">export</span> <span class="nv">key</span><span class="o">=</span><span class="s1">&#39;/tmp/&#39;</span><span class="nv">$host</span><span class="s1">&#39;/&#39;</span><span class="nv">$host</span><span class="s1">&#39;.key&#39;</span>
-<span class="nb">export</span> <span class="nv">csr</span><span class="o">=</span><span class="s1">&#39;/tmp/&#39;</span><span class="nv">$host</span><span class="s1">&#39;/&#39;</span><span class="nv">$host</span><span class="s1">&#39;.csr&#39;</span>
-<span class="nb">export</span> <span class="nv">srl</span><span class="o">=</span><span class="s1">&#39;/tmp/&#39;</span><span class="nv">$host</span><span class="s1">&#39;/&#39;</span><span class="nv">$host</span><span class="s1">&#39;.srl&#39;</span>
-<span class="nb">export</span> <span class="nv">crt</span><span class="o">=</span><span class="s1">&#39;/tmp/&#39;</span><span class="nv">$host</span><span class="s1">&#39;/&#39;</span><span class="nv">$host</span><span class="s1">&#39;.crt&#39;</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">host</span><span class="o">=</span><span class="s2">&quot;server.name&quot;</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">key</span><span class="o">=</span><span class="s1">&#39;/tmp/&#39;</span><span class="nv">$host</span><span class="s1">&#39;/&#39;</span><span class="nv">$host</span><span class="s1">&#39;.key&#39;</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">csr</span><span class="o">=</span><span class="s1">&#39;/tmp/&#39;</span><span class="nv">$host</span><span class="s1">&#39;/&#39;</span><span class="nv">$host</span><span class="s1">&#39;.csr&#39;</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">srl</span><span class="o">=</span><span class="s1">&#39;/tmp/&#39;</span><span class="nv">$host</span><span class="s1">&#39;/&#39;</span><span class="nv">$host</span><span class="s1">&#39;.srl&#39;</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">crt</span><span class="o">=</span><span class="s1">&#39;/tmp/&#39;</span><span class="nv">$host</span><span class="s1">&#39;/&#39;</span><span class="nv">$host</span><span class="s1">&#39;.crt&#39;</span>
 
 <span class="c1">#-- generate …</span></code></pre></div>
                 <a class="readmore" href="https://fallen70.github.io/workbook/generation-de-certificat.html">read more</a>
@@ -139,10 +140,10 @@ mkdir -p /tmp/@option.host@
 <span class="nv">ALERT_X_DAY_BEFORE</span><span class="o">=</span><span class="m">10</span>
 
 <span class="c1"># Get current date as timestamp</span>
-<span class="nv">CURR_DATE</span><span class="o">=</span><span class="k">$(</span>date +%s<span class="k">)</span>
+<span class="nv">CURR_DATE</span><span class="o">=</span><span class="k">$(</span>date<span class="w"> </span>+%s<span class="k">)</span>
 
 <span class="c1"># Get enddate from certificate of hostname:port identified</span>
-<span class="nv">CERT_DATE_AS_STRING</span><span class="o">=</span><span class="k">$(</span><span class="nb">echo</span> <span class="p">|</span> openssl s_client -connect <span class="si">${</span><span class="nv">HOSTNAME</span><span class="si">}</span>:<span class="si">${</span><span class="nv">PORT</span><span class="si">}</span> <span class="m">2 …</span></code></pre></div>
+<span class="nv">CERT_DATE_AS_STRING</span><span class="o">=</span><span class="k">$(</span><span class="nb">echo</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>openssl<span class="w"> </span>s_client<span class="w"> </span>-connect<span class="w"> </span><span class="si">${</span><span class="nv">HOSTNAME</span><span class="si">}</span>:<span class="si">${</span><span class="nv">PORT</span><span class="si">}</span><span class="w"> </span><span class="m">2 …</span></code></pre></div>
                 <a class="readmore" href="https://fallen70.github.io/workbook/verifier-la-date-de-fin-dun-certificat-ssl.html">read more</a>
                 </div><!-- /.entry-content -->
             </article></li>
@@ -198,10 +199,10 @@ mkdir -p /tmp/@option.host@
 <li><a href="https://www.if-not-true-then-false.com/2009/howto-hide-and-modify-apache-server-information-serversignature-and-servertokens-and-hide-php-version-x-powered-by/">https://www.if-not-true-then-false.com/2009/howto-hide-and-modify-apache-server-information-serversignature-and-servertokens-and-hide-php-version-x-powered-by/</a></li>
 </ul>
 <p>Pour tester :</p>
-<div class="highlight"><pre><span></span><code>$ lynx -head -mime_header http://www.ubuntu.com
-HTTP/1.0 <span class="m">200</span> OK
-Date: Fri, <span class="m">20</span> Nov <span class="m">2009</span> <span class="m">09</span>:25:46 GMT
-Server: Apache/2.2.8 <span class="o">(</span>Ubuntu<span class="o">)</span> mod_python/3.3.1 Python/2.5.2 PHP/5.2.4-2ubuntu5.7 with …</code></pre></div>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>lynx<span class="w"> </span>-head<span class="w"> </span>-mime_header<span class="w"> </span>http://www.ubuntu.com
+HTTP/1.0<span class="w"> </span><span class="m">200</span><span class="w"> </span>OK
+Date:<span class="w"> </span>Fri,<span class="w"> </span><span class="m">20</span><span class="w"> </span>Nov<span class="w"> </span><span class="m">2009</span><span class="w"> </span><span class="m">09</span>:25:46<span class="w"> </span>GMT
+Server:<span class="w"> </span>Apache/2.2.8<span class="w"> </span><span class="o">(</span>Ubuntu<span class="o">)</span><span class="w"> </span>mod_python/3.3.1<span class="w"> </span>Python/2.5.2<span class="w"> </span>PHP/5.2.4-2ubuntu5.7<span class="w"> </span>with …</code></pre></div>
                 <a class="readmore" href="https://fallen70.github.io/workbook/cacher-information-serveur.html">read more</a>
                 </div><!-- /.entry-content -->
             </article></li>
@@ -226,13 +227,13 @@ Server: Apache/2.2.8 <span class="o">(</span>Ubuntu<span class="o">)</span> mod_
 </footer><!-- /.post-info -->                <h1>bash</h1>
 <p>Liste les cibles dans hosts.txt</p>
 <div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
- 
-<span class="k">for</span> host <span class="k">in</span> <span class="k">$(</span>cat ./hosts.txt<span class="k">)</span><span class="p">;</span> <span class="k">do</span>
-<span class="nb">echo</span> <span class="nv">$host</span><span class="p">;</span>
-cat ~/.ssh/id_rsa.pub <span class="p">|</span> ssh root@<span class="si">${</span><span class="nv">host</span><span class="si">}</span> <span class="s1">&#39;cat &gt;&gt; ~/.ssh/authorized_keys&#39;</span>
-<span class="k">done</span> 
+<span class="w"> </span>
+<span class="k">for</span><span class="w"> </span>host<span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="k">$(</span>cat<span class="w"> </span>./hosts.txt<span class="k">)</span><span class="p">;</span><span class="w"> </span><span class="k">do</span>
+<span class="nb">echo</span><span class="w"> </span><span class="nv">$host</span><span class="p">;</span>
+cat<span class="w"> </span>~/.ssh/id_rsa.pub<span class="w"> </span><span class="p">|</span><span class="w"> </span>ssh<span class="w"> </span>root@<span class="si">${</span><span class="nv">host</span><span class="si">}</span><span class="w"> </span><span class="s1">&#39;cat &gt;&gt; ~/.ssh/authorized_keys&#39;</span>
+<span class="k">done</span><span class="w"> </span>
 
-<span class="k">for</span> host <span class="k">in</span> <span class="k">$(</span>cat ./hosts.txt<span class="k">)</span> <span class="p">;</span> <span class="k">do</span> <span class="nb">echo</span> <span class="nv">$host</span><span class="p">;</span> sshpass -p <span class="s1">&#39;&lt;password&gt;&#39;</span> ssh-copy-id root@<span class="si">${</span><span class="nv">host</span><span class="si">}</span><span class="p">;</span> <span class="k">done</span><span class="p">;</span> 
+<span class="k">for</span><span class="w"> </span>host<span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="k">$(</span>cat<span class="w"> </span>./hosts.txt<span class="k">)</span><span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="k">do</span><span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="nv">$host</span><span class="p">;</span><span class="w"> </span>sshpass<span class="w"> </span>-p<span class="w"> </span><span class="s1">&#39;&lt;password&gt;&#39;</span><span class="w"> </span>ssh-copy-id<span class="w"> </span>root@<span class="si">${</span><span class="nv">host</span><span class="si">}</span><span class="p">;</span><span class="w"> </span><span class="k">done</span><span class="p">;</span><span class="w"> </span>
 </code></pre></div>
 
 <h1>ansible</h1>
@@ -262,20 +263,20 @@ cat ~/.ssh/id_rsa.pub <span class="p">|</span> ssh root@<span class="si">${</spa
 </footer><!-- /.post-info -->                <h1>sendmail</h1>
 <h2>Test simple</h2>
 <p>Ecrire le contenu a envoyer dans /tmp/test.mail</p>
-<div class="highlight"><pre><span></span><code>sendmail -v recipient@domain &lt; /tmp/test.mail
+<div class="highlight"><pre><span></span><code>sendmail<span class="w"> </span>-v<span class="w"> </span>recipient@domain<span class="w"> </span>&lt;<span class="w"> </span>/tmp/test.mail
 </code></pre></div>
 
 <h2>Queue</h2>
 <div class="highlight"><pre><span></span><code>mailq
-sendmail -bp
+sendmail<span class="w"> </span>-bp
 </code></pre></div>
 
 <h2>Aggregation des erreurs des mails dans la queue</h2>
-<div class="highlight"><pre><span></span><code>mailq <span class="p">|</span> grep smtpmailer.domain <span class="p">|</span> sort  <span class="p">|</span> uniq -c <span class="p">|</span> sort
+<div class="highlight"><pre><span></span><code>mailq<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>smtpmailer.domain<span class="w"> </span><span class="p">|</span><span class="w"> </span>sort<span class="w">  </span><span class="p">|</span><span class="w"> </span>uniq<span class="w"> </span>-c<span class="w"> </span><span class="p">|</span><span class="w"> </span>sort
 </code></pre></div>
 
 <h2>Forcer l'envoi des mails en attente</h2>
-<div class="highlight"><pre><span></span><code>sendmail -q -v
+<div class="highlight"><pre><span></span><code>sendmail<span class="w"> </span>-q<span class="w"> </span>-v
 </code></pre></div>
 
 <h1>Debug exchange …</h1>
@@ -306,7 +307,7 @@ sendmail -bp
 <li><a href="http://www.delafond.org/traducmanfr/man/man8/logrotate.8.html">http://www.delafond.org/traducmanfr/man/man8/logrotate.8.html</a></li>
 </ul>
 <p>Créer un fichier du nom de votre service (pour mémo) dans le répertoire /etc/logrotate.d. Nous allons prendre pour exemple le service postfix :</p>
-<div class="highlight"><pre><span></span><code>  vi /etc/logrotate.d/postfix
+<div class="highlight"><pre><span></span><code><span class="w">  </span>vi<span class="w"> </span>/etc/logrotate.d/postfix
 </code></pre></div>
 
 <p>Saisissez ces quelques …</p>
@@ -331,7 +332,7 @@ sendmail -bp
         </address>
 <p>Dans <a href="https://fallen70.github.io/workbook/category/linux.html">Linux</a>.</p>
 <p>Tags: <a href="https://fallen70.github.io/workbook/tag/redhat.html">RedHat</a> <a href="https://fallen70.github.io/workbook/tag/admin-sys.html">admin-sys</a> </p>
-</footer><!-- /.post-info -->                <div class="highlight"><pre><span></span><code>rpm -qa --queryformat <span class="s1">&#39;%10{size} - %-25{name} \t %{version}\n&#39;</span> <span class="p">|</span> sort -n
+</footer><!-- /.post-info -->                <div class="highlight"><pre><span></span><code>rpm<span class="w"> </span>-qa<span class="w"> </span>--queryformat<span class="w"> </span><span class="s1">&#39;%10{size} - %-25{name} \t %{version}\n&#39;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>sort<span class="w"> </span>-n
 </code></pre></div>
                 <a class="readmore" href="https://fallen70.github.io/workbook/package-installe-par-taille.html">read more</a>
                 </div><!-- /.entry-content -->
@@ -362,7 +363,7 @@ sendmail -bp
 <ul>
 <li><a href="https://access.redhat.com/solutions/253273">https://access.redhat.com/solutions/253273</a></li>
 </ul>
-<div class="highlight"><pre><span></span><code>ansible all -i inventory -u ansible  -b --become-user<span class="o">=</span>root --become-method<span class="o">=</span>sudo -m redhat_subscription …</code></pre></div>
+<div class="highlight"><pre><span></span><code>ansible<span class="w"> </span>all<span class="w"> </span>-i<span class="w"> </span>inventory<span class="w"> </span>-u<span class="w"> </span>ansible<span class="w">  </span>-b<span class="w"> </span>--become-user<span class="o">=</span>root<span class="w"> </span>--become-method<span class="o">=</span>sudo<span class="w"> </span>-m<span class="w"> </span>redhat_subscription …</code></pre></div>
                 <a class="readmore" href="https://fallen70.github.io/workbook/subcription-manager.html">read more</a>
                 </div><!-- /.entry-content -->
             </article></li>
@@ -385,7 +386,7 @@ sendmail -bp
 <p>Dans <a href="https://fallen70.github.io/workbook/category/linux.html">Linux</a>.</p>
 <p>Tags: <a href="https://fallen70.github.io/workbook/tag/admin-sys.html">admin-sys</a> </p>
 </footer><!-- /.post-info -->                <p>Liste par process</p>
-<div class="highlight"><pre><span></span><code>lsof <span class="p">|</span> cut -d<span class="se">\ </span> -f1 <span class="p">|</span> sort <span class="p">|</span> uniq -c <span class="p">|</span> sort -nr <span class="p">|</span> less   
+<div class="highlight"><pre><span></span><code>lsof<span class="w"> </span><span class="p">|</span><span class="w"> </span>cut<span class="w"> </span>-d<span class="se">\ </span><span class="w"> </span>-f1<span class="w"> </span><span class="p">|</span><span class="w"> </span>sort<span class="w"> </span><span class="p">|</span><span class="w"> </span>uniq<span class="w"> </span>-c<span class="w"> </span><span class="p">|</span><span class="w"> </span>sort<span class="w"> </span>-nr<span class="w"> </span><span class="p">|</span><span class="w"> </span>less<span class="w">   </span>
 </code></pre></div>
                 <a class="readmore" href="https://fallen70.github.io/workbook/ulimit.html">read more</a>
                 </div><!-- /.entry-content -->
@@ -412,7 +413,7 @@ sendmail -bp
 <ul>
 <li><a href="https://geekeries.de-labrusse.fr/?p=1806">https://geekeries.de-labrusse.fr/?p=1806</a></li>
 </ul>
-<div class="highlight"><pre><span></span><code>sudo sysctl -w vm.swappiness<span class="o">=</span><span class="m">30</span>
+<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>sysctl<span class="w"> </span>-w<span class="w"> </span>vm.swappiness<span class="o">=</span><span class="m">30</span>
 </code></pre></div>
 
 <h1>RAM &amp; SWAP</h1>
@@ -422,7 +423,7 @@ sendmail -bp
 <li><a href="https://linuxpedia.fr/doku.php/expert/analyser_usage_memoire_vive">https://linuxpedia.fr/doku.php/expert/analyser_usage_memoire_vive</a></li>
 <li><a href="https://www.selenic.com/smem/">https://www.selenic.com/smem/</a></li>
 </ul>
-<div class="highlight"><pre><span></span><code><span class="k">for</span> proc <span class="k">in</span> /proc/<span class="o">[</span><span class="m">0</span>-9<span class="o">]</span>*<span class="p">;</span> <span class="k">do</span>   awk <span class="s1">&#39;/VmSwap/ { print $2 &quot;\t&#39;</span><span class="sb">`</span>readlink <span class="nv">$proc</span>/exe <span class="p">|</span> awk …</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="k">for</span><span class="w"> </span>proc<span class="w"> </span><span class="k">in</span><span class="w"> </span>/proc/<span class="o">[</span><span class="m">0</span>-9<span class="o">]</span>*<span class="p">;</span><span class="w"> </span><span class="k">do</span><span class="w">   </span>awk<span class="w"> </span><span class="s1">&#39;/VmSwap/ { print $2 &quot;\t&#39;</span><span class="sb">`</span>readlink<span class="w"> </span><span class="nv">$proc</span>/exe<span class="w"> </span><span class="p">|</span><span class="w"> </span>awk …</code></pre></div>
                 <a class="readmore" href="https://fallen70.github.io/workbook/ramswap.html">read more</a>
                 </div><!-- /.entry-content -->
             </article></li>
@@ -449,7 +450,7 @@ sendmail -bp
 <li><a href="https://vincent.bernat.ch/fr/blog/2014-tcp-time-wait-state-linux">https://vincent.bernat.ch/fr/blog/2014-tcp-time-wait-state-linux</a></li>
 <li><a href="https://www.skyminds.net/serveur-dedie-reduire-les-connexions-time_wait-des-sockets-et-optimiser-tcp/">https://www.skyminds.net/serveur-dedie-reduire-les-connexions-time_wait-des-sockets-et-optimiser-tcp/</a></li>
 </ul>
-<div class="highlight"><pre><span></span><code>netstat -nat <span class="p">|</span> awk <span class="s1">&#39;{print $6}&#39;</span> <span class="p">|</span> sort <span class="p">|</span> uniq -c <span class="p">|</span> sort -n
+<div class="highlight"><pre><span></span><code>netstat<span class="w"> </span>-nat<span class="w"> </span><span class="p">|</span><span class="w"> </span>awk<span class="w"> </span><span class="s1">&#39;{print $6}&#39;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>sort<span class="w"> </span><span class="p">|</span><span class="w"> </span>uniq<span class="w"> </span>-c<span class="w"> </span><span class="p">|</span><span class="w"> </span>sort<span class="w"> </span>-n
 </code></pre></div>
                 <a class="readmore" href="https://fallen70.github.io/workbook/time_wait.html">read more</a>
                 </div><!-- /.entry-content -->
@@ -478,9 +479,9 @@ sendmail -bp
 <li><a href="https://stackoverflow.com/questions/14810684/check-whether-a-user-exists">https://stackoverflow.com/questions/14810684/check-whether-a-user-exists</a></li>
 </ul>
 <div class="highlight"><pre><span></span><code><span class="c1"># Check if user exists</span>
-<span class="k">if</span> ! id -u <span class="nv">$FS_USER</span> &gt; /dev/null <span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span><span class="p">;</span> <span class="k">then</span>
-    <span class="nb">echo</span> <span class="s2">&quot;The user does not exist; execute below commands to create and try again:&quot;</span>
-    <span class="nb">echo</span> <span class="s2">&quot;  root@sh1:~# adduser --home /usr/local/freeswitch/ --shell /bin/false …</span></code></pre></div>
+<span class="k">if</span><span class="w"> </span>!<span class="w"> </span>id<span class="w"> </span>-u<span class="w"> </span><span class="nv">$FS_USER</span><span class="w"> </span>&gt;<span class="w"> </span>/dev/null<span class="w"> </span><span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;The user does not exist; execute below commands to create and try again:&quot;</span>
+<span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;  root@sh1:~# adduser --home /usr/local/freeswitch/ --shell /bin/false …</span></code></pre></div>
                 <a class="readmore" href="https://fallen70.github.io/workbook/creation-dutilisateur.html">read more</a>
                 </div><!-- /.entry-content -->
             </article></li>
@@ -509,12 +510,12 @@ sendmail -bp
 </ul>
 <div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
 
-<span class="nb">export</span> <span class="nv">TOMCAT_DIR</span><span class="o">=</span><span class="s1">&#39;/path/to/jenkins/tomcat&#39;</span>
-<span class="nb">export</span> <span class="nv">CACHES_DIR</span><span class="o">=</span><span class="s1">&#39;/path/to/jenkins/jenkins_data/caches&#39;</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">TOMCAT_DIR</span><span class="o">=</span><span class="s1">&#39;/path/to/jenkins/tomcat&#39;</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">CACHES_DIR</span><span class="o">=</span><span class="s1">&#39;/path/to/jenkins/jenkins_data/caches&#39;</span>
 
 <span class="c1"># Clean catalina.out without restart</span>
-<span class="nb">echo</span> <span class="s1">&#39;Cleaning catalina.out&#39;</span>
-<span class="nb">echo</span> <span class="k">$(</span>date<span class="k">)</span><span class="s1">&#39; Cleaned by XXXXX&#39;</span> &gt; <span class="si">${</span><span class="nv">TOMCAT_DIR</span><span class="si">}</span>/logs/catalina.out
+<span class="nb">echo</span><span class="w"> </span><span class="s1">&#39;Cleaning catalina.out&#39;</span>
+<span class="nb">echo</span><span class="w"> </span><span class="k">$(</span>date<span class="k">)</span><span class="s1">&#39; Cleaned by XXXXX&#39;</span><span class="w"> </span>&gt;<span class="w"> </span><span class="si">${</span><span class="nv">TOMCAT_DIR</span><span class="si">}</span>/logs/catalina.out
 
 <span class="c1"># Cleaning caches …</span></code></pre></div>
                 <a class="readmore" href="https://fallen70.github.io/workbook/nettoyage-jenkins.html">read more</a>
@@ -547,11 +548,11 @@ sendmail -bp
 <p>atime -&gt; date de derniner accés</p>
 <div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
 
-<span class="nb">export</span> <span class="nv">MVN_REPO_DIR</span><span class="o">=</span><span class="s1">&#39;/path/to/m2&#39;</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">MVN_REPO_DIR</span><span class="o">=</span><span class="s1">&#39;/path/to/m2&#39;</span>
 
 <span class="c1"># Cleaning mvn SNAPSHOT repository</span>
-<span class="nb">echo</span> <span class="s1">&#39;Cleaning SNAPSHOT repository&#39;</span>
-<span class="k">for</span> snapshot_dir <span class="k">in</span> <span class="k">$(</span>find <span class="si">${</span><span class="nv">MVN_REPO_DIR …</span></code></pre></div>
+<span class="nb">echo</span><span class="w"> </span><span class="s1">&#39;Cleaning SNAPSHOT repository&#39;</span>
+<span class="k">for</span><span class="w"> </span>snapshot_dir<span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="k">$(</span>find<span class="w"> </span><span class="si">${</span><span class="nv">MVN_REPO_DIR …</span></code></pre></div>
                 <a class="readmore" href="https://fallen70.github.io/workbook/nettoyage-dun-repository-m2.html">read more</a>
                 </div><!-- /.entry-content -->
             </article></li>
@@ -574,12 +575,12 @@ sendmail -bp
 <p>Dans <a href="https://fallen70.github.io/workbook/category/linux.html">Linux</a>.</p>
 <p>Tags: <a href="https://fallen70.github.io/workbook/tag/admin-sys.html">admin-sys</a> </p>
 </footer><!-- /.post-info -->                <h1>Liste de fichier qui dépassent une taille en byte</h1>
-<div class="highlight"><pre><span></span><code>du -s * <span class="p">|</span> sort -n <span class="p">|</span> awk  <span class="s1">&#39;{  if ( $1 &gt; 400000 ) print $2; }&#39;</span>
+<div class="highlight"><pre><span></span><code>du<span class="w"> </span>-s<span class="w"> </span>*<span class="w"> </span><span class="p">|</span><span class="w"> </span>sort<span class="w"> </span>-n<span class="w"> </span><span class="p">|</span><span class="w"> </span>awk<span class="w">  </span><span class="s1">&#39;{  if ( $1 &gt; 400000 ) print $2; }&#39;</span>
 </code></pre></div>
 
 <h2>Suppression du contenu trop volumineux</h2>
-<div class="highlight"><pre><span></span><code><span class="k">for</span> dir <span class="k">in</span> <span class="k">$(</span> du -s * <span class="p">|</span> sort -n <span class="p">|</span> awk  <span class="s1">&#39;{  if ( $1 &gt; 400000 ) print $2; }&#39;</span> <span class="k">)</span><span class="p">;</span>
-  <span class="k">do</span> rm -rvf <span class="nv">$dir</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><span class="k">for</span><span class="w"> </span>dir<span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="k">$(</span><span class="w"> </span>du<span class="w"> </span>-s<span class="w"> </span>*<span class="w"> </span><span class="p">|</span><span class="w"> </span>sort<span class="w"> </span>-n<span class="w"> </span><span class="p">|</span><span class="w"> </span>awk<span class="w">  </span><span class="s1">&#39;{  if ( $1 &gt; 400000 ) print $2; }&#39;</span><span class="w"> </span><span class="k">)</span><span class="p">;</span>
+<span class="w">  </span><span class="k">do</span><span class="w"> </span>rm<span class="w"> </span>-rvf<span class="w"> </span><span class="nv">$dir</span><span class="p">;</span>
 <span class="k">done</span><span class="p">;</span>
 </code></pre></div>
                 <a class="readmore" href="https://fallen70.github.io/workbook/nettoyage-de-fichierdossier-en-fonction-de-la-taille.html">read more</a>
@@ -605,16 +606,16 @@ sendmail -bp
 <p>Tags: <a href="https://fallen70.github.io/workbook/tag/find.html">find</a> <a href="https://fallen70.github.io/workbook/tag/sym-links.html">sym-links</a> </p>
 </footer><!-- /.post-info -->                <p>Tiré de <a href="https://stackoverflow.com/questions/8513133/how-do-i-find-all-of-the-symlinks-in-a-directory-tree/21438684">https://stackoverflow.com/questions/8513133/how-do-i-find-all-of-the-symlinks-in-a-directory-tree/21438684</a></p>
 <h1>Find symbolic links</h1>
-<div class="highlight"><pre><span></span><code>find . -type l -ls
+<div class="highlight"><pre><span></span><code>find<span class="w"> </span>.<span class="w"> </span>-type<span class="w"> </span>l<span class="w"> </span>-ls
 </code></pre></div>
 
 <h1>Find symbolic links to a specific target</h1>
-<div class="highlight"><pre><span></span><code>find . -lname link_target
+<div class="highlight"><pre><span></span><code>find<span class="w"> </span>.<span class="w"> </span>-lname<span class="w"> </span>link_target
 </code></pre></div>
 
 <p>Note that link_target may contain wildcard characters.</p>
 <h1>Find broken symbolic links</h1>
-<div class="highlight"><pre><span></span><code>find -L . -type l -ls
+<div class="highlight"><pre><span></span><code>find<span class="w"> </span>-L<span class="w"> </span>.<span class="w"> </span>-type<span class="w"> </span>l<span class="w"> </span>-ls
 </code></pre></div>
 
 <p>The -L option instructs find to follow symbolic …</p>

@@ -3,7 +3,7 @@
 &lt;p&gt;Aprés  lancement de la VM depuis le menu Périphérique choisir &lt;code&gt;Insérer l'image CD des Additions invité&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;&lt;img alt="Menu Virtualbox" src="https://fallen70.github.io/workbook/images/virtualbox/vm-tools.png"&gt;&lt;/p&gt;
 &lt;h1&gt;Montage et éxecution du CD:&lt;/h1&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;sudo mount /dev/cdrom /mnt/cdrom
-&lt;span class="nb"&gt;cd&lt;/span&gt; /mnt/cdrom/
-sudo ./VBoxLinuxAdditions.run
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;sudo&lt;span class="w"&gt; &lt;/span&gt;mount&lt;span class="w"&gt; &lt;/span&gt;/dev/cdrom&lt;span class="w"&gt; &lt;/span&gt;/mnt/cdrom
+&lt;span class="nb"&gt;cd&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;/mnt/cdrom/
+sudo&lt;span class="w"&gt; &lt;/span&gt;./VBoxLinuxAdditions.run
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content><category term="Virtualbox"></category></entry></feed>

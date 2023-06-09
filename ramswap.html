@@ -15,6 +15,7 @@
                 <nav><ul>
                     <li><a href="https://fallen70.github.io/workbook/category/curl.html">Curl</a></li>
                     <li class="active"><a href="https://fallen70.github.io/workbook/category/linux.html">Linux</a></li>
+                    <li><a href="https://fallen70.github.io/workbook/category/python.html">Python</a></li>
                     <li><a href="https://fallen70.github.io/workbook/category/vim.html">Vim</a></li>
                     <li><a href="https://fallen70.github.io/workbook/category/virtualbox.html">Virtualbox</a></li>
                 </ul></nav>
@@ -42,7 +43,7 @@
 <ul>
 <li><a href="https://geekeries.de-labrusse.fr/?p=1806">https://geekeries.de-labrusse.fr/?p=1806</a></li>
 </ul>
-<div class="highlight"><pre><span></span><code>sudo sysctl -w vm.swappiness<span class="o">=</span><span class="m">30</span>
+<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>sysctl<span class="w"> </span>-w<span class="w"> </span>vm.swappiness<span class="o">=</span><span class="m">30</span>
 </code></pre></div>
 
 <h1>RAM &amp; SWAP</h1>
@@ -52,9 +53,9 @@
 <li><a href="https://linuxpedia.fr/doku.php/expert/analyser_usage_memoire_vive">https://linuxpedia.fr/doku.php/expert/analyser_usage_memoire_vive</a></li>
 <li><a href="https://www.selenic.com/smem/">https://www.selenic.com/smem/</a></li>
 </ul>
-<div class="highlight"><pre><span></span><code><span class="k">for</span> proc <span class="k">in</span> /proc/<span class="o">[</span><span class="m">0</span>-9<span class="o">]</span>*<span class="p">;</span> <span class="k">do</span>   awk <span class="s1">&#39;/VmSwap/ { print $2 &quot;\t&#39;</span><span class="sb">`</span>readlink <span class="nv">$proc</span>/exe <span class="p">|</span> awk <span class="s1">&#39;{ print $1 }&#39;</span><span class="sb">`</span><span class="s1">&#39;&quot; }&#39;</span> <span class="nv">$proc</span>/status<span class="p">;</span> <span class="k">done</span> <span class="p">|</span> sort -n <span class="p">|</span> awk <span class="s1">&#39;{ total += $1 ; print $0 } END { print total &quot;\tTotal&quot;}&#39;</span>
+<div class="highlight"><pre><span></span><code><span class="k">for</span><span class="w"> </span>proc<span class="w"> </span><span class="k">in</span><span class="w"> </span>/proc/<span class="o">[</span><span class="m">0</span>-9<span class="o">]</span>*<span class="p">;</span><span class="w"> </span><span class="k">do</span><span class="w">   </span>awk<span class="w"> </span><span class="s1">&#39;/VmSwap/ { print $2 &quot;\t&#39;</span><span class="sb">`</span>readlink<span class="w"> </span><span class="nv">$proc</span>/exe<span class="w"> </span><span class="p">|</span><span class="w"> </span>awk<span class="w"> </span><span class="s1">&#39;{ print $1 }&#39;</span><span class="sb">`</span><span class="s1">&#39;&quot; }&#39;</span><span class="w"> </span><span class="nv">$proc</span>/status<span class="p">;</span><span class="w"> </span><span class="k">done</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>sort<span class="w"> </span>-n<span class="w"> </span><span class="p">|</span><span class="w"> </span>awk<span class="w"> </span><span class="s1">&#39;{ total += $1 ; print $0 } END { print total &quot;\tTotal&quot;}&#39;</span>
 
-<span class="k">for</span> file <span class="k">in</span> /proc/*/status <span class="p">;</span> <span class="k">do</span> awk <span class="s1">&#39;/Tgid|VmSwap|Name/{printf $2 &quot; &quot; $3}END{ print &quot;&quot;}&#39;</span> <span class="nv">$file</span><span class="p">;</span> <span class="k">done</span> <span class="p">|</span> grep kB  <span class="p">|</span> sort -k <span class="m">3</span> -n
+<span class="k">for</span><span class="w"> </span>file<span class="w"> </span><span class="k">in</span><span class="w"> </span>/proc/*/status<span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="k">do</span><span class="w"> </span>awk<span class="w"> </span><span class="s1">&#39;/Tgid|VmSwap|Name/{printf $2 &quot; &quot; $3}END{ print &quot;&quot;}&#39;</span><span class="w"> </span><span class="nv">$file</span><span class="p">;</span><span class="w"> </span><span class="k">done</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>kB<span class="w">  </span><span class="p">|</span><span class="w"> </span>sort<span class="w"> </span>-k<span class="w"> </span><span class="m">3</span><span class="w"> </span>-n
 </code></pre></div>
     </div><!-- /.entry-content -->
 

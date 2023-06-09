@@ -15,6 +15,7 @@
                 <nav><ul>
                     <li><a href="https://fallen70.github.io/workbook/category/curl.html">Curl</a></li>
                     <li class="active"><a href="https://fallen70.github.io/workbook/category/linux.html">Linux</a></li>
+                    <li><a href="https://fallen70.github.io/workbook/category/python.html">Python</a></li>
                     <li><a href="https://fallen70.github.io/workbook/category/vim.html">Vim</a></li>
                     <li><a href="https://fallen70.github.io/workbook/category/virtualbox.html">Virtualbox</a></li>
                 </ul></nav>
@@ -44,25 +45,25 @@
 <li><a href="http://www.delafond.org/traducmanfr/man/man8/logrotate.8.html">http://www.delafond.org/traducmanfr/man/man8/logrotate.8.html</a></li>
 </ul>
 <p>Créer un fichier du nom de votre service (pour mémo) dans le répertoire /etc/logrotate.d. Nous allons prendre pour exemple le service postfix :</p>
-<div class="highlight"><pre><span></span><code>  vi /etc/logrotate.d/postfix
+<div class="highlight"><pre><span></span><code><span class="w">  </span>vi<span class="w"> </span>/etc/logrotate.d/postfix
 </code></pre></div>
 
 <p>Saisissez ces quelques lignes :</p>
-<div class="highlight"><pre><span></span><code><span class="w">  </span><span class="o">/</span><span class="k">var</span><span class="o">/</span><span class="nb">log</span><span class="o">/</span><span class="n">maillog</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">  </span><span class="n">daily</span><span class="w"></span>
-<span class="w">  </span><span class="n">missingok</span><span class="w"></span>
-<span class="w">  </span><span class="n">rotate</span><span class="w"> </span><span class="mi">52</span><span class="w"></span>
-<span class="w">  </span><span class="n">compress</span><span class="w"></span>
-<span class="w">  </span><span class="n">delaycompress</span><span class="w"></span>
-<span class="w">  </span><span class="n">notifempty</span><span class="w"></span>
-<span class="w">  </span><span class="n">create</span><span class="w"> </span><span class="mi">640</span><span class="w"> </span><span class="n">root</span><span class="w"></span>
-<span class="w">  </span><span class="n">sharedscripts</span><span class="w"></span>
-<span class="w">  </span><span class="n">postrotate</span><span class="w"></span>
-<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="o">-</span><span class="n">f</span><span class="w"> </span><span class="o">/</span><span class="k">var</span><span class="o">/</span><span class="n">run</span><span class="o">/</span><span class="n">postfix</span><span class="o">.</span><span class="n">pid</span><span class="w"> </span><span class="p">];</span><span class="w"> </span><span class="n">then</span><span class="w"></span>
-<span class="w">  </span><span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">init</span><span class="o">.</span><span class="n">d</span><span class="o">/</span><span class="n">postfix</span><span class="w"> </span><span class="n">reload</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="o">/</span><span class="n">dev</span><span class="o">/</span><span class="nb nb-Type">null</span><span class="w"></span>
-<span class="w">  </span><span class="n">fi</span><span class="w"></span>
-<span class="w">  </span><span class="n">endscript</span><span class="w"></span>
-<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="w">  </span><span class="o">/</span><span class="k">var</span><span class="o">/</span><span class="nb">log</span><span class="o">/</span><span class="n">maillog</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">daily</span>
+<span class="w">  </span><span class="n">missingok</span>
+<span class="w">  </span><span class="n">rotate</span><span class="w"> </span><span class="mi">52</span>
+<span class="w">  </span><span class="n">compress</span>
+<span class="w">  </span><span class="n">delaycompress</span>
+<span class="w">  </span><span class="n">notifempty</span>
+<span class="w">  </span><span class="n">create</span><span class="w"> </span><span class="mi">640</span><span class="w"> </span><span class="n">root</span>
+<span class="w">  </span><span class="n">sharedscripts</span>
+<span class="w">  </span><span class="n">postrotate</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="o">-</span><span class="n">f</span><span class="w"> </span><span class="o">/</span><span class="k">var</span><span class="o">/</span><span class="n">run</span><span class="o">/</span><span class="n">postfix</span><span class="o">.</span><span class="n">pid</span><span class="w"> </span><span class="p">];</span><span class="w"> </span><span class="n">then</span>
+<span class="w">  </span><span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">init</span><span class="o">.</span><span class="n">d</span><span class="o">/</span><span class="n">postfix</span><span class="w"> </span><span class="n">reload</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="o">/</span><span class="n">dev</span><span class="o">/</span><span class="nb nb-Type">null</span>
+<span class="w">  </span><span class="n">fi</span>
+<span class="w">  </span><span class="n">endscript</span>
+<span class="w">  </span><span class="p">}</span>
 </code></pre></div>
 
 <p><strong>/var/log/maillog</strong> : Correspond au fichier log à utiliser</p>
@@ -77,11 +78,11 @@
 <p><strong>sharedscripts</strong> : permet d’executer qu’ une fois le script postrotate par rotation</p>
 <h1>Execution</h1>
 <p>Une fois que vous avez fini de configurer votre logrotate, vous pouvez forcer sont éxecution de cette manière :</p>
-<div class="highlight"><pre><span></span><code>logrotate -f  /etc/logrotate.conf
+<div class="highlight"><pre><span></span><code>logrotate<span class="w"> </span>-f<span class="w">  </span>/etc/logrotate.conf
 </code></pre></div>
 
 <p>Pour débugger :</p>
-<div class="highlight"><pre><span></span><code>logrotate -d /etc/logrotate.conf
+<div class="highlight"><pre><span></span><code>logrotate<span class="w"> </span>-d<span class="w"> </span>/etc/logrotate.conf
 </code></pre></div>
     </div><!-- /.entry-content -->
 

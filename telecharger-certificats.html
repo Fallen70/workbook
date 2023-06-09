@@ -15,6 +15,7 @@
                 <nav><ul>
                     <li><a href="https://fallen70.github.io/workbook/category/curl.html">Curl</a></li>
                     <li class="active"><a href="https://fallen70.github.io/workbook/category/linux.html">Linux</a></li>
+                    <li><a href="https://fallen70.github.io/workbook/category/python.html">Python</a></li>
                     <li><a href="https://fallen70.github.io/workbook/category/vim.html">Vim</a></li>
                     <li><a href="https://fallen70.github.io/workbook/category/virtualbox.html">Virtualbox</a></li>
                 </ul></nav>
@@ -39,9 +40,9 @@
 <p>Dans <a href="https://fallen70.github.io/workbook/category/linux.html">Linux</a>.</p>
 <p>Tags: <a href="https://fallen70.github.io/workbook/tag/admin-sys.html">admin-sys</a> <a href="https://fallen70.github.io/workbook/tag/openssl.html">openssl</a> </p>
 </footer><!-- /.post-info -->      <p>Récupére tous les certificats affiché par <code>$HOST:$PORT</code>.</p>
-<div class="highlight"><pre><span></span><code>rm -rf /tmp/certs/
-mkdir -p /tmp/certs/
-openssl s_client -showcerts -connect <span class="nv">$HOST</span>:<span class="nv">$PORT</span> &lt;/dev/null <span class="m">2</span>&gt;/dev/null <span class="p">|</span> sed -n <span class="s2">&quot;/BEGIN CERTIFICATE/,/END CERTIFICATE/p&quot;</span> <span class="p">|</span> awk <span class="s1">&#39;BEGIN {c=0;} /BEGIN CERT/{c++} { print &gt; &quot;/tmp/certs/cert.&quot; c &quot;.pem&quot;}&#39;</span>
+<div class="highlight"><pre><span></span><code>rm<span class="w"> </span>-rf<span class="w"> </span>/tmp/certs/
+mkdir<span class="w"> </span>-p<span class="w"> </span>/tmp/certs/
+openssl<span class="w"> </span>s_client<span class="w"> </span>-showcerts<span class="w"> </span>-connect<span class="w"> </span><span class="nv">$HOST</span>:<span class="nv">$PORT</span><span class="w"> </span>&lt;/dev/null<span class="w"> </span><span class="m">2</span>&gt;/dev/null<span class="w"> </span><span class="p">|</span><span class="w"> </span>sed<span class="w"> </span>-n<span class="w"> </span><span class="s2">&quot;/BEGIN CERTIFICATE/,/END CERTIFICATE/p&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>awk<span class="w"> </span><span class="s1">&#39;BEGIN {c=0;} /BEGIN CERT/{c++} { print &gt; &quot;/tmp/certs/cert.&quot; c &quot;.pem&quot;}&#39;</span>
 </code></pre></div>
     </div><!-- /.entry-content -->
 

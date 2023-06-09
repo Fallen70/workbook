@@ -14,6 +14,7 @@
                 <nav><ul>
                     <li><a href="https://fallen70.github.io/workbook/category/curl.html">Curl</a></li>
                     <li><a href="https://fallen70.github.io/workbook/category/linux.html">Linux</a></li>
+                    <li><a href="https://fallen70.github.io/workbook/category/python.html">Python</a></li>
                     <li><a href="https://fallen70.github.io/workbook/category/vim.html">Vim</a></li>
                     <li><a href="https://fallen70.github.io/workbook/category/virtualbox.html">Virtualbox</a></li>
                 </ul></nav>
@@ -34,21 +35,21 @@
 <p>Tags: <a href="https://fallen70.github.io/workbook/tag/find.html">find</a> <a href="https://fallen70.github.io/workbook/tag/sym-links.html">sym-links</a> </p>
 </footer><!-- /.post-info --><p>Tiré de <a href="https://stackoverflow.com/questions/8513133/how-do-i-find-all-of-the-symlinks-in-a-directory-tree/21438684">https://stackoverflow.com/questions/8513133/how-do-i-find-all-of-the-symlinks-in-a-directory-tree/21438684</a></p>
 <h1>Find symbolic links</h1>
-<div class="highlight"><pre><span></span><code>find . -type l -ls
+<div class="highlight"><pre><span></span><code>find<span class="w"> </span>.<span class="w"> </span>-type<span class="w"> </span>l<span class="w"> </span>-ls
 </code></pre></div>
 
 <h1>Find symbolic links to a specific target</h1>
-<div class="highlight"><pre><span></span><code>find . -lname link_target
+<div class="highlight"><pre><span></span><code>find<span class="w"> </span>.<span class="w"> </span>-lname<span class="w"> </span>link_target
 </code></pre></div>
 
 <p>Note that link_target may contain wildcard characters.</p>
 <h1>Find broken symbolic links</h1>
-<div class="highlight"><pre><span></span><code>find -L . -type l -ls
+<div class="highlight"><pre><span></span><code>find<span class="w"> </span>-L<span class="w"> </span>.<span class="w"> </span>-type<span class="w"> </span>l<span class="w"> </span>-ls
 </code></pre></div>
 
 <p>The -L option instructs find to follow symbolic links, unless when broken.</p>
 <h1>Find &amp; replace broken symbolic links</h1>
-<div class="highlight"><pre><span></span><code>find -L . -type l -delete -exec ln -s new_target <span class="o">{}</span> <span class="se">\;</span>
+<div class="highlight"><pre><span></span><code>find<span class="w"> </span>-L<span class="w"> </span>.<span class="w"> </span>-type<span class="w"> </span>l<span class="w"> </span>-delete<span class="w"> </span>-exec<span class="w"> </span>ln<span class="w"> </span>-s<span class="w"> </span>new_target<span class="w"> </span><span class="o">{}</span><span class="w"> </span><span class="se">\;</span>
 </code></pre></div>
 
 <p>More find examples can be found here: <a href="https://hamwaves.com/find/">https://hamwaves.com/find/</a></p>                </article>

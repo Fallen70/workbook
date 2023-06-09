@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+        <meta charset="utf-8" />
+        <meta name="generator" content="Pelican" />
+        <title>Check DNS et IP</title>
+        <link rel="stylesheet" href="https://fallen70.github.io/workbook/theme/css/main.css" />
+        <link href="https://fallen70.github.io/workbook/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="WorkBook Atom Feed" />
+        <meta name="description" content="Prerequis python3 module python nslookup un dossiern results pour stocker les résultats Le script Lit un csv en entrée et eécrit les résultats au..." />
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="https://fallen70.github.io/workbook/">WorkBook</a></h1>
+                <nav><ul>
+                    <li><a href="https://fallen70.github.io/workbook/category/curl.html">Curl</a></li>
+                    <li><a href="https://fallen70.github.io/workbook/category/linux.html">Linux</a></li>
+                    <li class="active"><a href="https://fallen70.github.io/workbook/category/python.html">Python</a></li>
+                    <li><a href="https://fallen70.github.io/workbook/category/vim.html">Vim</a></li>
+                    <li><a href="https://fallen70.github.io/workbook/category/virtualbox.html">Virtualbox</a></li>
+                </ul></nav>
+        </header><!-- /#banner -->
+<section id="content" class="body">
+  <article>
+    <header>
+      <h1 class="entry-title">
+        <a href="https://fallen70.github.io/workbook/check-dns-et-ip.html" rel="bookmark"
+           title="Permalink to Check DNS et IP">Check DNS et IP</a></h1>
+    </header>
+
+    <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2023-06-09T11:13:00+02:00">
+                Publié le: 09-juin-2023
+        </abbr>
+
+        <address class="vcard author">
+                Par                         <a class="url fn" href="https://fallen70.github.io/workbook/author/fallen70.html">Fallen70</a>
+        </address>
+<p>Dans <a href="https://fallen70.github.io/workbook/category/python.html">Python</a>.</p>
+<p>Tags: <a href="https://fallen70.github.io/workbook/tag/dns.html">dns</a> <a href="https://fallen70.github.io/workbook/tag/check.html">check</a> </p>
+</footer><!-- /.post-info -->      <h1>Prerequis</h1>
+<ul>
+<li>python3</li>
+<li>module python <code>nslookup</code></li>
+<li>un dossiern results pour stocker les résultats</li>
+</ul>
+<p>Le script Lit un csv en entrée et eécrit les résultats au fur et à mesure.</p>
+<h1>Script</h1>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">csv</span>
+<span class="kn">from</span> <span class="nn">nslookup</span> <span class="kn">import</span> <span class="n">Nslookup</span>
+<span class="n">dns_query</span> <span class="o">=</span> <span class="n">Nslookup</span><span class="p">()</span>
+
+
+<span class="k">def</span> <span class="nf">ping_ko</span><span class="p">(</span> <span class="n">ip</span> <span class="p">):</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">popen</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;ping -c 4 </span><span class="si">{</span><span class="n">ip</span><span class="si">}</span><span class="s2"> &quot;</span><span class="p">)</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span>  <span class="n">response</span><span class="o">.</span><span class="n">splitlines</span><span class="p">():</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
+        <span class="k">if</span> <span class="s2">&quot;Request timed out.&quot;</span> <span class="ow">in</span> <span class="n">line</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">True</span>
+        <span class="k">if</span> <span class="s2">&quot;unreachable&quot;</span> <span class="ow">in</span> <span class="n">line</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">True</span>
+        <span class="k">if</span> <span class="s2">&quot;4 packets transmitted, 0 received&quot;</span> <span class="ow">in</span> <span class="n">line</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">True</span>
+    <span class="k">return</span> <span class="kc">False</span>
+
+<span class="k">def</span> <span class="nf">main</span><span class="p">(</span> <span class="n">csv_file</span><span class="p">,</span> <span class="n">host_field</span> <span class="o">=</span> <span class="s2">&quot;host&quot;</span> <span class="p">):</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span> <span class="n">csv_file</span> <span class="p">)</span> <span class="k">as</span> <span class="n">csv_open</span><span class="p">:</span>
+        <span class="n">reader</span> <span class="o">=</span> <span class="n">csv</span><span class="o">.</span><span class="n">DictReader</span><span class="p">(</span> <span class="n">csv_open</span> <span class="p">)</span>
+        <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">reader</span><span class="p">:</span>
+            <span class="n">ips_record</span> <span class="o">=</span> <span class="n">dns_query</span><span class="o">.</span><span class="n">dns_lookup</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="n">host_field</span><span class="p">])</span>
+            <span class="nb">print</span><span class="p">(</span> <span class="n">row</span><span class="p">[</span><span class="n">host_field</span><span class="p">],</span> <span class="n">ips_record</span><span class="o">.</span><span class="n">response_full</span><span class="p">,</span> <span class="n">ips_record</span><span class="o">.</span><span class="n">answer</span> <span class="p">)</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">ips_record</span><span class="o">.</span><span class="n">answer</span><span class="p">:</span>
+                <span class="n">DNS_KO</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span> <span class="s2">&quot;results/dns_ko.txt&quot;</span><span class="p">,</span> <span class="s2">&quot;a&quot;</span> <span class="p">)</span>
+                <span class="n">DNS_KO</span><span class="o">.</span><span class="n">write</span><span class="p">(</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">row</span><span class="p">[</span><span class="n">host_field</span><span class="p">]</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span> <span class="p">)</span>
+                <span class="n">DNS_KO</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+                <span class="k">continue</span>
+            <span class="k">if</span> <span class="n">ping_ko</span><span class="p">(</span> <span class="n">ips_record</span><span class="o">.</span><span class="n">answer</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="p">):</span>
+                <span class="n">PING_KO</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span> <span class="s2">&quot;results/ping_ko.txt&quot;</span><span class="p">,</span> <span class="s2">&quot;a&quot;</span> <span class="p">)</span>
+                <span class="n">PING_KO</span><span class="o">.</span><span class="n">write</span><span class="p">(</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">row</span><span class="p">[</span><span class="n">host_field</span><span class="p">]</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span> <span class="p">)</span>
+                <span class="n">PING_KO</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">PING_OK</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span> <span class="s2">&quot;results/ping_ok.txt&quot;</span><span class="p">,</span> <span class="s2">&quot;a&quot;</span> <span class="p">)</span>
+                <span class="n">PING_OK</span><span class="o">.</span><span class="n">write</span><span class="p">(</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">row</span><span class="p">[</span><span class="n">host_field</span><span class="p">]</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span> <span class="p">)</span>
+                <span class="n">PING_OK</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+
+    <span class="kn">import</span> <span class="nn">argparse</span>
+    <span class="n">parser</span> <span class="o">=</span> <span class="n">argparse</span><span class="o">.</span><span class="n">ArgumentParser</span><span class="p">(</span><span class="n">description</span> <span class="o">=</span> <span class="s1">&#39;Test DNS reachable servers&#39;</span><span class="p">)</span>
+    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;csv&#39;</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s1">&#39;List of servers given by Splunk csv file&#39;</span><span class="p">)</span>
+    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;--host&#39;</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s1">&#39;Name of the host column&#39;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s2">&quot;host&quot;</span><span class="p">)</span>
+    <span class="n">args</span> <span class="o">=</span> <span class="n">parser</span><span class="o">.</span><span class="n">parse_args</span><span class="p">()</span>
+
+    <span class="n">main</span><span class="p">(</span> <span class="n">args</span><span class="o">.</span><span class="n">csv</span><span class="p">,</span> <span class="n">host_field</span><span class="o">=</span><span class="n">args</span><span class="o">.</span><span class="n">host</span> <span class="p">)</span>
+</code></pre></div>
+    </div><!-- /.entry-content -->
+
+  </article>
+</section>
+        <section id="extras" class="body">
+                <div class="blogroll">
+                        <h2>links</h2>
+                        <ul>
+                            <li><a href="https://getpelican.com/">Pelican</a></li>
+                            <li><a href="https://www.python.org/">Python.org</a></li>
+                            <li><a href="https://palletsprojects.com/p/jinja/">Jinja2</a></li>
+                        </ul>
+                </div><!-- /.blogroll -->
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+                            <li><a href="https://fallen70.github.io/workbook/feeds/all.atom.xml" type="application/atom+xml" rel="alternate">atom feed</a></li>
+
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="https://getpelican.com/">Pelican</a>, which takes great advantage of <a href="https://www.python.org/">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="https://www.smashingmagazine.com/2009/08/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>

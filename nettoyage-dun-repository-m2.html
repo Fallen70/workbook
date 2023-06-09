@@ -15,6 +15,7 @@
                 <nav><ul>
                     <li><a href="https://fallen70.github.io/workbook/category/curl.html">Curl</a></li>
                     <li class="active"><a href="https://fallen70.github.io/workbook/category/linux.html">Linux</a></li>
+                    <li><a href="https://fallen70.github.io/workbook/category/python.html">Python</a></li>
                     <li><a href="https://fallen70.github.io/workbook/category/vim.html">Vim</a></li>
                     <li><a href="https://fallen70.github.io/workbook/category/virtualbox.html">Virtualbox</a></li>
                 </ul></nav>
@@ -47,18 +48,18 @@
 <p>atime -&gt; date de derniner accés</p>
 <div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
 
-<span class="nb">export</span> <span class="nv">MVN_REPO_DIR</span><span class="o">=</span><span class="s1">&#39;/path/to/m2&#39;</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">MVN_REPO_DIR</span><span class="o">=</span><span class="s1">&#39;/path/to/m2&#39;</span>
 
 <span class="c1"># Cleaning mvn SNAPSHOT repository</span>
-<span class="nb">echo</span> <span class="s1">&#39;Cleaning SNAPSHOT repository&#39;</span>
-<span class="k">for</span> snapshot_dir <span class="k">in</span> <span class="k">$(</span>find <span class="si">${</span><span class="nv">MVN_REPO_DIR</span><span class="si">}</span> -ctime +14 -type d -name <span class="s1">&#39;*-SNAPSHOT&#39;</span> <span class="k">)</span><span class="p">;</span>
-  <span class="k">do</span> rm -rvf <span class="nv">$snapshot_dir</span><span class="p">;</span>
+<span class="nb">echo</span><span class="w"> </span><span class="s1">&#39;Cleaning SNAPSHOT repository&#39;</span>
+<span class="k">for</span><span class="w"> </span>snapshot_dir<span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="k">$(</span>find<span class="w"> </span><span class="si">${</span><span class="nv">MVN_REPO_DIR</span><span class="si">}</span><span class="w"> </span>-ctime<span class="w"> </span>+14<span class="w"> </span>-type<span class="w"> </span>d<span class="w"> </span>-name<span class="w"> </span><span class="s1">&#39;*-SNAPSHOT&#39;</span><span class="w"> </span><span class="k">)</span><span class="p">;</span>
+<span class="w">  </span><span class="k">do</span><span class="w"> </span>rm<span class="w"> </span>-rvf<span class="w"> </span><span class="nv">$snapshot_dir</span><span class="p">;</span>
 <span class="k">done</span><span class="p">;</span>
 
 <span class="c1"># Cleaning all mvn repository</span>
-<span class="nb">echo</span> <span class="s1">&#39;Cleaning all with atime &gt; 60 days&#39;</span>
-<span class="k">for</span> file <span class="k">in</span> <span class="k">$(</span>find <span class="si">${</span><span class="nv">MVN_REPO_DIR</span><span class="si">}</span> -atime +60 -type f -name <span class="s1">&#39;*.pom&#39;</span><span class="k">)</span><span class="p">;</span> 
-  <span class="k">do</span> rm -rvf <span class="k">$(</span> dirname <span class="nv">$file</span> <span class="k">)</span><span class="p">;</span> 
+<span class="nb">echo</span><span class="w"> </span><span class="s1">&#39;Cleaning all with atime &gt; 60 days&#39;</span>
+<span class="k">for</span><span class="w"> </span>file<span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="k">$(</span>find<span class="w"> </span><span class="si">${</span><span class="nv">MVN_REPO_DIR</span><span class="si">}</span><span class="w"> </span>-atime<span class="w"> </span>+60<span class="w"> </span>-type<span class="w"> </span>f<span class="w"> </span>-name<span class="w"> </span><span class="s1">&#39;*.pom&#39;</span><span class="k">)</span><span class="p">;</span><span class="w"> </span>
+<span class="w">  </span><span class="k">do</span><span class="w"> </span>rm<span class="w"> </span>-rvf<span class="w"> </span><span class="k">$(</span><span class="w"> </span>dirname<span class="w"> </span><span class="nv">$file</span><span class="w"> </span><span class="k">)</span><span class="p">;</span><span class="w"> </span>
 <span class="k">done</span><span class="p">;</span>
 </code></pre></div>
     </div><!-- /.entry-content -->

@@ -15,6 +15,7 @@
                 <nav><ul>
                     <li><a href="https://fallen70.github.io/workbook/category/curl.html">Curl</a></li>
                     <li class="active"><a href="https://fallen70.github.io/workbook/category/linux.html">Linux</a></li>
+                    <li><a href="https://fallen70.github.io/workbook/category/python.html">Python</a></li>
                     <li><a href="https://fallen70.github.io/workbook/category/vim.html">Vim</a></li>
                     <li><a href="https://fallen70.github.io/workbook/category/virtualbox.html">Virtualbox</a></li>
                 </ul></nav>
@@ -46,7 +47,7 @@
 <ul>
 <li><a href="https://access.redhat.com/solutions/253273">https://access.redhat.com/solutions/253273</a></li>
 </ul>
-<div class="highlight"><pre><span></span><code>ansible all -i inventory -u ansible  -b --become-user<span class="o">=</span>root --become-method<span class="o">=</span>sudo -m redhat_subscription -a <span class="s2">&quot;state=present username=&lt;login&gt; password=&lt;password&gt; auto_attach=true&quot;</span>
+<div class="highlight"><pre><span></span><code>ansible<span class="w"> </span>all<span class="w"> </span>-i<span class="w"> </span>inventory<span class="w"> </span>-u<span class="w"> </span>ansible<span class="w">  </span>-b<span class="w"> </span>--become-user<span class="o">=</span>root<span class="w"> </span>--become-method<span class="o">=</span>sudo<span class="w"> </span>-m<span class="w"> </span>redhat_subscription<span class="w"> </span>-a<span class="w"> </span><span class="s2">&quot;state=present username=&lt;login&gt; password=&lt;password&gt; auto_attach=true&quot;</span>
 </code></pre></div>
 
 <h1>Lock version</h1>
@@ -54,13 +55,13 @@
 <ul>
 <li><a href="https://access.redhat.com/solutions/238533">https://access.redhat.com/solutions/238533</a></li>
 </ul>
-<div class="highlight"><pre><span></span><code>ansible all -i inventory -u ansible  -b --become-user<span class="o">=</span>root --become-method<span class="o">=</span>sudo -m <span class="s2">&quot;command /usr/sbin/subscription-manager release --list&quot;</span>
+<div class="highlight"><pre><span></span><code>ansible<span class="w"> </span>all<span class="w"> </span>-i<span class="w"> </span>inventory<span class="w"> </span>-u<span class="w"> </span>ansible<span class="w">  </span>-b<span class="w"> </span>--become-user<span class="o">=</span>root<span class="w"> </span>--become-method<span class="o">=</span>sudo<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;command /usr/sbin/subscription-manager release --list&quot;</span>
 
-ansible all -i inventory -u ansible  -b --become-user<span class="o">=</span>root --become-method<span class="o">=</span>sudo -m <span class="s2">&quot;command /usr/sbin/subscription-manager release --set=&lt;version&gt;&quot;</span>
+ansible<span class="w"> </span>all<span class="w"> </span>-i<span class="w"> </span>inventory<span class="w"> </span>-u<span class="w"> </span>ansible<span class="w">  </span>-b<span class="w"> </span>--become-user<span class="o">=</span>root<span class="w"> </span>--become-method<span class="o">=</span>sudo<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;command /usr/sbin/subscription-manager release --set=&lt;version&gt;&quot;</span>
 
-ansible all -i inventory -u ansible  -b --become-user<span class="o">=</span>root --become-method<span class="o">=</span>sudo -m <span class="s2">&quot;command /usr/sbin/subscription-manager release --show&quot;</span>
+ansible<span class="w"> </span>all<span class="w"> </span>-i<span class="w"> </span>inventory<span class="w"> </span>-u<span class="w"> </span>ansible<span class="w">  </span>-b<span class="w"> </span>--become-user<span class="o">=</span>root<span class="w"> </span>--become-method<span class="o">=</span>sudo<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;command /usr/sbin/subscription-manager release --show&quot;</span>
 
-ansible all -i inventory -u ansible  -b --become-user<span class="o">=</span>root --become-method<span class="o">=</span>sudo -m <span class="s2">&quot;command yum clean all&quot;</span>
+ansible<span class="w"> </span>all<span class="w"> </span>-i<span class="w"> </span>inventory<span class="w"> </span>-u<span class="w"> </span>ansible<span class="w">  </span>-b<span class="w"> </span>--become-user<span class="o">=</span>root<span class="w"> </span>--become-method<span class="o">=</span>sudo<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;command yum clean all&quot;</span>
 </code></pre></div>
 
 <h1>Unsubscribe</h1>
@@ -68,11 +69,11 @@ ansible all -i inventory -u ansible  -b --become-user<span class="o">=</span>roo
 <ul>
 <li><a href="https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/6/html/installation_guide/ch-deregister_rhn_entitlement">https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/6/html/installation_guide/ch-deregister_rhn_entitlement</a></li>
 </ul>
-<div class="highlight"><pre><span></span><code>ansible all -i inventory -u ansible  -b --become-user<span class="o">=</span>root --become-method<span class="o">=</span>sudo -m <span class="s2">&quot;command /usr/sbin/subscription-manager unregister --username=&lt;login&gt;&quot;</span>
+<div class="highlight"><pre><span></span><code>ansible<span class="w"> </span>all<span class="w"> </span>-i<span class="w"> </span>inventory<span class="w"> </span>-u<span class="w"> </span>ansible<span class="w">  </span>-b<span class="w"> </span>--become-user<span class="o">=</span>root<span class="w"> </span>--become-method<span class="o">=</span>sudo<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;command /usr/sbin/subscription-manager unregister --username=&lt;login&gt;&quot;</span>
 </code></pre></div>
 
 <h2>Redhat 7:</h2>
-<div class="highlight"><pre><span></span><code>ansible all -i inventory -u ansible  -b --become-user<span class="o">=</span>root --become-method<span class="o">=</span>sudo -m <span class="s2">&quot;command /usr/sbin/subscription-manager unregister&quot;</span>
+<div class="highlight"><pre><span></span><code>ansible<span class="w"> </span>all<span class="w"> </span>-i<span class="w"> </span>inventory<span class="w"> </span>-u<span class="w"> </span>ansible<span class="w">  </span>-b<span class="w"> </span>--become-user<span class="o">=</span>root<span class="w"> </span>--become-method<span class="o">=</span>sudo<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;command /usr/sbin/subscription-manager unregister&quot;</span>
 </code></pre></div>
     </div><!-- /.entry-content -->
 

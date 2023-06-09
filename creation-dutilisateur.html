@@ -15,6 +15,7 @@
                 <nav><ul>
                     <li><a href="https://fallen70.github.io/workbook/category/curl.html">Curl</a></li>
                     <li class="active"><a href="https://fallen70.github.io/workbook/category/linux.html">Linux</a></li>
+                    <li><a href="https://fallen70.github.io/workbook/category/python.html">Python</a></li>
                     <li><a href="https://fallen70.github.io/workbook/category/vim.html">Vim</a></li>
                     <li><a href="https://fallen70.github.io/workbook/category/virtualbox.html">Virtualbox</a></li>
                 </ul></nav>
@@ -44,12 +45,12 @@
 <li><a href="https://stackoverflow.com/questions/14810684/check-whether-a-user-exists">https://stackoverflow.com/questions/14810684/check-whether-a-user-exists</a></li>
 </ul>
 <div class="highlight"><pre><span></span><code><span class="c1"># Check if user exists</span>
-<span class="k">if</span> ! id -u <span class="nv">$FS_USER</span> &gt; /dev/null <span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span><span class="p">;</span> <span class="k">then</span>
-    <span class="nb">echo</span> <span class="s2">&quot;The user does not exist; execute below commands to create and try again:&quot;</span>
-    <span class="nb">echo</span> <span class="s2">&quot;  root@sh1:~# adduser --home /usr/local/freeswitch/ --shell /bin/false --no-create-home --ingroup daemon --disabled-password --disabled-login </span><span class="nv">$FS_USER</span><span class="s2">&quot;</span>
-    <span class="nb">echo</span> <span class="s2">&quot;  ...&quot;</span>
-    <span class="nb">echo</span> <span class="s2">&quot;  root@sh1:~# chown freeswitch:daemon /usr/local/freeswitch/ -R&quot;</span>
-    <span class="nb">exit</span> <span class="m">1</span>
+<span class="k">if</span><span class="w"> </span>!<span class="w"> </span>id<span class="w"> </span>-u<span class="w"> </span><span class="nv">$FS_USER</span><span class="w"> </span>&gt;<span class="w"> </span>/dev/null<span class="w"> </span><span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;The user does not exist; execute below commands to create and try again:&quot;</span>
+<span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;  root@sh1:~# adduser --home /usr/local/freeswitch/ --shell /bin/false --no-create-home --ingroup daemon --disabled-password --disabled-login </span><span class="nv">$FS_USER</span><span class="s2">&quot;</span>
+<span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;  ...&quot;</span>
+<span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;  root@sh1:~# chown freeswitch:daemon /usr/local/freeswitch/ -R&quot;</span>
+<span class="w">    </span><span class="nb">exit</span><span class="w"> </span><span class="m">1</span>
 <span class="k">fi</span>
 </code></pre></div>
     </div><!-- /.entry-content -->
