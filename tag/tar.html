@@ -3,7 +3,7 @@
 <head>
         <meta charset="utf-8" />
         <meta name="generator" content="Pelican" />
-        <title>WorkBook - find</title>
+        <title>WorkBook - tar</title>
         <link rel="stylesheet" href="https://fallen70.github.io/workbook/theme/css/main.css" />
         <link href="https://fallen70.github.io/workbook/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="WorkBook Atom Feed" />
 </head>
@@ -52,48 +52,6 @@ rm<span class="w"> </span>-rf<span class="w"> </span><span class="m">2020</span>
 gzip<span class="w"> </span>/tmp/2020.tar
 </code></pre></div>                </article>
             </aside><!-- /#featured -->
-                <section id="content" class="body">
-                    <h1>Other articles</h1>
-                    <hr />
-                    <ol id="posts-list" class="hfeed">
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="https://fallen70.github.io/workbook/find-et-lien-symbolique.html" rel="bookmark"
-                           title="Permalink to Find et lien symbolique">Find et lien symbolique</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2021-08-02T16:20:00+02:00">
-                Publié le: 02-août-2021
-        </abbr>
-
-        <address class="vcard author">
-                Par                         <a class="url fn" href="https://fallen70.github.io/workbook/author/fallen70.html">Fallen70</a>
-        </address>
-<p>Dans <a href="https://fallen70.github.io/workbook/category/linux.html">Linux</a>.</p>
-<p>Tags: <a href="https://fallen70.github.io/workbook/tag/find.html">find</a> <a href="https://fallen70.github.io/workbook/tag/sym-links.html">sym-links</a> </p>
-</footer><!-- /.post-info -->                <p>Tiré de <a href="https://stackoverflow.com/questions/8513133/how-do-i-find-all-of-the-symlinks-in-a-directory-tree/21438684">https://stackoverflow.com/questions/8513133/how-do-i-find-all-of-the-symlinks-in-a-directory-tree/21438684</a></p>
-<h1>Find symbolic links</h1>
-<div class="highlight"><pre><span></span><code>find<span class="w"> </span>.<span class="w"> </span>-type<span class="w"> </span>l<span class="w"> </span>-ls
-</code></pre></div>
-
-<h1>Find symbolic links to a specific target</h1>
-<div class="highlight"><pre><span></span><code>find<span class="w"> </span>.<span class="w"> </span>-lname<span class="w"> </span>link_target
-</code></pre></div>
-
-<p>Note that link_target may contain wildcard characters.</p>
-<h1>Find broken symbolic links</h1>
-<div class="highlight"><pre><span></span><code>find<span class="w"> </span>-L<span class="w"> </span>.<span class="w"> </span>-type<span class="w"> </span>l<span class="w"> </span>-ls
-</code></pre></div>
-
-<p>The -L option instructs find to follow symbolic …</p>
-                <a class="readmore" href="https://fallen70.github.io/workbook/find-et-lien-symbolique.html">read more</a>
-                </div><!-- /.entry-content -->
-            </article></li>
-                </ol><!-- /#posts-list -->
-                </section><!-- /#content -->
         <section id="extras" class="body">
                 <div class="blogroll">
                         <h2>links</h2>

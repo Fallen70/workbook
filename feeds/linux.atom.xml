@@ -1,5 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>WorkBook - Linux</title><link href="https://fallen70.github.io/workbook/" rel="alternate"></link><link href="https://fallen70.github.io/workbook/feeds/linux.atom.xml" rel="self"></link><id>https://fallen70.github.io/workbook/</id><updated>2021-08-10T10:50:00+02:00</updated><entry><title>Liste des services</title><link href="https://fallen70.github.io/workbook/liste-des-services.html" rel="alternate"></link><published>2021-08-10T10:50:00+02:00</published><updated>2021-08-10T10:50:00+02:00</updated><author><name>Fallen70</name></author><id>tag:fallen70.github.io,2021-08-10:/workbook/liste-des-services.html</id><content type="html">&lt;p&gt;Sources :&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>WorkBook - Linux</title><link href="https://fallen70.github.io/workbook/" rel="alternate"></link><link href="https://fallen70.github.io/workbook/feeds/linux.atom.xml" rel="self"></link><id>https://fallen70.github.io/workbook/</id><updated>2023-06-28T08:49:00+02:00</updated><entry><title>Archivage depuis un disque plein</title><link href="https://fallen70.github.io/workbook/archivage-depuis-un-disque-plein.html" rel="alternate"></link><published>2023-06-28T08:49:00+02:00</published><updated>2023-06-28T08:49:00+02:00</updated><author><name>Fallen70</name></author><id>tag:fallen70.github.io,2023-06-28:/workbook/archivage-depuis-un-disque-plein.html</id><summary type="html">&lt;h1&gt;Méthode pour archiver des fichiers sur une période de temps&lt;/h1&gt;
+&lt;h2&gt;Création d'un tar vide&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="nb"&gt;cd&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;/tmp
+mkdir&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;2020&lt;/span&gt;
+tar&lt;span class="w"&gt; &lt;/span&gt;cvf&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;2020&lt;/span&gt;.tar&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;2020&lt;/span&gt;/
+rm&lt;span class="w"&gt; &lt;/span&gt;-rf&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;2020&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h2&gt;Copie des fichiers par année&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="nb"&gt;cd&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;/files/to/archive
+&lt;span class="k"&gt;for&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;file&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;in&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;$(&lt;/span&gt;find&lt;span class="w"&gt; &lt;/span&gt;.&lt;span class="w"&gt; &lt;/span&gt;-newermt&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;20200101&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;-not&lt;span class="w"&gt; &lt;/span&gt;-newermt&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;20210101&lt;/span&gt;&lt;span class="k"&gt;)&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;do&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;tar&lt;span class="w"&gt; &lt;/span&gt;-rvf&lt;span class="w"&gt; &lt;/span&gt;/tmp/2020.tar …&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</summary><content type="html">&lt;h1&gt;Méthode pour archiver des fichiers sur une période de temps&lt;/h1&gt;
+&lt;h2&gt;Création d'un tar vide&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="nb"&gt;cd&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;/tmp
+mkdir&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;2020&lt;/span&gt;
+tar&lt;span class="w"&gt; &lt;/span&gt;cvf&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;2020&lt;/span&gt;.tar&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;2020&lt;/span&gt;/
+rm&lt;span class="w"&gt; &lt;/span&gt;-rf&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;2020&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h2&gt;Copie des fichiers par année&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="nb"&gt;cd&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;/files/to/archive
+&lt;span class="k"&gt;for&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;file&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;in&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;$(&lt;/span&gt;find&lt;span class="w"&gt; &lt;/span&gt;.&lt;span class="w"&gt; &lt;/span&gt;-newermt&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;20200101&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;-not&lt;span class="w"&gt; &lt;/span&gt;-newermt&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;20210101&lt;/span&gt;&lt;span class="k"&gt;)&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;do&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;tar&lt;span class="w"&gt; &lt;/span&gt;-rvf&lt;span class="w"&gt; &lt;/span&gt;/tmp/2020.tar&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;$file&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;done&lt;/span&gt;
+&lt;span class="sb"&gt;````&lt;/span&gt;
+
+&lt;span class="c1"&gt;## Compression de l&amp;#39;archive&lt;/span&gt;
+
+&lt;span class="sb"&gt;```&lt;/span&gt;shell
+gzip&lt;span class="w"&gt; &lt;/span&gt;/tmp/2020.tar
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content><category term="Linux"></category><category term="admin-sys"></category><category term="tar"></category><category term="find"></category></entry><entry><title>Liste des services</title><link href="https://fallen70.github.io/workbook/liste-des-services.html" rel="alternate"></link><published>2021-08-10T10:50:00+02:00</published><updated>2021-08-10T10:50:00+02:00</updated><author><name>Fallen70</name></author><id>tag:fallen70.github.io,2021-08-10:/workbook/liste-des-services.html</id><content type="html">&lt;p&gt;Sources :&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href="https://linoxide.com/how-to-list-services-in-linux/"&gt;https://linoxide.com/how-to-list-services-in-linux/&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
