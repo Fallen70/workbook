@@ -20,7 +20,7 @@ rm -rf 2020
 ```shell
 cd /files/to/archive
 for file in $(find . -newermt 20200101 -not -newermt 20210101); do tar -rvf /tmp/2020.tar $file; done
-````
+```
 
 ## Compression de l'archive
 
