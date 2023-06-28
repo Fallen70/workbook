@@ -50,12 +50,10 @@ rm<span class="w"> </span>-rf<span class="w"> </span><span class="m">2020</span>
 <h2>Copie des fichiers par année</h2>
 <div class="highlight"><pre><span></span><code><span class="nb">cd</span><span class="w"> </span>/files/to/archive
 <span class="k">for</span><span class="w"> </span>file<span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="k">$(</span>find<span class="w"> </span>.<span class="w"> </span>-newermt<span class="w"> </span><span class="m">20200101</span><span class="w"> </span>-not<span class="w"> </span>-newermt<span class="w"> </span><span class="m">20210101</span><span class="k">)</span><span class="p">;</span><span class="w"> </span><span class="k">do</span><span class="w"> </span>tar<span class="w"> </span>-rvf<span class="w"> </span>/tmp/2020.tar<span class="w"> </span><span class="nv">$file</span><span class="p">;</span><span class="w"> </span><span class="k">done</span>
-<span class="sb">````</span>
+</code></pre></div>
 
-<span class="c1">## Compression de l&#39;archive</span>
-
-<span class="sb">```</span>shell
-gzip<span class="w"> </span>/tmp/2020.tar
+<h2>Compression de l'archive</h2>
+<div class="highlight"><pre><span></span><code>gzip<span class="w"> </span>/tmp/2020.tar
 </code></pre></div>
     </div><!-- /.entry-content -->
 

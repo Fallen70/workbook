@@ -20,12 +20,10 @@ rm&lt;span class="w"&gt; &lt;/span&gt;-rf&lt;span class="w"&gt; &lt;/span&gt;&lt
 &lt;h2&gt;Copie des fichiers par année&lt;/h2&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="nb"&gt;cd&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;/files/to/archive
 &lt;span class="k"&gt;for&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;file&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;in&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;$(&lt;/span&gt;find&lt;span class="w"&gt; &lt;/span&gt;.&lt;span class="w"&gt; &lt;/span&gt;-newermt&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;20200101&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;-not&lt;span class="w"&gt; &lt;/span&gt;-newermt&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;20210101&lt;/span&gt;&lt;span class="k"&gt;)&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;do&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;tar&lt;span class="w"&gt; &lt;/span&gt;-rvf&lt;span class="w"&gt; &lt;/span&gt;/tmp/2020.tar&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;$file&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;done&lt;/span&gt;
-&lt;span class="sb"&gt;````&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-&lt;span class="c1"&gt;## Compression de l&amp;#39;archive&lt;/span&gt;
-
-&lt;span class="sb"&gt;```&lt;/span&gt;shell
-gzip&lt;span class="w"&gt; &lt;/span&gt;/tmp/2020.tar
+&lt;h2&gt;Compression de l'archive&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;gzip&lt;span class="w"&gt; &lt;/span&gt;/tmp/2020.tar
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content><category term="Linux"></category><category term="admin-sys"></category><category term="tar"></category><category term="find"></category></entry><entry><title>Check DNS et IP</title><link href="https://fallen70.github.io/workbook/check-dns-et-ip.html" rel="alternate"></link><published>2023-06-09T11:13:00+02:00</published><updated>2023-06-09T11:13:00+02:00</updated><author><name>Fallen70</name></author><id>tag:fallen70.github.io,2023-06-09:/workbook/check-dns-et-ip.html</id><summary type="html">&lt;h1&gt;Prerequis&lt;/h1&gt;
 &lt;ul&gt;
 &lt;li&gt;python3&lt;/li&gt;
