@@ -22,7 +22,48 @@
 
             <aside id="featured" class="body">
                 <article>
-                    <h1 class="entry-title"><a href="https://fallen70.github.io/workbook/archivage-depuis-un-disque-plein.html">Archivage depuis un disque plein</a></h1>
+                    <h1 class="entry-title"><a href="https://fallen70.github.io/workbook/load-et-dump-yaml.html">Load et Dump yaml</a></h1>
+<footer class="post-info">
+        <abbr class="published" title="2023-06-29T11:44:00+02:00">
+                Publié le: 29-juin-2023
+        </abbr>
+
+        <address class="vcard author">
+                Par                         <a class="url fn" href="https://fallen70.github.io/workbook/author/fallen70.html">Fallen70</a>
+        </address>
+<p>Dans <a href="https://fallen70.github.io/workbook/category/python.html">Python</a>.</p>
+<p>Tags: <a href="https://fallen70.github.io/workbook/tag/yaml.html">yaml</a> </p>
+</footer><!-- /.post-info --><h1>Prérequis</h1>
+<div class="highlight"><pre><span></span><code><span class="c1"># import pyyaml module</span>
+<span class="kn">import</span> <span class="nn">yaml</span>
+<span class="kn">from</span> <span class="nn">yaml.loader</span> <span class="kn">import</span> <span class="n">SafeLoader</span>
+</code></pre></div>
+
+<h1>Chargement depuis un fichier</h1>
+<div class="highlight"><pre><span></span><code><span class="c1"># Open the file and load the file</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;fichier.yaml&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">yaml</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">Loader</span><span class="o">=</span><span class="n">SafeLoader</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+</code></pre></div>
+
+<h1>Dump dans un fichier</h1>
+<div class="highlight"><pre><span></span><code><span class="c1"># Dump data</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;fichier.yml&#39;</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">yaml</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">data</span><span class="p">,</span><span class="n">f</span> <span class="p">)</span>
+</code></pre></div>                </article>
+            </aside><!-- /#featured -->
+                <section id="content" class="body">
+                    <h1>Other articles</h1>
+                    <hr />
+                    <ol id="posts-list" class="hfeed">
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="https://fallen70.github.io/workbook/archivage-depuis-un-disque-plein.html" rel="bookmark"
+                           title="Permalink to Archivage depuis un disque plein">Archivage depuis un disque plein</a></h1>
+                </header>
+
+                <div class="entry-content">
 <footer class="post-info">
         <abbr class="published" title="2023-06-28T08:49:00+02:00">
                 Publié le: 28-juin-2023
@@ -33,7 +74,7 @@
         </address>
 <p>Dans <a href="https://fallen70.github.io/workbook/category/linux.html">Linux</a>.</p>
 <p>Tags: <a href="https://fallen70.github.io/workbook/tag/admin-sys.html">admin-sys</a> <a href="https://fallen70.github.io/workbook/tag/tar.html">tar</a> <a href="https://fallen70.github.io/workbook/tag/find.html">find</a> </p>
-</footer><!-- /.post-info --><h1>Méthode pour archiver des fichiers sur une période de temps</h1>
+</footer><!-- /.post-info -->                <h1>Méthode pour archiver des fichiers sur une période de temps</h1>
 <h2>Création d'un tar vide</h2>
 <div class="highlight"><pre><span></span><code><span class="nb">cd</span><span class="w"> </span>/tmp
 mkdir<span class="w"> </span><span class="m">2020</span>
@@ -43,17 +84,10 @@ rm<span class="w"> </span>-rf<span class="w"> </span><span class="m">2020</span>
 
 <h2>Copie des fichiers par année</h2>
 <div class="highlight"><pre><span></span><code><span class="nb">cd</span><span class="w"> </span>/files/to/archive
-<span class="k">for</span><span class="w"> </span>file<span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="k">$(</span>find<span class="w"> </span>.<span class="w"> </span>-newermt<span class="w"> </span><span class="m">20200101</span><span class="w"> </span>-not<span class="w"> </span>-newermt<span class="w"> </span><span class="m">20210101</span><span class="k">)</span><span class="p">;</span><span class="w"> </span><span class="k">do</span><span class="w"> </span>tar<span class="w"> </span>-rvf<span class="w"> </span>/tmp/2020.tar<span class="w"> </span><span class="nv">$file</span><span class="p">;</span><span class="w"> </span><span class="k">done</span>
-</code></pre></div>
-
-<h2>Compression de l'archive</h2>
-<div class="highlight"><pre><span></span><code>gzip<span class="w"> </span>/tmp/2020.tar
-</code></pre></div>                </article>
-            </aside><!-- /#featured -->
-                <section id="content" class="body">
-                    <h1>Other articles</h1>
-                    <hr />
-                    <ol id="posts-list" class="hfeed">
+<span class="k">for</span><span class="w"> </span>file<span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="k">$(</span>find<span class="w"> </span>.<span class="w"> </span>-newermt<span class="w"> </span><span class="m">20200101</span><span class="w"> </span>-not<span class="w"> </span>-newermt<span class="w"> </span><span class="m">20210101</span><span class="k">)</span><span class="p">;</span><span class="w"> </span><span class="k">do</span><span class="w"> </span>tar<span class="w"> </span>-rvf<span class="w"> </span>/tmp/2020.tar …</code></pre></div>
+                <a class="readmore" href="https://fallen70.github.io/workbook/archivage-depuis-un-disque-plein.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
 
             <li><article class="hentry">
                 <header>
