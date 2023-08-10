@@ -34,9 +34,9 @@
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;p&gt;Le cookie est bien exploité&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&amp;gt; HEAD / HTTP/1.1
-&amp;gt; User-Agent: curl/7.29.0
-&amp;gt; Accept: */*
-&amp;gt; Cookie: ROUTEID=.1
-&amp;gt; host:ServerName
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="k"&gt;&amp;gt; &lt;/span&gt;&lt;span class="ge"&gt;HEAD / HTTP/1.1&lt;/span&gt;
+&lt;span class="k"&gt;&amp;gt; &lt;/span&gt;&lt;span class="ge"&gt;User-Agent: curl/7.29.0&lt;/span&gt;
+&lt;span class="k"&gt;&amp;gt; &lt;/span&gt;&lt;span class="ge"&gt;Accept: */*&lt;/span&gt;
+&lt;span class="k"&gt;&amp;gt; &lt;/span&gt;&lt;span class="ge"&gt;Cookie: ROUTEID=.1&lt;/span&gt;
+&lt;span class="k"&gt;&amp;gt; &lt;/span&gt;&lt;span class="ge"&gt;host:ServerName&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content><category term="Curl"></category><category term="load-balancer"></category></entry></feed>
