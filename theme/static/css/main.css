@@ -350,6 +350,14 @@ div.figure p.caption, figure p.caption { /* margin provided by figure */
 		.social a[href*='youtube.com'] {background-image: url('../images/icons/youtube.png');}
 
 /*
+  Search
+*****************/
+#search {
+ padding: 0 0 5px;
+} 
+
+
+/*
 	About
 *****************/
 #about {
