@@ -2,18 +2,8 @@
 {% block content_title %}{% endblock %}
 {% block content %}
 
-<link href="{{ SITEURL }}/pagefind/pagefind-ui.css" rel="stylesheet">
-<script src="{{ SITEURL }}/pagefind/pagefind-ui.js" type="text/javascript"></script>
 
 
-<aside id="search" class="body"></aside>
-<script>
-      window.addEventListener('DOMContentLoaded', (event) => {
-                new PagefindUI({ element: "#search",
-                                 baseUrl: "{{ SITEURL }}/",
-                });
-            });
-</script>
 {% if articles %}
     {% for article in articles_page.object_list %}
 
