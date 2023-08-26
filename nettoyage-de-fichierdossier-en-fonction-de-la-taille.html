@@ -5,6 +5,8 @@
         <meta name="generator" content="Pelican" />
         <title data-pagefind-meta="title" >Nettoyage de fichier/dossier en fonction de la taille</title>
         <link rel="stylesheet" href="https://fallen70.github.io/workbook/theme/css/main.css" />
+        <link href="https://fallen70.github.io/workbook/pagefind/pagefind-ui.css" rel="stylesheet">
+        <script src="https://fallen70.github.io/workbook/pagefind/pagefind-ui.js" type="text/javascript"></script>
         <link href="https://fallen70.github.io/workbook/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="WorkBook Atom Feed" />
         <meta name="description" content="Liste de fichier qui dépassent une taille en byte du -s * | sort -n | awk '{ if ( $1 > 400000 ) print $2; }' Suppression du contenu trop..." />
 </head>
@@ -20,6 +22,15 @@
                     <li><a href="https://fallen70.github.io/workbook/category/virtualbox.html">Virtualbox</a></li>
                 </ul></nav>
         </header><!-- /#banner -->
+
+        <aside id="search" class="body"></aside>
+        <script>
+              window.addEventListener('DOMContentLoaded', (event) => {
+                        new PagefindUI({ element: "#search",
+                                         baseUrl: "https://fallen70.github.io/workbook/",
+                        });
+                    });
+        </script>
 <section id="content" class="body">
   <article>
     <header>
@@ -59,6 +70,7 @@
                             <li><a href="https://getpelican.com/">Pelican</a></li>
                             <li><a href="https://www.python.org/">Python.org</a></li>
                             <li><a href="https://palletsprojects.com/p/jinja/">Jinja2</a></li>
+                            <li><a href="https://pagefind.app/">Pagefind</a></li>
                         </ul>
                 </div><!-- /.blogroll -->
                 <div class="social">
@@ -74,7 +86,7 @@
                 <address id="about" class="vcard body">
                 Proudly powered by <a href="https://getpelican.com/">Pelican</a>, which takes great advantage of <a href="https://www.python.org/">Python</a>.
                 </address><!-- /#about -->
-
+                <p>Search provided by <a href="https://pagefind.app/">Pagefind</a></p>
                 <p>The theme is by <a href="https://www.smashingmagazine.com/2009/08/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
         </footer><!-- /#contentinfo -->
 
