@@ -3,7 +3,7 @@
 <head>
         <meta charset="utf-8" />
         <meta name="generator" content="Pelican" />
-        <title data-pagefind-meta="title" >WorkBook - Python</title>
+        <title data-pagefind-meta="title" >WorkBook - mock</title>
         <link rel="stylesheet" href="https://fallen70.github.io/workbook/theme/css/main.css" />
         <link href="https://fallen70.github.io/workbook/pagefind/pagefind-ui.css" rel="stylesheet">
         <script src="https://fallen70.github.io/workbook/pagefind/pagefind-ui.js" type="text/javascript"></script>
@@ -16,7 +16,7 @@
                 <nav><ul>
                     <li><a href="https://fallen70.github.io/workbook/category/curl.html">Curl</a></li>
                     <li><a href="https://fallen70.github.io/workbook/category/linux.html">Linux</a></li>
-                    <li class="active"><a href="https://fallen70.github.io/workbook/category/python.html">Python</a></li>
+                    <li><a href="https://fallen70.github.io/workbook/category/python.html">Python</a></li>
                     <li><a href="https://fallen70.github.io/workbook/category/vim.html">Vim</a></li>
                     <li><a href="https://fallen70.github.io/workbook/category/virtualbox.html">Virtualbox</a></li>
                 </ul></nav>
@@ -90,87 +90,6 @@
         <span class="n">mck_2</span><span class="o">.</span><span class="n">side_effect</span> <span class="o">=</span> <span class="n">mock_func_2</span>
 </code></pre></div>                </article>
             </aside><!-- /#featured -->
-                <section id="content" class="body">
-                    <h1>Other articles</h1>
-                    <hr />
-                    <ol id="posts-list" class="hfeed">
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="https://fallen70.github.io/workbook/load-et-dump-yaml.html" rel="bookmark"
-                           title="Permalink to Load et Dump yaml">Load et Dump yaml</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2023-06-29T11:44:00+02:00">
-                Publié le: 29-juin-2023
-        </abbr>
-
-        <address class="vcard author">
-                Par                         <a class="url fn" href="https://fallen70.github.io/workbook/author/fallen70.html">Fallen70</a>
-        </address>
-<p>Dans <a href="https://fallen70.github.io/workbook/category/python.html">Python</a>.</p>
-<p>Tags: <a href="https://fallen70.github.io/workbook/tag/yaml.html">yaml</a> </p>
-</footer><!-- /.post-info -->                <h1>Prérequis</h1>
-<div class="highlight"><pre><span></span><code><span class="c1"># import pyyaml module</span>
-<span class="kn">import</span> <span class="nn">yaml</span>
-<span class="kn">from</span> <span class="nn">yaml.loader</span> <span class="kn">import</span> <span class="n">SafeLoader</span>
-</code></pre></div>
-
-<h1>Chargement depuis un fichier</h1>
-<div class="highlight"><pre><span></span><code><span class="c1"># Open the file and load the file</span>
-<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;fichier.yaml&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
-    <span class="n">data</span> <span class="o">=</span> <span class="n">yaml</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">Loader</span><span class="o">=</span><span class="n">SafeLoader</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
-</code></pre></div>
-
-<h1>Dump dans un fichier</h1>
-<div class="highlight"><pre><span></span><code><span class="c1"># Dump data</span>
-<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;fichier.yml&#39;</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
-    <span class="n">yaml …</span></code></pre></div>
-                <a class="readmore" href="https://fallen70.github.io/workbook/load-et-dump-yaml.html">read more</a>
-                </div><!-- /.entry-content -->
-            </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="https://fallen70.github.io/workbook/check-dns-et-ip.html" rel="bookmark"
-                           title="Permalink to Check DNS et IP">Check DNS et IP</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2023-06-09T11:13:00+02:00">
-                Publié le: 09-juin-2023
-        </abbr>
-
-        <address class="vcard author">
-                Par                         <a class="url fn" href="https://fallen70.github.io/workbook/author/fallen70.html">Fallen70</a>
-        </address>
-<p>Dans <a href="https://fallen70.github.io/workbook/category/python.html">Python</a>.</p>
-<p>Tags: <a href="https://fallen70.github.io/workbook/tag/dns.html">dns</a> <a href="https://fallen70.github.io/workbook/tag/check.html">check</a> </p>
-</footer><!-- /.post-info -->                <h1>Prerequis</h1>
-<ul>
-<li>python3</li>
-<li>module python <code>nslookup</code></li>
-<li>un dossiern results pour stocker les résultats</li>
-</ul>
-<p>Le script Lit un csv en entrée et eécrit les résultats au fur et à mesure.</p>
-<h1>Script</h1>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">os</span>
-<span class="kn">import</span> <span class="nn">csv</span>
-<span class="kn">from</span> <span class="nn">nslookup</span> <span class="kn">import</span> <span class="n">Nslookup</span>
-<span class="n">dns_query</span> <span class="o">=</span> <span class="n">Nslookup</span><span class="p">()</span>
-
-
-<span class="k">def</span> <span class="nf">ping_ko</span><span class="p">(</span> <span class="n">ip</span> <span class="p">):</span>
-    <span class="n">response</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">popen</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;ping -c 4 </span><span class="si">{</span><span class="n">ip …</span></code></pre></div>
-                <a class="readmore" href="https://fallen70.github.io/workbook/check-dns-et-ip.html">read more</a>
-                </div><!-- /.entry-content -->
-            </article></li>
-                </ol><!-- /#posts-list -->
-                </section><!-- /#content -->
         <section id="extras" class="body">
                 <div class="blogroll">
                         <h2>links</h2>

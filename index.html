@@ -36,7 +36,72 @@
 
             <aside id="featured" class="body">
                 <article>
-                    <h1 class="entry-title"><a href="https://fallen70.github.io/workbook/load-et-dump-yaml.html">Load et Dump yaml</a></h1>
+                    <h1 class="entry-title"><a href="https://fallen70.github.io/workbook/pytest-cheat-sheat.html">Pytest Cheat Sheat</a></h1>
+<footer class="post-info">
+        <abbr class="published" title="2023-07-04T13:44:00+02:00">
+                Publié le: 04-juil.-2023
+        </abbr>
+
+        <address class="vcard author">
+                Par                         <a class="url fn" href="https://fallen70.github.io/workbook/author/fallen70.html">Fallen70</a>
+        </address>
+<p>Dans <a href="https://fallen70.github.io/workbook/category/python.html">Python</a>.</p>
+<p>Tags: <a href="https://fallen70.github.io/workbook/tag/pytest.html">pytest</a> <a href="https://fallen70.github.io/workbook/tag/mock.html">mock</a> </p>
+</footer><!-- /.post-info --><h1>Prérequis</h1>
+<ul>
+<li>pytest</li>
+</ul>
+<h1>Créer un mock paramétrable</h1>
+<h2>Code pour le mock:</h2>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">pytest</span>
+
+<span class="nd">@pytest</span><span class="o">.</span><span class="n">fixture</span><span class="p">(</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;mock_func&quot;</span> <span class="p">)</span>
+<span class="k">def</span> <span class="nf">fixture_mock_func</span><span class="p">()</span>
+    <span class="k">def</span> <span class="nf">_mock_func</span><span class="p">(</span> <span class="n">param1</span><span class="p">,</span> <span class="n">param2</span> <span class="p">):</span>
+        <span class="n">returns</span> <span class="o">=</span> <span class="p">{</span> 
+            <span class="s1">&#39;test1&#39;</span> <span class="p">:</span> <span class="p">{</span> <span class="s1">&#39;10&#39;</span> <span class="p">:</span> <span class="s1">&#39;test1_with_value_10&#39;</span><span class="p">,</span> <span class="s1">&#39;20&#39;</span><span class="p">:</span> <span class="s1">&#39;test1_with_value_20&#39;</span> <span class="p">},</span>
+            <span class="s1">&#39;test2&#39;</span> <span class="p">:</span> <span class="p">{</span> <span class="s1">&#39;30&#39;</span> <span class="p">:</span> <span class="s1">&#39;test2_with_value_30&#39;</span><span class="p">,</span> <span class="s1">&#39;40&#39;</span><span class="p">:</span> <span class="s1">&#39;test2_with_value_40&#39;</span> <span class="p">},</span>
+        <span class="p">}</span>
+        <span class="k">return</span> <span class="n">returns</span><span class="p">[</span><span class="n">param1</span><span class="p">][</span><span class="n">param2</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">_mock_func</span>
+</code></pre></div>
+
+<h2>Code pour le test:</h2>
+<h3>One mock patch</h3>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">unittest</span> <span class="kn">import</span> <span class="n">mock</span>
+<span class="kn">from</span> <span class="nn">app.program</span> <span class="kn">import</span> <span class="n">start</span>
+
+<span class="k">def</span> <span class="nf">test_with_function_a_mocked</span><span class="p">(</span> <span class="n">mock_func</span> <span class="p">):</span>
+    <span class="n">mock_patch</span> <span class="o">=</span> <span class="s2">&quot;app.program.function_a&quot;</span>
+    <span class="k">with</span> <span class="n">mock</span><span class="o">.</span><span class="n">patch</span><span class="p">(</span> <span class="n">mock_patch</span> <span class="p">)</span> <span class="k">as</span> <span class="n">mck</span><span class="p">:</span>
+        <span class="n">mck</span><span class="o">.</span><span class="n">side_effect</span> <span class="o">=</span> <span class="n">mock_func</span>
+
+        <span class="n">result</span> <span class="o">=</span> <span class="n">start</span><span class="p">(</span><span class="s2">&quot;test1&quot;</span><span class="p">,</span> <span class="s2">&quot;20&quot;</span> <span class="p">)</span>
+
+        <span class="k">assert</span> <span class="n">result</span> <span class="o">==</span> <span class="s2">&quot;test1_with_value_20&quot;</span>
+</code></pre></div>
+
+<h3>Multiple mock patch</h3>
+<div class="highlight"><pre><span></span><code>    <span class="n">mock_patch_1</span> <span class="o">=</span> <span class="s2">&quot;app.program.function_1&quot;</span>
+    <span class="n">mock_patch_2</span> <span class="o">=</span> <span class="s2">&quot;app.program.function_2&quot;</span>
+    <span class="k">with</span> <span class="n">mock</span><span class="o">.</span><span class="n">patch</span><span class="p">(</span> <span class="n">mock_patch_1</span> <span class="p">)</span> <span class="k">as</span> <span class="n">mck_1</span><span class="p">,</span> \
+    <span class="k">with</span> <span class="n">mock</span><span class="o">.</span><span class="n">patch</span><span class="p">(</span> <span class="n">mock_patch_2</span> <span class="p">)</span> <span class="k">as</span> <span class="n">mck_2</span><span class="p">:</span>
+        <span class="n">mck_1</span><span class="o">.</span><span class="n">side_effect</span> <span class="o">=</span> <span class="n">mock_func_1</span>
+        <span class="n">mck_2</span><span class="o">.</span><span class="n">side_effect</span> <span class="o">=</span> <span class="n">mock_func_2</span>
+</code></pre></div>                </article>
+            </aside><!-- /#featured -->
+                <section id="content" class="body">
+                    <h1>Other articles</h1>
+                    <hr />
+                    <ol id="posts-list" class="hfeed">
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="https://fallen70.github.io/workbook/load-et-dump-yaml.html" rel="bookmark"
+                           title="Permalink to Load et Dump yaml">Load et Dump yaml</a></h1>
+                </header>
+
+                <div class="entry-content">
 <footer class="post-info">
         <abbr class="published" title="2023-06-29T11:44:00+02:00">
                 Publié le: 29-juin-2023
@@ -47,7 +112,7 @@
         </address>
 <p>Dans <a href="https://fallen70.github.io/workbook/category/python.html">Python</a>.</p>
 <p>Tags: <a href="https://fallen70.github.io/workbook/tag/yaml.html">yaml</a> </p>
-</footer><!-- /.post-info --><h1>Prérequis</h1>
+</footer><!-- /.post-info -->                <h1>Prérequis</h1>
 <div class="highlight"><pre><span></span><code><span class="c1"># import pyyaml module</span>
 <span class="kn">import</span> <span class="nn">yaml</span>
 <span class="kn">from</span> <span class="nn">yaml.loader</span> <span class="kn">import</span> <span class="n">SafeLoader</span>
@@ -63,13 +128,10 @@
 <h1>Dump dans un fichier</h1>
 <div class="highlight"><pre><span></span><code><span class="c1"># Dump data</span>
 <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;fichier.yml&#39;</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
-    <span class="n">yaml</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">data</span><span class="p">,</span><span class="n">f</span> <span class="p">)</span>
-</code></pre></div>                </article>
-            </aside><!-- /#featured -->
-                <section id="content" class="body">
-                    <h1>Other articles</h1>
-                    <hr />
-                    <ol id="posts-list" class="hfeed">
+    <span class="n">yaml …</span></code></pre></div>
+                <a class="readmore" href="https://fallen70.github.io/workbook/load-et-dump-yaml.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
 
             <li><article class="hentry">
                 <header>
