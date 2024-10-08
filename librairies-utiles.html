@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+        <meta charset="utf-8" />
+        <meta name="generator" content="Pelican" />
+        <title data-pagefind-meta="title" >Librairies utiles</title>
+        <link rel="stylesheet" href="https://fallen70.github.io/workbook/theme/css/main.css" />
+        <link href="https://fallen70.github.io/workbook/pagefind/pagefind-ui.css" rel="stylesheet">
+        <script src="https://fallen70.github.io/workbook/pagefind/pagefind-ui.js" type="text/javascript"></script>
+        <link href="https://fallen70.github.io/workbook/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="WorkBook Atom Feed" />
+        <meta name="description" content="Built-in Functions Python propose une série de fonction toutjours accessible sans nécessité d'import. Liste exhaustive..." />
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="https://fallen70.github.io/workbook/">WorkBook</a></h1>
+                <nav><ul>
+                    <li><a href="https://fallen70.github.io/workbook/category/curl.html">Curl</a></li>
+                    <li><a href="https://fallen70.github.io/workbook/category/linux.html">Linux</a></li>
+                    <li><a href="https://fallen70.github.io/workbook/category/python.html">Python</a></li>
+                    <li class="active"><a href="https://fallen70.github.io/workbook/category/python-onboarding.html">Python Onboarding</a></li>
+                    <li><a href="https://fallen70.github.io/workbook/category/vim.html">Vim</a></li>
+                    <li><a href="https://fallen70.github.io/workbook/category/virtualbox.html">Virtualbox</a></li>
+                </ul></nav>
+        </header><!-- /#banner -->
+
+        <aside id="search" class="body"></aside>
+        <script>
+              window.addEventListener('DOMContentLoaded', (event) => {
+                        new PagefindUI({ element: "#search",
+                                         baseUrl: "https://fallen70.github.io/workbook/",
+                        });
+                    });
+        </script>
+<section id="content" class="body">
+  <article>
+    <header>
+      <h1 class="entry-title">
+        <a href="https://fallen70.github.io/workbook/librairies-utiles.html" rel="bookmark"
+           title="Permalink to Librairies utiles">Librairies utiles</a></h1>
+    </header>
+
+    <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2024-10-08T14:00:00+02:00">
+                Publié le: 08-oct.-2024
+        </abbr>
+
+        <address class="vcard author">
+                Par                         <a class="url fn" href="https://fallen70.github.io/workbook/author/fallen70.html">Fallen70</a>
+        </address>
+<p>Dans <a href="https://fallen70.github.io/workbook/category/python-onboarding.html">Python Onboarding</a>.</p>
+<p>Tags: <a href="https://fallen70.github.io/workbook/tag/python.html">python</a> <a href="https://fallen70.github.io/workbook/tag/training.html">training</a> </p>
+</footer><!-- /.post-info -->      <h1>Built-in Functions</h1>
+<p>Python propose une série de fonction toutjours accessible sans nécessité d'import.</p>
+<h2>Liste exhaustive</h2>
+<p>https://docs.python.org/3/library/functions.html</p>
+<h3>zip</h3>
+<p>La méthode <code>zip</code> permet de prendre plusieurs <code>iterables</code> pour créer un tuple contenant un élement de chaque.<br>
+Elle s'arrétera une fois que l'<code>iterable</code> le plus court est épuisé.</p>
+<div class="highlight"><pre><span></span><code><span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="s1">&#39;sugar&#39;</span><span class="p">,</span> <span class="s1">&#39;spice&#39;</span><span class="p">,</span> <span class="s1">&#39;everything nice&#39;</span><span class="p">]):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code>(1, &#39;sugar&#39;)
+(2, &#39;spice&#39;)
+(3, &#39;everything nice&#39;)
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">],</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">]</span> <span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code>(1, 3, 5)
+(2, 4, 6)
+</code></pre></div>
+
+<h3>any / all</h3>
+<ul>
+<li>any renvoie <code>True</code> si un des éléments de l'iterable est vrai.</li>
+<li>all renvoie <code>True</code> si tous les éléments de l'itérable sont vrai.</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="nb">any</span><span class="p">(</span> <span class="p">[</span> <span class="kc">False</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="kc">True</span> <span class="p">]</span> <span class="p">)</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code>True
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="nb">all</span><span class="p">(</span> <span class="p">[</span> <span class="kc">False</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="kc">True</span> <span class="p">]</span> <span class="p">)</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code>False
+</code></pre></div>
+
+<p>Il faut faire attention car Python ne va pas evaluer l'entiéreté de la condtion :
+  * pour un <code>ET</code> il s'arrétera si il trouve un <code>False</code>
+  * pour un <code>OU</code> il s'arrétera si il trouve un <code>True</code></p>
+<p>Dans l'exemple si dessous <code>not_defined_value</code> n'est pas évalué dans la condition.</p>
+<div class="highlight"><pre><span></span><code><span class="k">if</span> <span class="kc">True</span> <span class="ow">or</span> <span class="n">not_defined_value</span><span class="p">:</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span> <span class="n">not_defined_value</span> <span class="p">)</span>
+    <span class="k">except</span> <span class="ne">NameError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span> <span class="n">e</span> <span class="p">)</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code>name &#39;not_defined_value&#39; is not defined
+</code></pre></div>
+
+<h3>range / enumerate</h3>
+<p>Range permet de générer une série de nombre avec un début, une fin et un pas. <br>
+Enuerate permet d'habiller un iterable pour attribuer un index a chaque élément</p>
+<div class="highlight"><pre><span></span><code><span class="nb">list</span><span class="p">(</span> <span class="nb">range</span><span class="p">(</span> <span class="mi">1</span><span class="p">,</span><span class="mi">12</span><span class="p">,</span><span class="mi">2</span> <span class="p">))</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code>[1, 3, 5, 7, 9, 11]
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="n">seasons</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Spring&#39;</span><span class="p">,</span> <span class="s1">&#39;Summer&#39;</span><span class="p">,</span> <span class="s1">&#39;Fall&#39;</span><span class="p">,</span> <span class="s1">&#39;Winter&#39;</span><span class="p">]</span>
+<span class="nb">list</span><span class="p">(</span><span class="nb">enumerate</span><span class="p">(</span><span class="n">seasons</span><span class="p">))</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code>[(0, &#39;Spring&#39;), (1, &#39;Summer&#39;), (2, &#39;Fall&#39;), (3, &#39;Winter&#39;)]
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="nb">list</span><span class="p">(</span><span class="nb">enumerate</span><span class="p">(</span><span class="n">seasons</span><span class="p">,</span> <span class="n">start</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code>[(1, &#39;Spring&#39;), (2, &#39;Summer&#39;), (3, &#39;Fall&#39;), (4, &#39;Winter&#39;)]
+</code></pre></div>
+
+<h3>reversed / sorted</h3>
+<p>Permet de créer un iterator sur une <code>sequence</code> pour soit la lire a l'envers soit la trier</p>
+<div class="highlight"><pre><span></span><code><span class="n">seq_it</span> <span class="o">=</span> <span class="nb">reversed</span><span class="p">(</span> <span class="s1">&#39;Hello&#39;</span> <span class="p">)</span>
+<span class="k">for</span> <span class="n">letter</span> <span class="ow">in</span> <span class="n">seq_it</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">letter</span><span class="p">)</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code>o
+l
+l
+e
+H
+</code></pre></div>
+
+<h3>abs / pow / min / max / sum</h3>
+<p>Pusieurs utilitaire pour des fonctions mathématiques</p>
+<h1>Itertools libs</h1>
+<h2>Liste exhaustive</h2>
+<p>https://docs.python.org/3/library/itertools.html</p>
+<h1>Collections libs</h1>
+<h2>liste exhaustive</h2>
+<p>https://docs.python.org/3/library/collections.html</p>
+    </div><!-- /.entry-content -->
+
+  </article>
+</section>
+        <section id="extras" class="body">
+                <div class="blogroll">
+                        <h2>links</h2>
+                        <ul>
+                            <li><a href="https://getpelican.com/">Pelican</a></li>
+                            <li><a href="https://www.python.org/">Python.org</a></li>
+                            <li><a href="https://palletsprojects.com/p/jinja/">Jinja2</a></li>
+                            <li><a href="https://pagefind.app/">Pagefind</a></li>
+                        </ul>
+                </div><!-- /.blogroll -->
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+                            <li><a href="https://fallen70.github.io/workbook/feeds/all.atom.xml" type="application/atom+xml" rel="alternate">atom feed</a></li>
+
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="https://getpelican.com/">Pelican</a>, which takes great advantage of <a href="https://www.python.org/">Python</a>.
+                </address><!-- /#about -->
+                <p>Search provided by <a href="https://pagefind.app/">Pagefind</a></p>
+                <p>The theme is by <a href="https://www.smashingmagazine.com/2009/08/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>

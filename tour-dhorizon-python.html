@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+        <meta charset="utf-8" />
+        <meta name="generator" content="Pelican" />
+        <title data-pagefind-meta="title" >Tour d'horizon Python</title>
+        <link rel="stylesheet" href="https://fallen70.github.io/workbook/theme/css/main.css" />
+        <link href="https://fallen70.github.io/workbook/pagefind/pagefind-ui.css" rel="stylesheet">
+        <script src="https://fallen70.github.io/workbook/pagefind/pagefind-ui.js" type="text/javascript"></script>
+        <link href="https://fallen70.github.io/workbook/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="WorkBook Atom Feed" />
+        <meta name="description" content="Mutability Les listes, dictionnaires et ensembles sont considéré comme mutable, les Strings, tuples, entiers, et floats sont immutable Un objet..." />
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="https://fallen70.github.io/workbook/">WorkBook</a></h1>
+                <nav><ul>
+                    <li><a href="https://fallen70.github.io/workbook/category/curl.html">Curl</a></li>
+                    <li><a href="https://fallen70.github.io/workbook/category/linux.html">Linux</a></li>
+                    <li><a href="https://fallen70.github.io/workbook/category/python.html">Python</a></li>
+                    <li class="active"><a href="https://fallen70.github.io/workbook/category/python-onboarding.html">Python Onboarding</a></li>
+                    <li><a href="https://fallen70.github.io/workbook/category/vim.html">Vim</a></li>
+                    <li><a href="https://fallen70.github.io/workbook/category/virtualbox.html">Virtualbox</a></li>
+                </ul></nav>
+        </header><!-- /#banner -->
+
+        <aside id="search" class="body"></aside>
+        <script>
+              window.addEventListener('DOMContentLoaded', (event) => {
+                        new PagefindUI({ element: "#search",
+                                         baseUrl: "https://fallen70.github.io/workbook/",
+                        });
+                    });
+        </script>
+<section id="content" class="body">
+  <article>
+    <header>
+      <h1 class="entry-title">
+        <a href="https://fallen70.github.io/workbook/tour-dhorizon-python.html" rel="bookmark"
+           title="Permalink to Tour d'horizon Python">Tour d'horizon Python</a></h1>
+    </header>
+
+    <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2024-10-08T14:00:00+02:00">
+                Publié le: 08-oct.-2024
+        </abbr>
+
+        <address class="vcard author">
+                Par                         <a class="url fn" href="https://fallen70.github.io/workbook/author/fallen70.html">Fallen70</a>
+        </address>
+<p>Dans <a href="https://fallen70.github.io/workbook/category/python-onboarding.html">Python Onboarding</a>.</p>
+<p>Tags: <a href="https://fallen70.github.io/workbook/tag/python.html">python</a> <a href="https://fallen70.github.io/workbook/tag/training.html">training</a> </p>
+</footer><!-- /.post-info -->      <h1>Mutability</h1>
+<p>Les listes, dictionnaires et ensembles sont considéré comme <code>mutable</code>, les Strings, tuples, entiers, et floats sont <code>immutable</code></p>
+<p>Un objet <code>mutable</code> est un objet qui peut être modifié.
+On peut changer les propriétés d'un objet mutable une fois qu’il a été défini.
+Une erreur courante est de confondre modification et réassignation.</p>
+<h2>id</h2>
+<p>La méthode <code>id</code> permet de connaitre la référence assignée par Python</p>
+<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Example d&#39;un objet immutable&quot;</span> <span class="p">)</span>
+<span class="n">a</span> <span class="o">=</span> <span class="mi">1000</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;a = 1000&quot;</span> <span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span> <span class="sa">f</span><span class="s2">&quot;ref a:</span><span class="si">{</span><span class="nb">id</span><span class="p">(</span><span class="n">a</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span> <span class="p">)</span>
+<span class="n">a</span> <span class="o">=</span> <span class="n">a</span> <span class="o">+</span> <span class="mi">1</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;a = a + 1&quot;</span> <span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span> <span class="sa">f</span><span class="s2">&quot;ref a:</span><span class="si">{</span><span class="nb">id</span><span class="p">(</span><span class="n">a</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span> <span class="p">)</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code>Example d&#39;un objet immutable
+a = 1000
+ref a:139996751941264
+a = a + 1
+ref a:139996751941232
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Example d&#39;un objet mutable&quot;</span> <span class="p">)</span>
+<span class="n">l0</span> <span class="o">=</span> <span class="p">[</span> <span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span> <span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span> <span class="s2">&quot;l0 = [ 1,2,3 ]&quot;</span> <span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span> <span class="sa">f</span><span class="s2">&quot;ref l0:</span><span class="si">{</span><span class="nb">id</span><span class="p">(</span><span class="n">l0</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span> <span class="p">)</span>
+<span class="n">l1</span> <span class="o">=</span> <span class="n">l0</span>
+<span class="nb">print</span><span class="p">(</span> <span class="s2">&quot;l1 = l0&quot;</span> <span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span> <span class="sa">f</span><span class="s2">&quot;ref l1:</span><span class="si">{</span><span class="nb">id</span><span class="p">(</span><span class="n">l1</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span> <span class="p">)</span>
+<span class="n">l1</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span> <span class="s2">&quot;l1.append(4)&quot;</span> <span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span> <span class="sa">f</span><span class="s2">&quot;l0:</span><span class="si">{</span><span class="n">l0</span><span class="si">}</span><span class="s2">&quot;</span> <span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span> <span class="sa">f</span><span class="s2">&quot;l1:</span><span class="si">{</span><span class="n">l1</span><span class="si">}</span><span class="s2">&quot;</span> <span class="p">)</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code>Example d&#39;un objet mutable
+l0 = [ 1,2,3 ]
+ref l0:139996743323464
+l1 = l0
+ref l1:139996743323464
+l1.append(4)
+l0:[1, 2, 3, 4]
+l1:[1, 2, 3, 4]
+</code></pre></div>
+
+<h1>Iterables</h1>
+<p>Il y a plusieurs type d'<code>iterable</code> en Python :
+  * Les <code>list</code>
+  * Les <code>tuples</code>
+  * Les <code>string</code>
+  * les <code>set</code>
+  * les <code>dict</code></p>
+<p>Tous les <code>iterable</code> peuvent être utilisés comme support pour une boucle <code>for</code></p>
+<div class="highlight"><pre><span></span><code><span class="n">fruits</span><span class="o">=</span> <span class="p">[</span><span class="s1">&#39;apple&#39;</span><span class="p">,</span> <span class="s1">&#39;lemon&#39;</span><span class="p">,</span> <span class="s1">&#39;pear&#39;</span><span class="p">,</span> <span class="s1">&#39;watermelon&#39;</span><span class="p">]</span>
+<span class="n">coordinates</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">greeting</span> <span class="o">=</span> <span class="s2">&quot;Hi y&#39;all!&quot;</span>
+<span class="n">colors</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="s1">&#39;blue&#39;</span><span class="p">,</span> <span class="s1">&#39;yellow&#39;</span><span class="p">}</span>
+<span class="n">item_counts</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;computers&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;headphones&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;ducks&#39;</span><span class="p">:</span> <span class="mi">3</span><span class="p">}</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;List&quot;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">fruit</span> <span class="ow">in</span> <span class="n">fruits</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span> <span class="n">fruit</span> <span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Dict&quot;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">item_counts</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">key</span><span class="si">}</span><span class="s2">:</span><span class="si">{</span><span class="n">item_counts</span><span class="p">[</span><span class="n">key</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span> <span class="p">)</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code>List
+apple
+lemon
+pear
+watermelon
+Dict
+computers:1
+headphones:2
+ducks:3
+</code></pre></div>
+
+<h2>Sequences</h2>
+<p>Les sequences sont un type d'<code>iterable</code> qui conserve les données de maniére ordonnée et permet un accés par <code>index</code>.
+Sont concernés les <code>list</code>, <code>tuples</code> et <code>string</code>. La valeur de l'<code>index</code> va de 0 a len(seq) - 1.</p>
+<p>On peux utiliser des valeurs négatives pour parcourir la séquence à l'envers.</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Premier élément</span>
+<span class="n">fruits</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code>&#39;apple&#39;
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="c1"># Dernier élément</span>
+<span class="n">coordinates</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="mf">2</span>
+</code></pre></div>
+
+<h3>Slices</h3>
+<p>On peut utiliser des <code>slices</code> sur une <code>sequence</code> pour récupérer une portion de la <code>sequence</code> il faut délimiter la portion entre crochet <code>[start:stop]</code>
+ * start index est inclusif ( par défaut 0 )
+ * stop index est exclusif, Python s'arrétera juste avant ( par défaut <code>len(list)</code> )</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Les deux premiers</span>
+<span class="n">fruits</span><span class="p">[:</span><span class="mi">2</span><span class="p">]</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code>[&#39;apple&#39;, &#39;lemon&#39;]
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="n">fruits</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">2</span><span class="p">]</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code>[&#39;apple&#39;, &#39;lemon&#39;]
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="c1"># Tout sauf le dernier</span>
+<span class="n">greeting</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code>&quot;Hi y&#39;all&quot;
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="n">greeting</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code>&quot;Hi y&#39;all&quot;
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="n">greeting</span><span class="p">[</span><span class="mi">3</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code>&quot;y&#39;all&quot;
+</code></pre></div>
+
+<p>Si on utilise des index negatif sur le start index on part de la fin.</p>
+<div class="highlight"><pre><span></span><code><span class="n">coordinates</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">:]</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code>(8, 2)
+</code></pre></div>
+
+<p>Si le stop index dépasse ça ne pose pas de problème</p>
+<div class="highlight"><pre><span></span><code><span class="n">coordinates</span><span class="p">[:</span><span class="mi">5</span><span class="p">]</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code>(1, 8, 2)
+</code></pre></div>
+
+<h3>Reverse</h3>
+<p>On peut inverser une séquence avec cette formultation <code>[::-1]</code></p>
+<div class="highlight"><pre><span></span><code><span class="n">fruits</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code>[&#39;apple&#39;, &#39;lemon&#39;, &#39;pear&#39;, &#39;watermelon&#39;]
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="n">fruits</span><span class="p">[::</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code>[&#39;watermelon&#39;, &#39;pear&#39;, &#39;lemon&#39;, &#39;apple&#39;]
+</code></pre></div>
+
+<h2>Comprehension</h2>
+<p>Il existe une forme compacté pour construire un <code>iterable</code> avec une boucle for.</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Liste des nombre pair &lt; 10:</span>
+<span class="n">res</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">i</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">res</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+<span class="n">res</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code>[0, 2, 4, 6, 8]
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="c1"># La même chose sous forme de list comprehension</span>
+<span class="p">[</span> <span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span> <span class="k">if</span> <span class="n">i</span> <span class="o">%</span><span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span> <span class="p">]</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code>[0, 2, 4, 6, 8]
+</code></pre></div>
+    </div><!-- /.entry-content -->
+
+  </article>
+</section>
+        <section id="extras" class="body">
+                <div class="blogroll">
+                        <h2>links</h2>
+                        <ul>
+                            <li><a href="https://getpelican.com/">Pelican</a></li>
+                            <li><a href="https://www.python.org/">Python.org</a></li>
+                            <li><a href="https://palletsprojects.com/p/jinja/">Jinja2</a></li>
+                            <li><a href="https://pagefind.app/">Pagefind</a></li>
+                        </ul>
+                </div><!-- /.blogroll -->
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+                            <li><a href="https://fallen70.github.io/workbook/feeds/all.atom.xml" type="application/atom+xml" rel="alternate">atom feed</a></li>
+
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="https://getpelican.com/">Pelican</a>, which takes great advantage of <a href="https://www.python.org/">Python</a>.
+                </address><!-- /#about -->
+                <p>Search provided by <a href="https://pagefind.app/">Pagefind</a></p>
+                <p>The theme is by <a href="https://www.smashingmagazine.com/2009/08/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>
