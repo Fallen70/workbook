@@ -8,7 +8,7 @@ A faire aprés modification du Kernel
 
 Aprés  lancement de la VM depuis le menu Périphérique choisir `Insérer l'image CD des Additions invité`
 
-![Menu Virtualbox]({static}/images/virtualbox/vm-tools.png)
+![Menu Virtualbox]({static}/static/images/virtualbox/vm-tools.png)
 
 
 # Montage et éxecution du CD:

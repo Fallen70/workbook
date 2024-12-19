@@ -33,7 +33,7 @@ SOCIAL = ()
 
 DEFAULT_PAGINATION = False
 
-STATIC_PATHS = ['images']
+STATIC_PATHS = ['static']
 
 # Uncomment following line if you want document-relative URLs when developing
 RELATIVE_URLS = True

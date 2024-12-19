@@ -6,6 +6,8 @@ Tags:python, training
 
 # Mutability
 
+[Notenooks]({static}/static/notebooks.tar.gz)
+
 Les listes, dictionnaires et ensembles sont considéré comme `mutable`, les Strings, tuples, entiers, et floats sont `immutable`
 
 Un objet `mutable` est un objet qui peut être modifié.
@@ -26,13 +28,11 @@ print("a = a + 1" )
 print( f"ref a:{id(a)}" )
 ```
 
-    Example d'un objet immutable
-    a = 1000
-    ref a:139996751941264
-    a = a + 1
-    ref a:139996751941232
-
-
+> Example d'un objet immutable  
+> a = 1000  
+> ref a:139996751941264  
+> a = a + 1  
+> ref a:139996751941232  
 
 ```python
 print("Example d'un objet mutable" )
@@ -48,14 +48,14 @@ print( f"l0:{l0}" )
 print( f"l1:{l1}" )
 ```
 
-    Example d'un objet mutable
-    l0 = [ 1,2,3 ]
-    ref l0:139996743323464
-    l1 = l0
-    ref l1:139996743323464
-    l1.append(4)
-    l0:[1, 2, 3, 4]
-    l1:[1, 2, 3, 4]
+> Example d'un objet mutable  
+> l0 = [ 1,2,3 ]  
+> ref l0:139996743323464  
+> l1 = l0  
+> ref l1:139996743323464  
+> l1.append(4)  
+> l0:[1, 2, 3, 4]  
+> l1:[1, 2, 3, 4]  
 
 
 # Iterables
@@ -85,16 +85,15 @@ for key in item_counts:
     print( f"{key}:{item_counts[key]}" )
 ```
 
-    List
-    apple
-    lemon
-    pear
-    watermelon
-    Dict
-    computers:1
-    headphones:2
-    ducks:3
-
+> List  
+> apple  
+> lemon   
+> pear  
+> watermelon  
+> Dict  
+> computers:1  
+> headphones:2  
+> ducks:3  
 
 ## Sequences
 
@@ -109,25 +108,14 @@ On peux utiliser des valeurs négatives pour parcourir la séquence à l'envers.
 fruits[0]
 ```
 
-
-
-
-    'apple'
-
-
+> apple
 
 
 ```python
 # Dernier élément
 coordinates[-1]
 ```
-
-
-
-
-    2
-
-
+> 2
 
 ### Slices
 On peut utiliser des `slices` sur une `sequence` pour récupérer une portion de la `sequence` il faut délimiter la portion entre crochet `[start:stop]`
@@ -138,61 +126,37 @@ On peut utiliser des `slices` sur une `sequence` pour récupérer une portion de
 ```python
 # Les deux premiers
 fruits[:2]
-```
+```   
 
-
-
-
-    ['apple', 'lemon']
-
-
+> ['apple', 'lemon']
 
 
 ```python
 fruits[0:2]
 ```
 
-
-
-
-    ['apple', 'lemon']
-
-
-
+> ['apple', 'lemon']
 
 ```python
 # Tout sauf le dernier
 greeting[:-1]
 ```
 
-
-
-
-    "Hi y'all"
-
-
+> "Hi y'all"
 
 
 ```python
 greeting[0:-1]
 ```
 
-
-
-
-    "Hi y'all"
-
-
+> "Hi y'all"
 
 
 ```python
 greeting[3:-1]
 ```
 
-
-
-
-    "y'all"
+> "y'all"
 
 
 
@@ -203,11 +167,7 @@ Si on utilise des index negatif sur le start index on part de la fin.
 coordinates[-2:]
 ```
 
-
-
-
-    (8, 2)
-
+> (8, 2)
 
 
 Si le stop index dépasse ça ne pose pas de problème
@@ -217,12 +177,7 @@ Si le stop index dépasse ça ne pose pas de problème
 coordinates[:5]
 ```
 
-
-
-
-    (1, 8, 2)
-
-
+> (1, 8, 2)
 
 ### Reverse
 On peut inverser une séquence avec cette formultation `[::-1]`
@@ -232,24 +187,13 @@ On peut inverser une séquence avec cette formultation `[::-1]`
 fruits
 ```
 
-
-
-
-    ['apple', 'lemon', 'pear', 'watermelon']
-
-
-
+> ['apple', 'lemon', 'pear', 'watermelon']
 
 ```python
 fruits[::-1]
 ```
 
-
-
-
-    ['watermelon', 'pear', 'lemon', 'apple']
-
-
+> ['watermelon', 'pear', 'lemon', 'apple']
 
 ## Comprehension
 
@@ -265,22 +209,11 @@ for i in range(10):
 res
 ```
 
-
-
-
-    [0, 2, 4, 6, 8]
-
-
-
+> [0, 2, 4, 6, 8]
 
 ```python
 # La même chose sous forme de list comprehension
 [ i for i in range(10) if i %2 == 0 ]
 ```
-
-
-
-
-    [0, 2, 4, 6, 8]
-
+> [0, 2, 4, 6, 8]
 
