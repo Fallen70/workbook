@@ -23,9 +23,9 @@ for item in zip([1, 2, 3], ['sugar', 'spice', 'everything nice']):
     print(item)
 ```
 
-    (1, 'sugar')
-    (2, 'spice')
-    (3, 'everything nice')
+> (1, 'sugar')  
+> (2, 'spice')  
+> (3, 'everything nice')  
 
 
 
@@ -34,9 +34,8 @@ for item in zip([1, 2], [3,4,5], [5,6,7] ):
     print(item)
 ```
 
-    (1, 3, 5)
-    (2, 4, 6)
-
+> (1, 3, 5)  
+> (2, 4, 6)  
 
 ### any / all
  * any renvoie `True` si un des éléments de l'iterable est vrai.
@@ -47,24 +46,13 @@ for item in zip([1, 2], [3,4,5], [5,6,7] ):
 any( [ False, False, True ] )
 
 ```
-
-
-
-
-    True
-
-
-
+> True  
 
 ```python
 all( [ False, False, True ] )
 ```
 
-
-
-
-    False
-
+> False  
 
 
 Il faut faire attention car Python ne va pas evaluer l'entiéreté de la condtion :
@@ -82,7 +70,7 @@ if True or not_defined_value:
         print( e )
 ```
 
-    name 'not_defined_value' is not defined
+> name 'not_defined_value' is not defined  
 
 
 ### range / enumerate
@@ -95,12 +83,7 @@ Enuerate permet d'habiller un iterable pour attribuer un index a chaque élémen
 list( range( 1,12,2 ))
 ```
 
-
-
-
-    [1, 3, 5, 7, 9, 11]
-
-
+> [1, 3, 5, 7, 9, 11]  
 
 
 ```python
@@ -108,43 +91,28 @@ seasons = ['Spring', 'Summer', 'Fall', 'Winter']
 list(enumerate(seasons))
 ```
 
-
-
-
-    [(0, 'Spring'), (1, 'Summer'), (2, 'Fall'), (3, 'Winter')]
-
-
-
+> [(0, 'Spring'), (1, 'Summer'), (2, 'Fall'), (3, 'Winter')]  
 
 ```python
 list(enumerate(seasons, start=1))
 ```
 
-
-
-
-    [(1, 'Spring'), (2, 'Summer'), (3, 'Fall'), (4, 'Winter')]
-
-
+> [(1, 'Spring'), (2, 'Summer'), (3, 'Fall'), (4, 'Winter')]  
 
 ### reversed / sorted
 
 Permet de créer un iterator sur une `sequence` pour soit la lire a l'envers soit la trier
-
-
 
 ```python
 seq_it = reversed( 'Hello' )
 for letter in seq_it:
     print(letter)
 ```
-
-    o
-    l
-    l
-    e
-    H
-
+> o  
+> l  
+> l  
+> e  
+> H  
 
 ### abs / pow / min / max / sum
 
